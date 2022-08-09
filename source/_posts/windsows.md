@@ -1,7 +1,0 @@
----
-title: windoswos
----
-
-# windoswos
-
-windoswos
