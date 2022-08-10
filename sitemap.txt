@@ -1,3 +1,3 @@
-http://example.com/2022/08/10/hello-world/
-http://example.com/2022/08/10/test/
-http://example.com/
+https://example.com/2022/08/10/hello-world/
+https://example.com/2022/08/10/test/
+https://example.com/
