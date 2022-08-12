@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>更改博客主题一般操作</title>
-      <link href="/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/"/>
-      <url>/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/</url>
+      <title>如何为Git设置代理</title>
+      <link href="/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/"/>
+      <url>/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</url>
       
-        <content type="html"><![CDATA[<h2 id="clone主题仓库"><a href="#clone主题仓库" class="headerlink" title="clone主题仓库"></a>clone主题仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> [repo URL] themes/[theme name]</span><br></pre></td></tr></table></figure><p>将仓库clone到本地后，打开themes&#x2F;[theme name]文件夹，将.git隐藏文件夹删除才能正常push</p><h2 id="更改根目录下-config-yml文件夹主题名称"><a href="#更改根目录下-config-yml文件夹主题名称" class="headerlink" title="更改根目录下_config.yml文件夹主题名称"></a>更改根目录下_config.yml文件夹主题名称</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: [theme name]</span><br></pre></td></tr></table></figure><p>注意冒号前有空格</p><h2 id="生产的应用程序构建到构建文件夹"><a href="#生产的应用程序构建到构建文件夹" class="headerlink" title="生产的应用程序构建到构建文件夹"></a>生产的应用程序构建到构建文件夹</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build</span><br></pre></td></tr></table></figure><h2 id="本地运行测试"><a href="#本地运行测试" class="headerlink" title="本地运行测试"></a>本地运行测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>博客默认运行在localhost:4000，访问以检查主题是否正常，按CTRL+C结束运行</p><h2 id="将更改push到远程"><a href="#将更改push到远程" class="headerlink" title="将更改push到远程"></a>将更改push到远程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m<span class="string">&quot;&quot;</span></span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure><p>等待GitHub完成部署<br>访问你的博客，至此，你的博客已经成功的更改了主题！</p>]]></content>
+        <content type="html"><![CDATA[<p>Git需要设置代理才能快速地从GitHub上获取文件，同时减少下载的文件缺失和不完整的情况</p><h2 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h2><p>设置全局代理</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global https.proxy http://127.0.0.1:7890</span><br><span class="line">$ git config --global https.proxy https://127.0.0.1:7890</span><br></pre></td></tr></table></figure><h2 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h2><p>取消全局代理</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">$ git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure>]]></content>
       
       
       
@@ -24,12 +24,31 @@
     
     <entry>
       <title>Hello World</title>
-      <link href="/2022/08/11/test/"/>
-      <url>/2022/08/11/test/</url>
+      <link href="/2022/08/12/test/"/>
+      <url>/2022/08/12/test/</url>
       
         <content type="html"><![CDATA[<h1 id="test"><a href="#test" class="headerlink" title="test"></a>test</h1><p>A test text</p>]]></content>
       
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>更改博客主题一般操作</title>
+      <link href="/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/"/>
+      <url>/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h2 id="clone主题仓库"><a href="#clone主题仓库" class="headerlink" title="clone主题仓库"></a>clone主题仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> [repo URL] themes/[theme name]</span><br></pre></td></tr></table></figure><p>将仓库clone到本地后，打开themes&#x2F;[theme name]文件夹，将.git隐藏文件夹删除才能正常push</p><h2 id="更改根目录下-config-yml文件夹主题名称"><a href="#更改根目录下-config-yml文件夹主题名称" class="headerlink" title="更改根目录下_config.yml文件夹主题名称"></a>更改根目录下_config.yml文件夹主题名称</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: [theme name]</span><br></pre></td></tr></table></figure><p>注意冒号前有空格</p><h2 id="生产的应用程序构建到构建文件夹"><a href="#生产的应用程序构建到构建文件夹" class="headerlink" title="生产的应用程序构建到构建文件夹"></a>生产的应用程序构建到构建文件夹</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build</span><br></pre></td></tr></table></figure><h2 id="本地运行测试"><a href="#本地运行测试" class="headerlink" title="本地运行测试"></a>本地运行测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>博客默认运行在localhost:4000，访问以检查主题是否正常，按CTRL+C结束运行</p><h2 id="将更改push到远程"><a href="#将更改push到远程" class="headerlink" title="将更改push到远程"></a>将更改push到远程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m<span class="string">&quot;&quot;</span></span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure><p>等待GitHub完成部署<br>访问你的博客，至此，你的博客已经成功的更改了主题！</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 记录 </tag>
+            
+        </tags>
       
     </entry>
     
