@@ -13,9 +13,9 @@ menu:
 # https://github.com/mattboldt/typed.js
 subtitle:
   enable: true # 是否开启动效
-  text: 人说，背上行囊，就是过客，放下包袱，就找到了故乡 # 显示的文字
-  text2: 自由固不是钱所能买到的，但能够为钱而卖掉 # 滚动播放，如果不需要可以留空
-  text3: 有家的地方容不下肉体，没家的地方容不下灵魂 # 最多支持三段文字
+  text: 我们笑着说再见，却深知遥遥再无期 # 显示的文字
+  text2: 不畏将来，不念过往 # 滚动播放，如果不需要可以留空
+  text3:  岁月匆匆催人老，故里山河又一秋 # 最多支持三段文字
   startDelay: 0 # 延迟时间
   typeSpeed: 200 # 打字速度
   loop: true # 是否循环
