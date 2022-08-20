@@ -53,6 +53,7 @@ highlight:
 prismjs:
   enable: false
   preprocess: true
+  postAsset: true
   line_number: true
   tab_replace: ''
 
