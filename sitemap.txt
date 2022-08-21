@@ -1,10 +1,7 @@
+https://example.com/2022/08/09/hello-world/
 https://example.com/2022/08/10/test/
 https://example.com/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/
-https://example.com/2022/08/17/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/
 https://example.com/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/
 https://example.com/friends/index.html
-https://example.com/2022/08/09/hello-world/
-https://example.com/2022/08/20/test-1/
-https://example.com/2022/08/20/1/
 https://example.com/
 https://example.com/tags/%E8%AE%B0%E5%BD%95/
