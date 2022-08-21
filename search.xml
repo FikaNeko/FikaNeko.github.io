@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>记一次在博客中引用图片的过程</title>
+      <link href="/2022/08/21/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B/"/>
+      <url>/2022/08/21/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博客在很多情况下都需要引用图片，但是我按照官方文档的嵌入本地图片的说明操作，图片仍然无法显示，并且这种情况只发生在嵌入本地图片的时候，碰壁了很久我放弃了嵌入本地图片的想法，转为引用图床URL。公用图床不能管理上传的图片，并且管理性较差，我准备采用GitHub+PicGo的方法，就地取材直接建立一个GitHub repo作为图床，易于管理</p><h2 id="实践操作"><a href="#实践操作" class="headerlink" title="实践操作"></a>实践操作</h2><h3 id="1-1建立GitHub操作"><a href="#1-1建立GitHub操作" class="headerlink" title="1-1建立GitHub操作"></a>1-1建立GitHub操作</h3><p>新建一个GitHub仓库，注意仓库一定要设置为Public，否则无法上传图片</p><h3 id="1-2生成Access-token"><a href="#1-2生成Access-token" class="headerlink" title="1-2生成Access token"></a>1-2生成Access token</h3><p>GitHub貌似改了设置页面的排版，导致我找了很久也没找到Developer settings下的Personal access tokens选项，这个链接可以直达获取Access token的页面，前提是需要先登录GitHub:<a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a><br>![点击Generate new token](<a href="https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B">https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/记一次在博客中引用图片的过程</a> 1-2.png)<br>![按照图中说明操作](<a href="https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B">https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/记一次在博客中引用图片的过程</a> 1-2-2.png)<br>最后滑到下面点击Generate token<br>![](<a href="https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B">https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/记一次在博客中引用图片的过程</a> 1-2-3.png)<br>需要及时复制备用，后续将不再显示token</p><h3 id="2-1设置PicGo"><a href="#2-1设置PicGo" class="headerlink" title="2-1设置PicGo"></a>2-1设置PicGo</h3><p>下载安装PicGo(<a href="https://picgo.github.io/PicGo-Doc/zh/">https://picgo.github.io/PicGo-Doc/zh/</a>)<br>转到图床设置&#x2F;GitHub图床<br>![](<a href="https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B">https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/记一次在博客中引用图片的过程</a> 2-1-1.png)<br>仓库名格式为 username&#x2F;repo name<br>分支名为master<br>粘贴刚才的token<br>存储路径可以自行设定，会在repo中新建一个目录存放照片<br>使用jsdelivr作为CDN加速，域名格式为<a href="https://cdn.jsdelivr.net/gh/(%E7%94%A8%E6%88%B7%E5%90%8D)/(%E4%BB%93%E5%BA%93%E5%90%8D)">https://cdn.jsdelivr.net/gh/(用户名)/(仓库名)</a><br>点击确定<br>上传图片后会自动复制图片链接，使用语法: <img src="/URL" alt="图片描述">进行博客图片嵌入</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 记录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>test</title>
       <link href="/2022/08/21/test-1/"/>
       <url>/2022/08/21/test-1/</url>
