@@ -42,19 +42,6 @@
     
     
     <entry>
-      <title>test</title>
-      <link href="/2022/08/21/test-1/"/>
-      <url>/2022/08/21/test-1/</url>
-      
-        <content type="html"><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/DSC00362.jpg" alt="test"></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>如何为Git设置代理</title>
       <link href="/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/"/>
       <url>/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</url>
@@ -87,19 +74,6 @@
             <tag> 记录 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2022/08/10/test/"/>
-      <url>/2022/08/10/test/</url>
-      
-        <content type="html"><![CDATA[<h1 id="test"><a href="#test" class="headerlink" title="test"></a>test</h1><p>A test text</p>]]></content>
-      
-      
       
     </entry>
     
