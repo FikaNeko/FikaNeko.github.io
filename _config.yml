@@ -5,7 +5,7 @@
 # Site
 title: Fika
 subtitle: ''
-description: ''
+description: 'Fika'
 keywords:
 author: Fika
 language: zh-CN
@@ -98,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: ayer
+theme: volantis
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
