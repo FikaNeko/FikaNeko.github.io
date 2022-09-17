@@ -1,50 +1,33 @@
 
 <!DOCTYPE html>
-<html lang="zh-CN ">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fika || iPhone SE——小屏的情怀</title>
-    <meta name="author" content="Fika">
-    <meta name="description" content="Fika ">
-    <meta name="keywords" content=" ">
-    <link rel="icon" href="/images/avatar.png">
-    <link rel="stylesheet" href="/css/antd.min.css">
-    
-    <link rel="stylesheet" href="/css/maiden-theme.css">
-    
-    <script src="/js/vue.js"></script>
-    <script src="/js/antd.min.js"></script>
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Fika" type="application/atom+xml">
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>iPhone SE——小屏的情怀 | Fika</title>
+        <meta name="author" content="Fika">
+        <meta name="description" content="Fika">
+        <meta name="keywords" content="">
+        <link rel="icon" href="">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+        <link rel="stylesheet" href="/css/fonts.min.css">
+        <link rel="stylesheet" href="/css/particlex.css">
+        
+        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Fika" type="application/atom+xml">
 </head>
-
-<body>
-
-    <div id="loading"
-        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
-        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
-        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
-        <div
-            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
-            <div id="loadcontent"
-                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
-                <div>
-                    <h2>LOADING...</h2>
-                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
-                    <div>
-                        <img src="/dancingkitty.gif" alt="loading">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="layout">
-        <transition name="into">
-            <div v-show="show_page" style="display: none;">
-                <div id="menu_show">
-                     
+    <body>
+        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
@@ -52,122 +35,92 @@
         </a>
         
         <a href="/">
-            <span>
-                <a-icon type="home" theme="filled" />
-            </span>
-            <span>home</span>
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;home</span>
         </a>
         
         <a href="/about">
-            <span>
-                <a-icon type="idcard" theme="filled" />
-            </span>
-            <span>about</span>
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;about</span>
         </a>
         
         <a href="/archives">
-            <span>
-                <a-icon type="folder" theme="filled" />
-            </span>
-            <span>archives</span>
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;archives</span>
         </a>
         
-        <a href="/like/categories">
-            <span>
-                <a-icon type="book" theme="filled" />
-            </span>
-            <span>categories</span>
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;categories</span>
         </a>
         
-        <a href="/like/tags">
-            <span>
-                <a-icon type="tags" theme="filled" />
-            </span>
-            <span>tags</span>
-        </a>
-        
-        <a target="_blank" rel="noopener" href="https://en.korilin.com">
-            <span>
-                <a-icon type="compass" theme="filled" />
-            </span>
-            <span>英文博客</span>
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;tags</span>
         </a>
         
     </div>
-
     <div :class="'phone-menu ' + menu_show" id="phone-menu">
-        <div :class="'title'" @click="menu_show=!menu_show">
-            <span style="margin-right: 10px;">
-                <a-icon type="appstore" theme="filled" />
-            </span>
-            <span>Fika</span>
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;Fika</span>
         </div>
+        <transition name="slide">
         <div class="items" v-show="menu_show">
             
             <a href="/">
                 <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="home" theme="filled" />
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">home</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">home</div>
                 </div>
             </a>
             
             <a href="/about">
                 <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="idcard" theme="filled" />
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">about</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">about</div>
                 </div>
             </a>
             
             <a href="/archives">
                 <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="folder" theme="filled" />
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">archives</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">archives</div>
                 </div>
             </a>
             
-            <a href="/like/categories">
+            <a href="/categories">
                 <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="book" theme="filled" />
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">categories</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">categories</div>
                 </div>
             </a>
             
-            <a href="/like/tags">
+            <a href="/tags">
                 <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="tags" theme="filled" />
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
                     </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">tags</div>
-                </div>
-            </a>
-            
-            <a target="_blank" rel="noopener" href="https://en.korilin.com">
-                <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="compass" theme="filled" />
-                    </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">英文博客</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">tags</div>
                 </div>
             </a>
             
         </div>
-        <div class="curtain" v-show="menu_show"></div>
+        </transition>
     </div>
-
 </nav>
-                </div>
-
-                <div id="main">
-                     
-<link rel="stylesheet" href="/css/post-body.css">
+                    </div>
+                    <div id="main">
+                        
 <div class="article">
     <div>
         <h1>iPhone SE——小屏的情怀 </h1>
@@ -175,23 +128,20 @@
     <div class="info">
         <span class="date">
             <span class="icon">
-                <a-icon type="calendar" theme="filled" />
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
             2022/8/30
         </span>
-
         
-
         
-
         <span class="tags">
             <span class="icon">
-                <a-icon type="tags" theme="filled" />
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/评测" style=color:#1bccbc>
+                <a href="/tags/评测/" style="color: #03a9f4">
                     评测
                 </a>
             </span>
@@ -199,7 +149,6 @@
         </span>
         
     </div>
-
     <div class="content" v-pre>
         <h2 id="iPhone-SE的诞生"><a href="#iPhone-SE的诞生" class="headerlink" title="iPhone SE的诞生"></a>iPhone SE的诞生</h2><p>2016年3月22日，随着苹果春季发布会的召开，这台以字母命名的手机iPhone SE毫无悬念地发布了，iPhone 5S的壳子里塞进了iPhone 6S的配置，让那时追求小屏、价格、性能的用户爱不释手。iPhone SE的发布时间可谓精明，2015年9月9日发布iPhone 6S，时隔半年就发布了这台“iPhone 6S低配版”，并且同等内部硬件配置下的售价要比6S便宜将近2000元，由此而知苹果想借iPhone SE填补价格的空白，给普通用户更多体验苹果产品的机会，顺便把iPhone 5S的壳子和屏幕库存清了,库存克星可不是盖的<br><img src="https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/iPhoneSE1.JPG"></p>
 <h2 id="iPhone-SE参数配置"><a href="#iPhone-SE参数配置" class="headerlink" title="iPhone SE参数配置"></a>iPhone SE参数配置</h2><p>在处理器方面，苹果在SE这个小机身里塞下了一块打满鸡血的A9处理器，采用台积电和三星的16nm工艺，塞下了外星科技3.5mm耳机孔。令人震惊的是苹果竟然没有对这颗A9降频，与6S的A9同为1.85GHz频率<br><img src="https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/iPhoneSE2.jpg"><br>相同的还有2GB运行内存。大的来了——SE的容量版本有16G、32G、64G、128G等四个版本，这在苹果产品里是很少见的，可以参考的是iPhone 7只有32G和128G两个版本，iPhone 8只有64和256G两个版本，在iPhone 7时代苹果阉割掉了最合适的64G版本，相同地，也阉割掉了iPhone 8系列最需要的128G版本。SE填补了容量版本的空白，这是非常难得的，满足了用户的容量需求。屏幕方面，SE配备了和5S一样的4英寸Retina显示屏，分辨率为1136 x 640，标准的16:9屏幕，ppi为326，前置摄像头120万像素。SE塞下了1642mAh的电池，比5S多82mAh，比6S少55mAh。另外在背面苹果LOGO上沿用了6S的镶嵌工艺，而5S后背的苹果LOGO是一整块铝合金面板上打磨出来的，相比较5S的打磨工艺，镶嵌工艺提升了制作后盖面板的良品率<br><img src="https://cdn.jsdelivr.net/gh/FikaNeko/Image-Hosting@master/img/iPhoneSE3.JPG"></p>
@@ -207,94 +156,36 @@
 <h2 id="2022年的它还值得吗？"><a href="#2022年的它还值得吗？" class="headerlink" title="2022年的它还值得吗？"></a>2022年的它还值得吗？</h2><p>要问值或不值，这个就要看使用场景了，它完全不能当作主力机，这是毋庸置疑的，小屏旗舰我更推荐iPhone 13 mini，我建议SE用来收短信和做mp3，。因为这颗A9的性能足够强，，搞机佬也可以捡一台iOS13或者iOS 14系统的SE玩越狱，也许会解锁更多的使用场景</p>
 
     </div>
-
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <div id="comment">
-        <div id="gitalk-container">
-        </div>
-    </div>
     
 </div>
-                     
+                         
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2018 - 2022 Fika
+            © 20xx - 2022 Fika
             <span class="footer-icon">
-                <a-icon type="flag" theme="filled" /></span>
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
             @Fika
         </div>
         <div></div>
         <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
-                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
         
     </div>
-
 </footer>
-
-<script src="/js/highlight.min.js"></script>
-<script src="/js/particle.js"></script>
+                    </div>
                 </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
             </div>
-        </transition>
-    </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        
 
-    <script>
-    new Vue({
-        el: "#layout",
-        data: {
-            show_page: false,
-            onload_menu: false,
-            menu_show: false,
-            card_top: 100
-        },
-        created: function () {
-            var that = this
-            window.onload = function () {
-                that.show_page = true
-                document.getElementById("loadcontent").style.opacity = 0
-                setTimeout(function () {
-                    document.getElementById("loadleft").style.width = 0
-                    document.getElementById("loadright").style.width = 0
-                }, 300)
-                setTimeout(function () {
-                    document.getElementById("loading").style = "display:none"
-                }, 600)
-            }
-        },
-        mounted: function () {
-            var that = this
-            window.addEventListener('scroll', function (e) {
-                that.menu_show = false
-            })
-        },
-        methods: {
-            home_click: function () {
-                window.scrollTo({
-                    top: window.innerHeight - 80,
-                    behavior: "smooth",
-                });
-            }
-        }
-    })
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script>
-    const gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: 'hexo-theme-particle',      // The repository of store comments,
-        owner: 'korilin',
-        admin: ['korilin'],
-        language: 'en',
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: true  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
-</script>
-
-</body>
-
+    </body>
 </html>
