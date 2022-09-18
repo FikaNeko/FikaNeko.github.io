@@ -48,7 +48,7 @@ menu:
 # side info card
 card:
     enable: true
-    description: ["Description..."] # You can add more
+    description: ["Debug the World"] # You can add more
     icon_links:
         []
         # Example:
