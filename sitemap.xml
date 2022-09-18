@@ -47,6 +47,15 @@
   </url>
   
   <url>
+    <loc>https://fika.ink/about/about.html</loc>
+    
+    <lastmod>2022-09-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://fika.ink/friends/index.html</loc>
     
     <lastmod>2022-09-18</lastmod>
