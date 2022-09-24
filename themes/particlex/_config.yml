@@ -50,7 +50,10 @@ card:
     enable: true
     description: ["Debug the World"] # You can add more
     icon_links:
-        []
+        Twitter:
+            name: Twitter
+            theme: 
+            link: <i class="fa-brands fa-twitter"></i>
         # Example:
         # <name>:
         #    name: <icon-name>
