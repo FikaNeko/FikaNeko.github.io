@@ -1,25 +1,25 @@
 # ========== Profile ========== #
 # avatar
-avatar: /avatar/Misaka.jpg
+avatar: /avatar/avatar.jpg
 # author name
-author: fi3ework
+author: Fika
 # signature
 signature: witness me
 # SNS (you can custom the order)
 social:
-  email: 12345@qq.com
-  github: //github.com/fi3ework
+  email: fikaneko@outlook.com
+  github: //github.com/fikaneko
   # wechat should be a path of qr-code image path
   wechat: /assets/example_qr.png
   # qq should be a path of qr-code image path
   qq: 
-  telegram: 
+  telegram: FikaNeko
   weibo: 
   zhihu: 
   douban: 
   facebook: 
-  twitter: 
-  instagram: 
+  twitter: FikaNeko
+  instagram: fika.photograph
   stack-overflow: 
   segmentFault: 
   juejin: 
