@@ -10,16 +10,16 @@ social:
   email: fikaneko@outlook.com
   github: //github.com/fikaneko
   # wechat should be a path of qr-code image path
-  wechat: /assets/example_qr.png
+  wechat: 
   # qq should be a path of qr-code image path
   qq: 
-  telegram: FikaNeko
+  telegram: https://t.me/FikaNeko
   weibo: 
   zhihu: 
   douban: 
   facebook: 
-  twitter: FikaNeko
-  instagram: fika.photograph
+  twitter: https://twitter.com/FikaNeko
+  instagram: https://www.instagram.com/fika.photograph/
   stack-overflow: 
   segmentFault: 
   juejin: 
