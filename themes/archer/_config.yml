@@ -4,7 +4,7 @@ avatar: /avatar/avatar.jpg
 # author name
 author: Fika
 # signature
-signature: witness me
+signature: Debug the World
 # SNS (you can custom the order)
 social:
   email: fikaneko@outlook.com
@@ -69,9 +69,9 @@ SEO_keywords:
   - 'hexo-theme'
   - 'hexo-blog'
 # main title shown in header image
-main_title: fi3ework's Studio.
+main_title: Fika's Blog
 # subtitle
-subtitle: it's better to burn out than to fade away
+subtitle: Light up the dream.
 # site haeder image
 site_header_image: '/intro/index-bg.jpg'
 # post haeder image
