@@ -2,51 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://fika.ink/2022/08/09/hello-world/</loc>
-    
-    <lastmod>2022-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://fika.ink/2022/08/30/iPhoneSE%E2%80%94%E2%80%94%E5%B0%8F%E5%B1%8F%E7%9A%84%E6%83%85%E6%80%80/</loc>
-    
-    <lastmod>2022-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://fika.ink/2022/10/05/%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/</loc>
-    
-    <lastmod>2022-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://fika.ink/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</loc>
-    
-    <lastmod>2022-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://fika.ink/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/</loc>
-    
-    <lastmod>2022-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://fika.ink/2022/08/21/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B/</loc>
     
     <lastmod>2022-10-16</lastmod>
@@ -84,6 +39,51 @@
   
   <url>
     <loc>https://fika.ink/tags/index.html</loc>
+    
+    <lastmod>2022-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://fika.ink/2022/08/09/hello-world/</loc>
+    
+    <lastmod>2022-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://fika.ink/2022/08/30/iPhoneSE%E2%80%94%E2%80%94%E5%B0%8F%E5%B1%8F%E7%9A%84%E6%83%85%E6%80%80/</loc>
+    
+    <lastmod>2022-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://fika.ink/2022/10/05/%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/</loc>
+    
+    <lastmod>2022-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://fika.ink/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</loc>
+    
+    <lastmod>2022-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://fika.ink/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/</loc>
     
     <lastmod>2022-10-16</lastmod>
     
