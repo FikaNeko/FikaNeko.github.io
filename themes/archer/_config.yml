@@ -32,7 +32,8 @@ social:
 # friends
 friends:
   UMR's Blog: //www.umr.wiki
-  STRRL's backyard: //www.strrl.dev/
+  STRRL's backyard: //www.strrl.dev
+  高科技的指挥中心: //www.hightechbrain.ml
 about:
   enable: true
   image: '/intro/about-bg.jpg'
