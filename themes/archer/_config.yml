@@ -31,7 +31,7 @@ social:
   rss: /atom.xml
 # friends
 friends:
-  friendA: //www.baidu.com
+  UMR's Blog: //www.umr.wiki
   # friendB: //www.google.com
 about:
   enable: true
