@@ -1,7 +1,7 @@
 ---
 title: 不开启系统代理也可以让Telegram连接代理
 date: 2022-11-23 12:03:41
-tags:
+tags: 教程
 ---
 # 前言
 使用Telegram时需要开启系统代理才可以连接到网络，这里有一个小方法可以让Telegram在代理软件关闭系统代理的情况下连接代理网络（该方法仅适用于Telegram Desktop）
