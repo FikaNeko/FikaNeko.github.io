@@ -32,7 +32,7 @@ social:
 # friends
 friends:
   UMR's Blog: //www.umr.wiki
-  # friendB: //www.google.com
+  STRRL's backyard: //www.strrl.dev/
 about:
   enable: true
   image: '/intro/about-bg.jpg'
