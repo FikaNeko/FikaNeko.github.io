@@ -31,7 +31,7 @@ social:
   rss: /atom.xml
 # friends
 friends:
-  # friendA: //www.baidu.com
+  friendA: //www.baidu.com
   # friendB: //www.google.com
 about:
   enable: true
