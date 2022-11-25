@@ -1,4 +1,4 @@
-https://fika.ink/links/index.html
+https://fika.ink/link/index.html
 https://fika.ink/tags/index.html
 https://fika.ink/2022/11/21/Happy-Birthday/
 https://fika.ink/2022/08/09/hello-world/
