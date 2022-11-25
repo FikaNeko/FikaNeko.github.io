@@ -1,1111 +1,147 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-    <!-- title -->
-
-
-    
-
-<!-- keywords -->
-
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="Fika">
-    <meta name="renderer" content="webkit">
-    <meta name="copyright" content="Fika">
-    
-        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
-    
-    <meta name="description" content="Debug the World">
-    <meta name="description" content="Debug the World">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>2022 | Fika</title><meta name="author" content="Fika"><meta name="copyright" content="Fika"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Debug the World">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Fika">
+<meta property="og:title" content="2022">
 <meta property="og:url" content="https://fika.ink/archives/2022/index.html">
 <meta property="og:site_name" content="Fika">
 <meta property="og:description" content="Debug the World">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg">
 <meta property="article:author" content="Fika">
 <meta name="twitter:card" content="summary">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="icon" href="/assets/favicon.ico">
-    
-    <title>Fika&#39;s Blog</title>
-    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-/* This file is meant as a standalone workflow for
-- testing support for link[rel=preload]
-- enabling async CSS loading in browsers that do not support rel=preload
-- applying rel preload css once loaded, whether supported or not.
-*/ -->
-<script>
-    (function (w) {
-        'use strict'
-        // rel=preload support test
-        if (!w.loadCSS) {
-            w.loadCSS = function () {}
-        }
-        // define on the loadCSS obj
-        var rp = (loadCSS.relpreload = {})
-        // rel=preload feature support test
-        // runs once and returns a function for compat purposes
-        rp.support = (function () {
-            var ret
-            try {
-                ret = w.document.createElement('link').relList.supports('preload')
-            } catch (e) {
-                ret = false
-            }
-            return function () {
-                return ret
-            }
-        })()
-
-        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-        // then change that media back to its intended value on load
-        rp.bindMediaToggle = function (link) {
-            // remember existing media attr for ultimate state, or default to 'all'
-            var finalMedia = link.media || 'all'
-
-            function enableStylesheet() {
-                link.media = finalMedia
-            }
-
-            // bind load handlers to enable media
-            if (link.addEventListener) {
-                link.addEventListener('load', enableStylesheet)
-            } else if (link.attachEvent) {
-                link.attachEvent('onload', enableStylesheet)
-            }
-
-            // Set rel and non-applicable media type to start an async request
-            // note: timeout allows this to happen async to let rendering continue in IE
-            setTimeout(function () {
-                link.rel = 'stylesheet'
-                link.media = 'only x'
-            })
-            // also enable media after 3 seconds,
-            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-            setTimeout(enableStylesheet, 3000)
-        }
-
-        // loop through link elements in DOM
-        rp.poly = function () {
-            // double check this to prevent external calls from running
-            if (rp.support()) {
-                return
-            }
-            var links = w.document.getElementsByTagName('link')
-            for (var i = 0; i < links.length; i++) {
-                var link = links[i]
-                // qualify links to those with rel=preload and as=style attrs
-                if (
-                    link.rel === 'preload' &&
-                    link.getAttribute('as') === 'style' &&
-                    !link.getAttribute('data-loadcss')
-                ) {
-                    // prevent rerunning on link
-                    link.setAttribute('data-loadcss', true)
-                    // bind listeners to toggle media back
-                    rp.bindMediaToggle(link)
-                }
-            }
-        }
-
-        // if unsupported, run the polyfill
-        if (!rp.support()) {
-            // run once at least
-            rp.poly()
-
-            // rerun poly on an interval until onload
-            var run = w.setInterval(rp.poly, 500)
-            if (w.addEventListener) {
-                w.addEventListener('load', function () {
-                    rp.poly()
-                    w.clearInterval(run)
-                })
-            } else if (w.attachEvent) {
-                w.attachEvent('onload', function () {
-                    rp.poly()
-                    w.clearInterval(run)
-                })
-            }
-        }
-
-        // commonjs
-        if (typeof exports !== 'undefined') {
-            exports.loadCSS = loadCSS
-        } else {
-            w.loadCSS = loadCSS
-        }
-    })(typeof global !== 'undefined' ? global : this)
-</script>
-
-    <style type="text/css">
-    @font-face {
-        font-family: 'Oswald-Regular';
-        src: url("/font/Oswald-Regular.ttf");
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://fika.ink/archives/2022/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
     }
-
-    body {
-        margin: 0;
-    }
-
-    header,
-    footer,
-    .back-top,
-    .sidebar,
-    .container,
-    .site-intro-meta,
-    .toc-wrapper {
-        display: none;
-    }
-
-    .site-intro {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        /* height: 50vh; */
-        overflow: hidden;
-    }
-
-    .site-intro-placeholder {
-        position: absolute;
-        z-index: -2;
-        top: 0;
-        left: 0;
-        width: calc(100% + 300px);
-        height: 100%;
-        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
-        background-position: center center;
-        transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s infinite;
-    }
-
-    @keyframes gradient-move {
-        0% {
-            transform: translate3d(-226px, 0, 0);
-        }
-        100% {
-            transform: translate3d(0, 0, 0);
-        }
-    }
-</style>
-
-    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
-    <link rel="stylesheet" href="/css/dark.css">
-    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
-    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
-    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
-    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
-    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
-    <!-- algolia -->
-    
-    <!-- 百度统计  -->
-    
-    <!-- 谷歌统计  -->
-    
-<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Fika" type="application/atom+xml">
-</head>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        if (typeof window.$ == undefined) {
-            console.warn('jquery load from jsdelivr failed, will load local script')
-            document.write('<script src="/lib/jquery.min.js" />')
-        }
-    </script>
-    
-        <!-- header -->
-        <header class="header header-mobile">
-    <!-- top read progress line -->
-    <div class="header-element">
-        <div class="read-progress"></div>
-    </div>
-    <!-- sidebar menu button -->
-    <div class="header-element">
-        
-            <div class="header-sidebar-menu">
-        
-            
-                <div style="padding-left: 1px;">&#xe775;</div>
-            
-        </div>
-    </div>
-    <!-- header actions -->
-    <div class="header-actions">
-        <!-- theme mode switch button -->
-        <span class="header-theme-btn header-element">
-            <i class="fas fa-adjust"></i>
-        </span>
-        <!-- back to home page text -->
-        <span class="home-link header-element">
-            <a href=/>Fika's Blog</a>
-        </span>
-    </div>
-    <!-- toggle banner for post layout -->
-    
-</header>
-
-        <!-- fixed footer -->
-        <footer class="footer-fixed">
-    <!-- back to top button -->
-    <div class="footer-fixed-element">
-        
-            <div class="back-top back-top-hidden">
-        
-        
-            <div>&#xe639;</div>
-        
-        </div>
-    </div>
-</footer>
-
-        <!-- wrapper -->
-        <div class="wrapper">
-            <div class="site-intro" style="
-
-
-
-
-
-
-
-">
-    
-    <!-- 主页  -->
-            
-    <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
-    <div class="site-intro-meta">
-        <!-- 标题  -->
-        <h1 class="intro-title">
-            <!-- 主页  -->
-            
-        </h1>
-        <!-- 副标题 -->
-        <p class="intro-subtitle">
-            <!-- 主页副标题  -->
-            
-        </p>
-        <!-- 文章页 meta -->
-        
-    </div>
-</div>
-
-            <script>
-  // get user agent
-  function getBrowserVersions() {
-    var u = window.navigator.userAgent
-    return {
-      userAgent: u,
-      trident: u.indexOf('Trident') > -1, //IE内核
-      presto: u.indexOf('Presto') > -1, //opera内核
-      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-      iPad: u.indexOf('iPad') > -1, //是否为iPad
-      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
-    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
   }
-  var browser = {
-    versions: getBrowserVersions(),
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2022',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-11-25 03:32:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
   }
-  console.log('userAgent: ' + browser.versions.userAgent)
+  .justified-gallery img {
+    opacity: 1
+  }
 
-  // callback
-  function fontLoaded() {
-    console.log('font loaded')
-    if (document.getElementsByClassName('site-intro-meta')) {
-      document
-        .getElementsByClassName('intro-title')[0]
-        .classList.add('intro-fade-in')
-      document
-        .getElementsByClassName('intro-subtitle')[0]
-        .classList.add('intro-fade-in')
-      var postIntros = document.getElementsByClassName('post-intros')[0]
-      if (postIntros) {
-        postIntros.classList.add('post-fade-in')
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
     }
-  }
-
-  // UC不支持跨域，所以直接显示
-  function asyncCb() {
-    if (browser.versions.uc) {
-      console.log('UCBrowser')
-      fontLoaded()
-    } else {
-      WebFont.load({
-        custom: {
-          families: ['Oswald-Regular'],
-        },
-        loading: function () {
-          // 所有字体开始加载
-          // console.log('font loading');
-        },
-        active: function () {
-          // 所有字体已渲染
-          fontLoaded()
-        },
-        inactive: function () {
-          // 字体预加载失败，无效字体或浏览器不支持加载
-          console.log('inactive: timeout')
-          fontLoaded()
-        },
-        timeout: 5000, // Set the timeout to two seconds
-      })
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
     }
-  }
-
-  function asyncErr() {
-    console.warn('script load from CDN failed, will load local script')
-  }
-
-  // load webfont-loader async, and add callback function
-  function async(u, cb, err) {
-    var d = document,
-      t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0]
-    o.src = u
-    if (cb) {
-      o.addEventListener(
-        'load',
-        function (e) {
-          cb(null, e)
-        },
-        false
-      )
-    }
-    if (err) {
-      o.addEventListener(
-        'error',
-        function (e) {
-          err(null, e)
-        },
-        false
-      )
-    }
-    s.parentNode.insertBefore(o, s)
-  }
-
-  var asyncLoadWithFallBack = function (arr, success, reject) {
-    var currReject = function () {
-      reject()
-      arr.shift()
-      if (arr.length) async(arr[0], success, currReject)
-    }
-
-    async(arr[0], success, currReject)
-  }
-
-  asyncLoadWithFallBack(
-    [
-      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
-      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
-      "/lib/webfontloader.min.js",
-    ],
-    asyncCb,
-    asyncErr
-  )
-</script>
-
-            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
-            <div class="container container-unloaded">
-                <main class="main index-page">
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/11/23/%E4%B8%8D%E5%BC%80%E5%90%AF%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AE%A9Telegram%E8%BF%9E%E6%8E%A5%E4%BB%A3%E7%90%86/">
-                
-                <span class="abstract-title-text">不开启系统代理也可以让Telegram连接代理</span>
-            </a>
-            <div class="abstract-content">
-                前言使用Telegram时需要开启系统代理才可以连接到网络，这里有一个小方法可以让Telegram在代理软件关闭系统代理的情况下连接代理网络（该方法仅适用于Telegram Desktop）
-步骤打开Telegram，点击左上角三条横杠样式图标→设置→高级→连接类型→使用自定义代理→添加代理选择SOCKS5,代理地址服务器填写127.0.0.1，端口填写代理端口，比如Clash for Windows默认端口为7890至此，如果你的Telegram成功连接此SOCKS5代理，那么关闭系统代理Telegram仍然可以连接到代理，需要注意的是不可关闭代理软件
-
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/11/23</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="教程">教程</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/11/21/Happy-Birthday/">
-                
-                <span class="abstract-title-text">Happy Birthday!</span>
-            </a>
-            <div class="abstract-content">
-                
-
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/11/21</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/11/05/%E6%95%99%E4%BD%A0%E6%9C%80%E5%A4%A7%E7%A8%8B%E5%BA%A6%E5%85%B3%E9%97%AD%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AE%E5%B9%BF%E5%91%8A/">
-                
-                <span class="abstract-title-text">教你最大程度关闭华为手机内置广告</span>
-            </a>
-            <div class="abstract-content">
-                前言华为手机的广告非常多，基本上每个模块都有插入广告，本教程将一步步教你如何最大程度关闭华为手机内置的广告
-关闭智慧搜索广告1.从主屏幕下拉2.点击右上角四个点样式的按钮，点击设置3.关闭“实时热点”和“热搜新闻”，“常用”和“搜索历史”看个人情况自行斟酌关闭与否4.关闭“体验改进”5.点击“搜索范围”，建议关闭“网页”、“手机管家”、“华为商城”、“快服务”，不用华为系应用的可以关闭“华为音乐”6.返回点击“高级功能”，关闭“搜索建议”、“热搜应用”、“底部工具栏”、“专题”7.点击“通知”，将“允许通知”关闭8.返回，点击“个性化推荐服务”，关闭“第三方商家推荐”，点击“个性化推荐”...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/11/05</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/10/05/%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/">
-                
-                <span class="abstract-title-text">同步远程仓库到本地仓库</span>
-            </a>
-            <div class="abstract-content">
-                前言在远程建立一个仓库后需要从远程同步到本地才能从本地正常push文件
-初始化仓库$ git init
-
-设置提交代码的用户信息$ git config --global user.name &quot;name&quot;
-$ git config --global user.email &quot;email&quot;
-
-与远程仓库建立连接
-$ git remote add origin [URL]
-
-查看与远程仓库连接情况$ git remote -v
-
-*解除与远程仓库连接$ git remote rm origin [URL]
-
-拉取同步文件$ git pull origin...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/05</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="记录">记录</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/30/iPhoneSE%E2%80%94%E2%80%94%E5%B0%8F%E5%B1%8F%E7%9A%84%E6%83%85%E6%80%80/">
-                
-                <span class="abstract-title-text">iPhone SE——小屏的情怀</span>
-            </a>
-            <div class="abstract-content">
-                iPhone SE的诞生2016年3月22日，随着苹果春季发布会的召开，这台以字母命名的手机iPhone SE毫无悬念地发布了，iPhone 5S的壳子里塞进了iPhone 6S的配置，让那时追求小屏、价格、性能的用户爱不释手。iPhone SE的发布时间可谓精明，2015年9月9日发布iPhone 6S，时隔半年就发布了这台“iPhone 6S低配版”，并且同等内部硬件配置下的售价要比6S便宜将近2000元，由此而知苹果想借iPhone SE填补价格的空白，给普通用户更多体验苹果产品的机会，顺便把iPhone 5S的壳子和屏幕库存清了,库存克星可不是盖的
-iPhone SE参数配置在处...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/30</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="评测">评测</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/21/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B/">
-                
-                <span class="abstract-title-text">记一次在博客中引用图片的过程</span>
-            </a>
-            <div class="abstract-content">
-                前言博客在很多情况下都需要引用图片，但是我按照官方文档的嵌入本地图片的说明操作，图片仍然无法显示，并且这种情况只发生在嵌入本地图片的时候，碰壁了很久我放弃了嵌入本地图片的想法，转为引用图床URL。公用图床不能管理上传的图片，并且管理性较差，我准备采用GitHub+PicGo的方法，就地取材直接建立一个GitHub repo作为图床，易于管理
-实践操作1-1 建立GitHub仓库新建一个GitHub仓库，注意仓库一定要设置为Public，否则无法上传图片
-1-2 生成Access tokenGitHub貌似更改了设置页面的排版，导致我找了很久也没找到Developer settings下的...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/21</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="记录">记录</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">
-                
-                <span class="abstract-title-text">如何为Git设置代理</span>
-            </a>
-            <div class="abstract-content">
-                Git需要设置代理才能快速地从GitHub上获取文件，同时减少下载的文件缺失和不完整的情况
-设置代理设置全局代理
-$ git config --global https.proxy http://127.0.0.1:7890
-$ git config --global https.proxy https://127.0.0.1:7890
-
-取消代理取消全局代理
-$ git config --global --unset http.proxy
-$ git config --global --unset https.proxy
-
-
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/12</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="记录">记录</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/">
-                
-                <span class="abstract-title-text">更改博客主题一般操作</span>
-            </a>
-            <div class="abstract-content">
-                clone主题仓库$ git clone [repo URL] themes/[theme name]
-
-将仓库clone到本地后，打开themes&#x2F;[theme name]文件夹，将.git隐藏文件夹删除才能正常push
-更改根目录下_config.yml文件夹主题名称theme: [theme name]
-
-注意冒号前有空格
-生产的应用程序构建到构建文件夹$ npm run build
-
-本地运行测试hexo s
-
-博客默认运行在localhost:4000，访问以检查主题是否正常，按CTRL+C结束运行
-将更改push到远程$ git status
-$ git add ....
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/11</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="记录">记录</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/09/hello-world/">
-                
-                <span class="abstract-title-text">Hello World</span>
-            </a>
-            <div class="abstract-content">
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server$ hexo se...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/11/25">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/09</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-    <!-- paginator  -->
-    
-</main>
-
-                <!-- profile -->
-                
-            </div>
-            <footer class="footer footer-unloaded">
-    <!-- social  -->
-    
-        <div class="social">
-            
-    
-        
-            
-                <a href="mailto:fikaneko@outlook.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/fikaneko" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="https://t.me/FikaNeko" class="iconfont-archer telegram" target="_blank" title=telegram></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="https://twitter.com/FikaNeko" class="iconfont-archer twitter" target="_blank" title=twitter></a>
-            
-        
-    
-        
-            
-                <a href="https://www.instagram.com/fika.photograph/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
-            
-        
-    
-
-
-        </div>
-    
-    <!-- powered by Hexo  -->
-    <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
-    </div>
-    <!-- website approve for Chinese user -->
-    
-    <!-- 不蒜子  -->
-    
-        <div class="busuanzi-container">
-            
-             
-                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-            
-        </div>
-    	
-</footer>
-
-        </div>
-        <!-- toc -->
-        
-        <!-- sidebar -->
-        <div class="sidebar sidebar-hide">
-    <ul class="sidebar-tabs sidebar-tabs-active-0">
-        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
-        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
-        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
-    </ul>
-    <div class="sidebar-content sidebar-content-show-archive">
-        <div class="sidebar-panel-archives">
-    <!-- 在 ejs 中将 archive 按照时间排序 -->
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
-    
-    
-    <div class="total-and-search">
-        <div class="total-archive">
-        Total : 9
-        </div>
-        <!-- search  -->
-        
-    </div>
-    
-    <div class="post-archive">
-    
-        
-            
-            
-            <div class="archive-year"> 2022 </div>
-            <ul class="year-list">
-            
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/23</span>
-            <a class="archive-post-title" href="/2022/11/23/%E4%B8%8D%E5%BC%80%E5%90%AF%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AE%A9Telegram%E8%BF%9E%E6%8E%A5%E4%BB%A3%E7%90%86/">不开启系统代理也可以让Telegram连接代理</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/21</span>
-            <a class="archive-post-title" href="/2022/11/21/Happy-Birthday/">Happy Birthday!</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/05</span>
-            <a class="archive-post-title" href="/2022/11/05/%E6%95%99%E4%BD%A0%E6%9C%80%E5%A4%A7%E7%A8%8B%E5%BA%A6%E5%85%B3%E9%97%AD%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AE%E5%B9%BF%E5%91%8A/">教你最大程度关闭华为手机内置广告</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/05</span>
-            <a class="archive-post-title" href="/2022/10/05/%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/">同步远程仓库到本地仓库</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/30</span>
-            <a class="archive-post-title" href="/2022/08/30/iPhoneSE%E2%80%94%E2%80%94%E5%B0%8F%E5%B1%8F%E7%9A%84%E6%83%85%E6%80%80/">iPhone SE——小屏的情怀</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/21</span>
-            <a class="archive-post-title" href="/2022/08/21/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B/">记一次在博客中引用图片的过程</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/12</span>
-            <a class="archive-post-title" href="/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">如何为Git设置代理</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/11</span>
-            <a class="archive-post-title" href="/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/">更改博客主题一般操作</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/09</span>
-            <a class="archive-post-title" href="/2022/08/09/hello-world/">Hello World</a>
-        </li>
-    
-    </div>
-</div>
-
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
-        
-            <span class="sidebar-tag-name" data-tags="评测">
-                <span class="iconfont-archer">&#xe606;</span>
-                评测
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="教程">
-                <span class="iconfont-archer">&#xe606;</span>
-                教程
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="记录">
-                <span class="iconfont-archer">&#xe606;</span>
-                记录
-            </span>
-        
-    </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
-    </div> 
-    <div class="sidebar-tags-list"></div>
-</div>
-
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
-    
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
-</div>
-
-    </div>
-</div>
-
-        <!-- site-meta -->
-        <script>
-    var siteMetaRoot = "/"
-    if (siteMetaRoot === "undefined") {
-        siteMetaRoot = '/'
-    }
-    var siteMeta = {
-        url: "https://Fika.ink",
-        root: siteMetaRoot,
-        author: "Fika"
-    }
-</script>
-
-        <!-- import experimental options here -->
-        <!-- Custom Font -->
-
-
-        <!-- main func -->
-        <script src="/scripts/main.js?v=20211217"></script>
-        <!-- dark mode -->
-        <script src="/scripts/dark.js?v=20211217"></script>
-        <!-- fancybox -->
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
-        <!-- algolia -->
-        
-        <!-- busuanzi -->
-        
-            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
-        
-        <!-- CNZZ -->
-        
-        <!-- async load share.js -->
-        
-        <!-- mermaid -->
-        
-    </body>
-</html>
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Fika" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Fika</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">2022</h1></div></header><main class="layout" id="content-inner"><div id="archive"><div class="article-sort-title">文章总览 - 9</div><div class="article-sort"><div class="article-sort-item year">2022</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/11/23/%E4%B8%8D%E5%BC%80%E5%90%AF%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AE%A9Telegram%E8%BF%9E%E6%8E%A5%E4%BB%A3%E7%90%86/" title="不开启系统代理也可以让Telegram连接代理"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="不开启系统代理也可以让Telegram连接代理" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-11-23T12:03:41.000Z" title="发表于 2022-11-23 12:03:41">2022-11-23</time></div><a class="article-sort-item-title" href="/2022/11/23/%E4%B8%8D%E5%BC%80%E5%90%AF%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AE%A9Telegram%E8%BF%9E%E6%8E%A5%E4%BB%A3%E7%90%86/" title="不开启系统代理也可以让Telegram连接代理">不开启系统代理也可以让Telegram连接代理</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/11/21/Happy-Birthday/" title="Happy Birthday!"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Happy Birthday!" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-11-21T08:02:57.000Z" title="发表于 2022-11-21 08:02:57">2022-11-21</time></div><a class="article-sort-item-title" href="/2022/11/21/Happy-Birthday/" title="Happy Birthday!">Happy Birthday!</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/11/05/%E6%95%99%E4%BD%A0%E6%9C%80%E5%A4%A7%E7%A8%8B%E5%BA%A6%E5%85%B3%E9%97%AD%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AE%E5%B9%BF%E5%91%8A/" title="教你最大程度关闭华为手机内置广告"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="教你最大程度关闭华为手机内置广告" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-11-05T10:32:15.000Z" title="发表于 2022-11-05 10:32:15">2022-11-05</time></div><a class="article-sort-item-title" href="/2022/11/05/%E6%95%99%E4%BD%A0%E6%9C%80%E5%A4%A7%E7%A8%8B%E5%BA%A6%E5%85%B3%E9%97%AD%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AE%E5%B9%BF%E5%91%8A/" title="教你最大程度关闭华为手机内置广告">教你最大程度关闭华为手机内置广告</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/10/05/%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/" title="同步远程仓库到本地仓库"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="同步远程仓库到本地仓库" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-10-05T21:32:20.000Z" title="发表于 2022-10-05 21:32:20">2022-10-05</time></div><a class="article-sort-item-title" href="/2022/10/05/%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/" title="同步远程仓库到本地仓库">同步远程仓库到本地仓库</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/08/30/iPhoneSE%E2%80%94%E2%80%94%E5%B0%8F%E5%B1%8F%E7%9A%84%E6%83%85%E6%80%80/" title="iPhone SE——小屏的情怀"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="iPhone SE——小屏的情怀" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-08-30T11:14:33.000Z" title="发表于 2022-08-30 11:14:33">2022-08-30</time></div><a class="article-sort-item-title" href="/2022/08/30/iPhoneSE%E2%80%94%E2%80%94%E5%B0%8F%E5%B1%8F%E7%9A%84%E6%83%85%E6%80%80/" title="iPhone SE——小屏的情怀">iPhone SE——小屏的情怀</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/08/21/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B/" title="记一次在博客中引用图片的过程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="记一次在博客中引用图片的过程" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-08-21T14:50:04.000Z" title="发表于 2022-08-21 14:50:04">2022-08-21</time></div><a class="article-sort-item-title" href="/2022/08/21/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B/" title="记一次在博客中引用图片的过程">记一次在博客中引用图片的过程</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/" title="如何为Git设置代理"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="如何为Git设置代理" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-08-12T20:21:10.000Z" title="发表于 2022-08-12 20:21:10">2022-08-12</time></div><a class="article-sort-item-title" href="/2022/08/12/%E5%A6%82%E4%BD%95%E4%B8%BAGit%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/" title="如何为Git设置代理">如何为Git设置代理</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/" title="更改博客主题一般操作"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="更改博客主题一般操作" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-08-11T20:43:53.000Z" title="发表于 2022-08-11 20:43:53">2022-08-11</time></div><a class="article-sort-item-title" href="/2022/08/11/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C/" title="更改博客主题一般操作">更改博客主题一般操作</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/08/09/hello-world/" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hello World" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-08-09T00:00:00.000Z" title="发表于 2022-08-09 00:00:00">2022-08-09</time></div><a class="article-sort-item-title" href="/2022/08/09/hello-world/" title="Hello World">Hello World</a></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Fika</div><div class="author-info__description">Debug the World</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/23/%E4%B8%8D%E5%BC%80%E5%90%AF%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AE%A9Telegram%E8%BF%9E%E6%8E%A5%E4%BB%A3%E7%90%86/" title="不开启系统代理也可以让Telegram连接代理"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="不开启系统代理也可以让Telegram连接代理"/></a><div class="content"><a class="title" href="/2022/11/23/%E4%B8%8D%E5%BC%80%E5%90%AF%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AE%A9Telegram%E8%BF%9E%E6%8E%A5%E4%BB%A3%E7%90%86/" title="不开启系统代理也可以让Telegram连接代理">不开启系统代理也可以让Telegram连接代理</a><time datetime="2022-11-23T12:03:41.000Z" title="发表于 2022-11-23 12:03:41">2022-11-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/21/Happy-Birthday/" title="Happy Birthday!"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Happy Birthday!"/></a><div class="content"><a class="title" href="/2022/11/21/Happy-Birthday/" title="Happy Birthday!">Happy Birthday!</a><time datetime="2022-11-21T08:02:57.000Z" title="发表于 2022-11-21 08:02:57">2022-11-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/05/%E6%95%99%E4%BD%A0%E6%9C%80%E5%A4%A7%E7%A8%8B%E5%BA%A6%E5%85%B3%E9%97%AD%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AE%E5%B9%BF%E5%91%8A/" title="教你最大程度关闭华为手机内置广告"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="教你最大程度关闭华为手机内置广告"/></a><div class="content"><a class="title" href="/2022/11/05/%E6%95%99%E4%BD%A0%E6%9C%80%E5%A4%A7%E7%A8%8B%E5%BA%A6%E5%85%B3%E9%97%AD%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AE%E5%B9%BF%E5%91%8A/" title="教你最大程度关闭华为手机内置广告">教你最大程度关闭华为手机内置广告</a><time datetime="2022-11-05T10:32:15.000Z" title="发表于 2022-11-05 10:32:15">2022-11-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/05/%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/" title="同步远程仓库到本地仓库"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="同步远程仓库到本地仓库"/></a><div class="content"><a class="title" href="/2022/10/05/%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/" title="同步远程仓库到本地仓库">同步远程仓库到本地仓库</a><time datetime="2022-10-05T21:32:20.000Z" title="发表于 2022-10-05 21:32:20">2022-10-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/30/iPhoneSE%E2%80%94%E2%80%94%E5%B0%8F%E5%B1%8F%E7%9A%84%E6%83%85%E6%80%80/" title="iPhone SE——小屏的情怀"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="iPhone SE——小屏的情怀"/></a><div class="content"><a class="title" href="/2022/08/30/iPhoneSE%E2%80%94%E2%80%94%E5%B0%8F%E5%B1%8F%E7%9A%84%E6%83%85%E6%80%80/" title="iPhone SE——小屏的情怀">iPhone SE——小屏的情怀</a><time datetime="2022-08-30T11:14:33.000Z" title="发表于 2022-08-30 11:14:33">2022-08-30</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.1em; color: #999">教程</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 1.5em; color: #99a9bf">记录</a> <a href="/tags/%E8%AF%84%E6%B5%8B/" style="font-size: 1.1em; color: #999">评测</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">八月 2022</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">9</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-11-25T03:32:00.672Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Fika</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
