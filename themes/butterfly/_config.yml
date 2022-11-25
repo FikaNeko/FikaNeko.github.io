@@ -76,11 +76,11 @@ katex:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /img/favicon.png
+favicon: /img/favicon.ico
 
 # Avatar (頭像)
 avatar:
-  img: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
+  img: https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg
   effect: false
 
 # Disable all banner image
@@ -459,10 +459,10 @@ microsoft_clarity:
 # Google Adsense (谷歌廣告)
 google_adsense:
   enable: false
-  auto_ads: true
+  auto_ads: false
   js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
   client:
-  enable_page_level_ads: true
+  enable_page_level_ads: false
 
 # Insert ads manually (手動插入廣告)
 # ad:
@@ -519,7 +519,7 @@ tag_ui: # 留空或 index
 # Website Background (設置網站背景)
 # can set it to color or image (可設置圖片 或者 顔色)
 # The formal of image: url(http://xxxxxx.com/xxx.jpg)
-background:
+background: https://pic.imgdb.cn/item/638027cc16f2c2beb11bba77.jpg
 
 # Footer Background
 footer_bg: false
