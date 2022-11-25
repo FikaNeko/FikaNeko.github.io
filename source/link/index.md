@@ -1,11 +1,11 @@
 ---
-title: link
+title: Link
 type: link
 layout: "link"
 ---
 {% flink %}
 - class_name: 友情链接
-  class_desc: Fika的朋友们
+  class_desc: 
   link_list:
     - name: 是UMR呐
       link: https://www.umr.wiki/
@@ -14,25 +14,25 @@ layout: "link"
     - name: STRRL
       link: https://www.strrl.dev/
       avatar: https://pic.imgdb.cn/item/6380525316f2c2beb1577ca7.jpg
-      descr: 
-      name:  高科技的指挥中心
+      descr: test
+    - name: 高科技的指挥中心
       link: https://www.hightechbrain.ml/
       avatar: https://pic.imgdb.cn/item/638052ec16f2c2beb15874b8.jpg
-      descr:
-      name: 湛蓝的调色板
+      descr: test
+    - name: 湛蓝的调色板
       link: https:////nekoq.eu.org/
       avatar: https://pic.imgdb.cn/item/6380539516f2c2beb159da89.jpg
-      descr:
-      name: 老陈の咸鱼日常
+      descr: test
+    - name: 老陈の咸鱼日常
       link: https://www.fantanstic.top
       avatar: https://pic.imgdb.cn/item/638053e016f2c2beb15a44f1.jpg
-      descr:
-      name: Moeri 落落格
+      descr: test
+    - name: Moeri 落落格
       link: https://blog.bakalu.cyou
       avatar: https://pic.imgdb.cn/item/6380558816f2c2beb15cccb1.png
-      descr:
-      name: 狐の小屋
+      descr: test
+    - name: 狐の小屋
       link: https://www.mythe.life
       avatar: https://pic.imgdb.cn/item/638054cf16f2c2beb15ba37b.jpg
-      descr:
+      descr: test
 {% endflink %}
