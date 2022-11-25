@@ -1,5 +1,5 @@
 ---
-title: categories
+title: Categories
 type: categories
 layout: "categories"
 ---
