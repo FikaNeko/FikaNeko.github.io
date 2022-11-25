@@ -26,7 +26,7 @@ code_word_wrap: false
 # copy settings
 # copyright: Add the copyright information after copied content (複製的內容後面加上版權信息)
 copy:
-  enable: true
+  enable: false
   copyright:
     enable: false
     limit_count: 50
@@ -590,7 +590,7 @@ ClickShowText:
 
 # Default display mode (網站默認的顯示模式)
 # light (default) / dark
-display_mode: light
+display_mode: dark
 
 # Beautify (美化頁面顯示)
 beautify:
