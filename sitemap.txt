@@ -13,6 +13,7 @@ https://fika.ink/about/index.html
 https://fika.ink/categories/index.html
 https://fika.ink/friends/index.html
 https://fika.ink/
+https://fika.ink/tags/%E6%97%A5%E5%B8%B8/
 https://fika.ink/tags/%E8%AF%84%E6%B5%8B/
 https://fika.ink/tags/%E6%95%99%E7%A8%8B/
 https://fika.ink/tags/%E8%AE%B0%E5%BD%95/
