@@ -35,4 +35,8 @@ layout: "link"
       link: https://www.mythe.life
       avatar: https://pic.imgdb.cn/item/638054cf16f2c2beb15ba37b.jpg
       descr: 个人博客作者
+    - name: 柠檬苏打夹心
+      link: https://t.co/hEdeH2DAYQ
+      avatar: https://cravatar.cn/avatar/22b242a28bb848f2629f2a636bba9c03?s=1000
+      descr: 个人博客作者
 {% endflink %}
