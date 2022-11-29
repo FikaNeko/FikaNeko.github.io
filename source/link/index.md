@@ -37,6 +37,6 @@ layout: "link"
       descr: 个人博客作者
     - name: 柠檬苏打夹心
       link: https://moe.himoyo.cn/
-      avatar: https://cravatar.cn/avatar/22b242a28bb848f2629f2a636bba9c03?s=1000
+      avatar: https://pic.imgdb.cn/item/6385550e16f2c2beb1cd268d.jpg
       descr: 个人博客作者
 {% endflink %}
