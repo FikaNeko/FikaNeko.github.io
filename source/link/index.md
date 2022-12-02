@@ -42,5 +42,5 @@ layout: "link"
     - name: Tony Ding's Blog
       link: https://blog.tonyding.net/
       avatar: https://pic.imgdb.cn/item/6389956716f2c2beb1a678fc.jpg
-      descr: 个人博客
+      descr: 个人博客作者
 {% endflink %}
