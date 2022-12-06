@@ -20,33 +20,6 @@
   </url>
   
   <url>
-    <loc>https://fika.ink/about/index.html</loc>
-    
-    <lastmod>2022-12-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://fika.ink/categories/index.html</loc>
-    
-    <lastmod>2022-12-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://fika.ink/friends/index.html</loc>
-    
-    <lastmod>2022-12-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://fika.ink/2022/11/21/Happy-Birthday/</loc>
     
     <lastmod>2022-12-06</lastmod>
@@ -120,6 +93,33 @@
   
   <url>
     <loc>https://fika.ink/2022/08/21/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87%E7%9A%84%E8%BF%87%E7%A8%8B/</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://fika.ink/about/index.html</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://fika.ink/categories/index.html</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://fika.ink/friends/index.html</loc>
     
     <lastmod>2022-12-06</lastmod>
     
