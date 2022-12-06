@@ -43,4 +43,8 @@ layout: "link"
       link: https://blog.tonyding.net/
       avatar: https://pic.imgdb.cn/item/6389956716f2c2beb1a678fc.jpg
       descr: 个人博客作者
+    - name: Cynosura
+      link: https://cynosura.one/
+      avatar: https://pic.imgdb.cn/item/638eaff5b1fccdcd36aea7d6.png
+      descr: 个人博客作者
 {% endflink %}
