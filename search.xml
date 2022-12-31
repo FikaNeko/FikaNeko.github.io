@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Fedora基本配置和软件推荐</title>
+      <link href="/2022/12/31/Fedora%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+      <url>/2022/12/31/Fedora%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%92%8C%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Fedora安装完成后需要配置一些设置来符合使用习惯，本文为我所写，仅作参考</p><h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><h3 id="一、为root用户设置密码"><a href="#一、为root用户设置密码" class="headerlink" title="一、为root用户设置密码"></a>一、为root用户设置密码</h3><p>在安装完成后进入终端使用su进入管理员模式时，大概率会有以下报错：</p><pre><code class="bash">$ su密码:su: 鉴定故障</code></pre><p>使用以下命令解决问题：</p><pre><code class="bash">$ su passwd rootxxx 的密码:更改用户 root 的密码新的密码:重新输入新的密码:</code></pre><p>注意，上面所写的密码均为在Fedora进行向导时自己所设置的密码</p><h3 id="二、启用RPM-Fusion软件源"><a href="#二、启用RPM-Fusion软件源" class="headerlink" title="二、启用RPM Fusion软件源"></a>二、启用RPM Fusion软件源</h3><p>在安装Fedora时会询问是否启用其他第三方软件源，但全套的 RPM Fusion 软件源并没有自动启用</p><pre><code class="bash">$ sudo yum install --nogpgcheck https://mirrors.tuna.tsinghua.edu.cn/rpmfusion/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.tuna.tsinghua.edu.cn/rpmfusion/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm</code></pre><h3 id="三、添加Flathub存储库"><a href="#三、添加Flathub存储库" class="headerlink" title="三、添加Flathub存储库"></a>三、添加Flathub存储库</h3><pre><code class="bash">$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo</code></pre><h3 id="四、切换阿里巴巴开源镜像站镜像"><a href="#四、切换阿里巴巴开源镜像站镜像" class="headerlink" title="四、切换阿里巴巴开源镜像站镜像"></a>四、切换阿里巴巴开源镜像站镜像</h3><p>备份系统原镜像源文件</p><pre><code class="bash">$ su$ mv /etc/yum.repos.d/fedora.repo /etc/yum.repos.d/fedora.repo.backup$ mv /etc/yum.repos.d/fedora-updates.repo /etc/yum.repos.d/fedora-updates.repo.backup</code></pre><p>下载阿里镜像源文件</p><pre><code class="bash">$ wget -O /etc/yum.repos.d/fedora.repo http://mirrors.aliyun.com/repo/fedora.repo$ wget -O /etc/yum.repos.d/fedora-updates.repo http://mirrors.aliyun.com/repo/fedora-updates.repo</code></pre><p>生成缓存</p><pre><code class="bash">$ sudo yum makecache</code></pre><h3 id="五、更新系统"><a href="#五、更新系统" class="headerlink" title="五、更新系统"></a>五、更新系统</h3><pre><code class="bash">$ sudo dnf update</code></pre><h2 id="软件推荐"><a href="#软件推荐" class="headerlink" title="软件推荐"></a>软件推荐</h2><h3 id="一、在Linux上运行-exe文件"><a href="#一、在Linux上运行-exe文件" class="headerlink" title="一、在Linux上运行.exe文件"></a>一、在Linux上运行.exe文件</h3><p>Linux系统上的可用软件相对要比Windows要少很多，要运行.exe可执行文件，需要安装Wine和PlayOnLinux</p><pre><code class="bash">$ sudo dnf install wine$ sudo dnf install playonlinux</code></pre><h3 id="二、更方便地管理-AppImage应用"><a href="#二、更方便地管理-AppImage应用" class="headerlink" title="二、更方便地管理.AppImage应用"></a>二、更方便地管理.AppImage应用</h3><p>当遇到一些软件没有.rpm安装包格式的时候，需要使用.AppImage格式运行，但是每次运行文件需要打开文件目录运行，非常不方便，使用AppImage Launcher来集成到应用程序启动器中<br>GitHub下载地址:<a href="https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm">https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm</a></p><h2 id="系统美化"><a href="#系统美化" class="headerlink" title="系统美化"></a>系统美化</h2><p>通过安装Gnome插件来使系统界面更加美观<br>界面毛玻璃样式:<a href="https://extensions.gnome.org/extension/3193/blur-my-shell/">https://extensions.gnome.org/extension/3193/blur-my-shell/</a><br>使Dock栏更易用:<a href="https://extensions.gnome.org/extension/307/dash-to-dock/">https://extensions.gnome.org/extension/307/dash-to-dock/</a><br>饼状菜单:<a href="https://extensions.gnome.org/extension/3433/fly-pie/">https://extensions.gnome.org/extension/3433/fly-pie/</a></p><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>如果遇到权限不足，不妨试试在右上角切换用户，用户名填入root，密码填入你设置的密码，进入管理员模式，能解决大多数权限问题</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 记录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>写给自己 | 年终总结</title>
       <link href="/2022/12/31/%E5%86%99%E7%BB%99%E8%87%AA%E5%B7%B1%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
       <url>/2022/12/31/%E5%86%99%E7%BB%99%E8%87%AA%E5%B7%B1%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
