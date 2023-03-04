@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Fika</title>
+  
+  
+  <link href="https://fika.ink/atom.xml" rel="self"/>
+  
+  <link href="https://fika.ink/"/>
+  <updated>2023-03-04T13:21:57.313Z</updated>
+  <id>https://fika.ink/</id>
+  
+  <author>
+    <name>Fika</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Fedora基本配置和软件推荐</title>
+    <link href="https://fika.ink/blog/3327990604.html"/>
+    <id>https://fika.ink/blog/3327990604.html</id>
+    <published>2022-12-31T14:07:28.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;Fedora安装完成后需要配置一些设置来符合使用习惯，本文为我所写，仅作参考&lt;/p&gt;
+&lt;h2 id=&quot;基本配置&quot;&gt;基本配置&lt;/h2&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    
+    <category term="记录" scheme="https://fika.ink/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写给自己 | 年终总结</title>
+    <link href="https://fika.ink/blog/3143778211.html"/>
+    <id>https://fika.ink/blog/3143778211.html</id>
+    <published>2022-12-31T12:14:55.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;现在时间是2022年12月20日 AM11:11，距离2023年的到来还有11天左右，写这一篇主要是叙叙旧。&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="随记" scheme="https://fika.ink/tags/%E9%9A%8F%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>“言论自由”，我们还有吗？</title>
+    <link href="https://fika.ink/blog/3550580382.html"/>
+    <id>https://fika.ink/blog/3550580382.html</id>
+    <published>2022-12-20T19:54:52.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;原文：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/412148031&quot;&gt;“言论自由”，我们还有吗？&lt;/a&gt;   作者：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="转载" scheme="https://fika.ink/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iPhone8 | 想说爱你不容易</title>
+    <link href="https://fika.ink/blog/1350552417.html"/>
+    <id>https://fika.ink/blog/1350552417.html</id>
+    <published>2022-12-07T09:54:32.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;某种机缘巧合之下，我以650的价格拿到了这台64G CH/A的iPhone 8，还是全原无拆修的，感觉算是赚到了吧。我使用这台iPhone 8已经5个月了，期间它一直作为我的备用机，总的来说，这台机器还是瑕不掩瑜的吧。&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="评测" scheme="https://fika.ink/tags/%E8%AF%84%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GFW原理和封锁技术</title>
+    <link href="https://fika.ink/blog/1086550113.html"/>
+    <id>https://fika.ink/blog/1086550113.html</id>
+    <published>2022-12-06T21:28:11.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;GFW原理和封锁技术&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原文：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="转载" scheme="https://fika.ink/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不开启系统代理也可以让Telegram连接代理</title>
+    <link href="https://fika.ink/blog/4097543813.html"/>
+    <id>https://fika.ink/blog/4097543813.html</id>
+    <published>2022-11-23T12:03:41.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;使用Telegram时需要开启系统代理才可以连接到网络，这里有一个小方法可以让Telegram在代理软件关闭系统代理的情况下连接代理网络（该方法仅适用于Telegram Desktop）&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="教程" scheme="https://fika.ink/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Happy Birthday!</title>
+    <link href="https://fika.ink/blog/2784786814.html"/>
+    <id>https://fika.ink/blog/2784786814.html</id>
+    <published>2022-11-21T08:02:57.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://imgse.com/i/z1SVBR&quot;&gt;&lt;img src=&quot;https://s1.ax1x.com/2022/11/22/z1SVBR.jpg&quot; alt=&quot;z1SVBR.jpg&quot;&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="日常" scheme="https://fika.ink/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>教你最大程度关闭华为手机内置广告</title>
+    <link href="https://fika.ink/blog/3224215418.html"/>
+    <id>https://fika.ink/blog/3224215418.html</id>
+    <published>2022-11-05T10:32:15.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;华为手机的广告非常多，基本上每个模块都有插入广告，本教程将一步步教你如何最大程度关闭华为手机内置的广告&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="教程" scheme="https://fika.ink/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>同步远程仓库到本地仓库</title>
+    <link href="https://fika.ink/blog/535587536.html"/>
+    <id>https://fika.ink/blog/535587536.html</id>
+    <published>2022-10-05T21:32:20.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;在远程建立一个仓库后需要从远程同步到本地才能从本地正常push文件&lt;/p&gt;
+&lt;h3 id=&quot;初始化仓库&quot;&gt;初始化仓库&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ git</summary>
+        
+      
+    
+    
+    
+    
+    <category term="记录" scheme="https://fika.ink/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iPhone SE | 小屏的情怀</title>
+    <link href="https://fika.ink/blog/3738668067.html"/>
+    <id>https://fika.ink/blog/3738668067.html</id>
+    <published>2022-08-30T11:14:33.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;iPhone-SE的诞生&quot;&gt;iPhone SE的诞生&lt;/h2&gt;
+&lt;p&gt;2016年3月22日，随着苹果春季发布会的召开，这台以字母命名的手机iPhone SE毫无悬念地发布了，iPhone 5S的壳子里塞进了iPhone</summary>
+        
+      
+    
+    
+    
+    
+    <category term="评测" scheme="https://fika.ink/tags/%E8%AF%84%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记一次在博客中引用图片的过程</title>
+    <link href="https://fika.ink/blog/141868618.html"/>
+    <id>https://fika.ink/blog/141868618.html</id>
+    <published>2022-08-21T14:50:04.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;博客在很多情况下都需要引用图片，但是我按照官方文档的嵌入本地图片的说明操作，图片仍然无法显示，并且这种情况只发生在嵌入本地图片的时候，碰壁了很久我放弃了嵌入本地图片的想法，转为引用图床URL。公用图床不能管理上传的图片，并且管理性较差，我准备采用Gi</summary>
+        
+      
+    
+    
+    
+    
+    <category term="记录" scheme="https://fika.ink/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何为Git设置代理</title>
+    <link href="https://fika.ink/blog/3939341482.html"/>
+    <id>https://fika.ink/blog/3939341482.html</id>
+    <published>2022-08-12T20:21:10.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Git需要设置代理才能快速地从GitHub上获取文件，同时减少下载的文件缺失和不完整的情况&lt;/p&gt;
+&lt;h2 id=&quot;设置代理&quot;&gt;设置代理&lt;/h2&gt;
+&lt;p&gt;设置全局代理&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ git config</summary>
+        
+      
+    
+    
+    
+    
+    <category term="记录" scheme="https://fika.ink/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>更改博客主题一般操作</title>
+    <link href="https://fika.ink/blog/3757594940.html"/>
+    <id>https://fika.ink/blog/3757594940.html</id>
+    <published>2022-08-11T20:43:53.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;clone主题仓库&quot;&gt;clone主题仓库&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ git clone [repo URL] themes/[theme</summary>
+        
+      
+    
+    
+    
+    
+    <category term="记录" scheme="https://fika.ink/tags/%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://fika.ink/blog/1243066710.html"/>
+    <id>https://fika.ink/blog/1243066710.html</id>
+    <published>2022-08-09T00:00:00.000Z</published>
+    <updated>2023-03-04T13:21:57.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
