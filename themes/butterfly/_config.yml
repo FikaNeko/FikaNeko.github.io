@@ -40,7 +40,7 @@ copy:
 # formal:
 #   icon: link || the description
 social:
-  fab fa-github: https://github.com/fikaneko || Github
+   fab fa-github: https://github.com/fikaneko || Github
    fab fa-telegram: https://t.me/FikaNeko || Telegram
    fab fa-twitter: https://twitter.com/FikaNeko || Twitter
    fab fa-instagram: https://www.instagram.com/fika.photograph/ || Instagram
