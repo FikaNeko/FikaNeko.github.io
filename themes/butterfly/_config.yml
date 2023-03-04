@@ -716,7 +716,7 @@ aside:
     enable: false
     content: This is my Blog
   card_recent_post:
-    enable: false
+    enable: true
     limit: 5 # if set 0 will show all
     sort: date # date or updated
     sort_order: # Don't modify the setting unless you know how it works
