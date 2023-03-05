@@ -48,7 +48,7 @@ layout: "link"
       avatar: https://pic.imgdb.cn/item/638eaff5b1fccdcd36aea7d6.png
       descr: 是熊熊
     - name: 橘纸柚
-      link: https://lovemen.cc/links.html
+      link: https://lovemen.cc/
       avatar: https://lovemen.cc/usr/hotlink-ok/avatar.jpg
       descr: 个人博客作者
     - name: 废柴乙乙的Blog
@@ -64,3 +64,15 @@ layout: "link"
       avatar: https://blog.stapxs.cn/usr/uploads/2020/03/3664075920.png
       descr: 要来点什么吗 QWQ
 {% endflink %}
+
+# 我的友链信息
+名称: Fika
+网站URL: https://fika.ink/
+头像URL: https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg
+描述: 遇到困难睡大觉
+
+您也可以在我的[博客仓库](https://github.com/FikaNeko/FikaNeko.github.io/issues)中提Issues并写上您的友链信息，格式如下:
+name: Fika
+link: https://fika.ink/
+avatar: https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg
+descr: 遇到困难睡大觉
