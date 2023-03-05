@@ -52,7 +52,3 @@ layout: "link"
       avatar: https://lovemen.cc/usr/hotlink-ok/avatar.jpg
       descr: 个人博客作者
 {% endflink %}
-如果您希望与我交换友链，请务必在下方评论中按以下格式提交
-name: Fika
-link: https://fika.ink/
-avatar: https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg
