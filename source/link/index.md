@@ -66,11 +66,11 @@ layout: "link"
     - name: 哔哔哔哔
       link: https://bebebe.be/
       avatar: https://s2.loli.net/2022/12/01/Degbk6vMHoIx9ms.png
-      descr: Steven
+      descr: Steven Lynn的个人博客
     - name: Izumi Chino's Blog
       link: https://www.izumichino.tk/
       avatar: https://s2.loli.net/2023/02/28/PFMGNbWVJcC3p4t.png
-      descr: 个人博客作者
+      descr: 一个奇怪的数竞生
 {% endflink %}
 
 # 我的友链信息
