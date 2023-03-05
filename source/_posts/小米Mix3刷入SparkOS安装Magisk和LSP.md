@@ -1,5 +1,5 @@
 ---
-title: 小米Mix3刷入SparkOS安装Magisk和LSP
+title: 小米Mix3刷入SparkOS安装Magisk和LSPosed
 tags: 记录
 abbrlink: 58235
 date: 2023-02-18 19:12:34
