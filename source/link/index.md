@@ -46,7 +46,7 @@ layout: "link"
     - name: Cynosura
       link: https://cynosura.one/
       avatar: https://pic.imgdb.cn/item/638eaff5b1fccdcd36aea7d6.png
-      descr: 个人博客作者
+      descr: 是熊熊
     - name: 橘纸柚
       link: https://lovemen.cc/links.html
       avatar: https://lovemen.cc/usr/hotlink-ok/avatar.jpg
@@ -55,4 +55,12 @@ layout: "link"
       link: https://echiru.top/
       avatar: https://s2.loli.net/2023/02/16/YFx1fap5nTUO2R8.jpg
       descr: 个人博客作者
+    - name: Isoheptane
+      link: https://blog.cascade.moe/
+      avatar: https://blog.cascade.moe/images/avatar.webp
+      descr: 工程师猫娘
+    - name: 林槐的杂货铺
+      link: https://blog.stapxs.cn/
+      avatar: https://blog.stapxs.cn/usr/uploads/2020/03/3664075920.png
+      descr: 要来点什么吗 QWQ
 {% endflink %}
