@@ -57,7 +57,7 @@ layout: "link"
       descr: 个人博客作者
     - name: Isoheptane
       link: https://blog.cascade.moe/
-      avatar: https://blog.cascade.moe/images/avatar.webp
+      avatar: https://pic.imgdb.cn/item/64043121f144a01007284ba1.jpg
       descr: 工程师猫娘
     - name: 林槐的杂货铺
       link: https://blog.stapxs.cn/
