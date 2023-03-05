@@ -51,4 +51,8 @@ layout: "link"
       link: https://lovemen.cc/links.html
       avatar: https://lovemen.cc/usr/hotlink-ok/avatar.jpg
       descr: 个人博客作者
+    - name: 废柴乙乙的Blog
+      link: https://echiru.top/
+      avatar: https://s2.loli.net/2023/02/16/YFx1fap5nTUO2R8.jpg
+      descr: 个人博客作者
 {% endflink %}
