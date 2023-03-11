@@ -71,6 +71,10 @@ layout: "link"
       link: https://www.izumichino.tk/
       avatar: https://s2.loli.net/2023/02/28/PFMGNbWVJcC3p4t.png
       descr: 一个奇怪的数竞生
+    - name: 小莫のBase
+      link: https://mou.best/
+      avatar: https://gitee.com/xiaomouz/xiaomouz/raw/master/upload/images/06bcb167ff840.jpg
+      descr: 小小少年，没有烦恼
 {% endflink %}
 
 # 我的友链信息
