@@ -63,7 +63,7 @@ layout: "link"
       link: https://blog.stapxs.cn/
       avatar: https://blog.stapxs.cn/usr/uploads/2020/03/3664075920.png
       descr: 要来点什么吗 QWQ
-    - name: 哔哔哔哔
+    - name: Steven Lynn's Blog
       link: https://blog.stv.lol/
       avatar: https://s2.loli.net/2023/05/29/NXUKtpGBlZoij4T.png
       descr: Steven Lynn的个人博客
