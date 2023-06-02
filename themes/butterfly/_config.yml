@@ -336,7 +336,7 @@ valine:
 waline:
   serverURL: https://waine-hb5lkx4iw-rjy545674557-gmailcom.vercel.app/
   bg: # waline background
-  pageview: false
+  pageview: true
   option:
 
 # utterances
