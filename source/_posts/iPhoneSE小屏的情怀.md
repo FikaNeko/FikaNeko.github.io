@@ -2,6 +2,7 @@
 title: iPhone SE | 小屏的情怀
 date: 2022-08-30 11:14:33
 tags: 评测
+cover: https://pic.imgdb.cn/item/637d7cba16f2c2beb1700315.png
 ---
 ## iPhone SE的诞生
 2016年3月22日，随着苹果春季发布会的召开，这台以字母命名的手机iPhone SE毫无悬念地发布了，iPhone 5S的壳子里塞进了iPhone 6S的配置，让那时追求小屏、价格、性能的用户爱不释手。iPhone SE的发布时间可谓精明，2015年9月9日发布iPhone 6S，时隔半年就发布了这台“iPhone 6S低配版”，并且同等内部硬件配置下的售价要比6S便宜将近2000元，由此而知苹果想借iPhone SE填补价格的空白，给普通用户更多体验苹果产品的机会，顺便把iPhone 5S的壳子和屏幕库存清了,库存克星可不是盖的
