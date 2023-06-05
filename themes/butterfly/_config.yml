@@ -443,7 +443,7 @@ messenger:
 # --------------------------------------
 footer:
   owner:
-    enale: true
+    enable: true
     since: 2020
   custom_text:
   copyright: true # Copyright of theme and framework
@@ -755,7 +755,7 @@ busuanzi:
 # Time difference between publish date and now (網頁運行時間)
 # Formal: Month/Day/Year Time or Year/Month/Day Time
 runtimeshow:
-  enable: true
+  enable: false
   publish_date:
 
 # Aside widget - Newest Comments
