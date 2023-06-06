@@ -75,6 +75,15 @@ layout: "link"
       link: https://mou.best/
       avatar: https://gitee.com/xiaomouz/xiaomouz/raw/master/upload/images/06bcb167ff840.jpg
       descr: 小小少年，没有烦恼
+    - name: 梦墨's Blog
+      link: https://blog.dreamo.ink/
+      avatar: https://dreamo.ink/images/avatar.png
+      descr: 这个人很懒，但ta似乎留下了什么？
+    - name: Zapic's Blog
+      link: https://blog.zapic.moe/
+      avatar: https://i.zapic.moe/static/192.png
+      descr: 一般路过啥也不会Zapic的博客
+
 {% endflink %}
 
 # 我的友链信息
