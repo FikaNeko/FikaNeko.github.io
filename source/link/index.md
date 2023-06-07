@@ -87,6 +87,10 @@ layout: "link"
       link: https://sxyz.blog/
       avatar: https://gravatar.com/avatar/a70754fc27a340bf9a46746264bb1549?s=120
       descr: 是雅的窝
+    - name: 幽若工房
+      link: http://blog.aquaia.xyz/
+      avatar: http://res.aquaia.xyz/pics/head.png
+      descr: 一个写代码有些菜的小水母
 
 {% endflink %}
 
