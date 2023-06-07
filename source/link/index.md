@@ -83,6 +83,10 @@ layout: "link"
       link: https://blog.zapic.moe/
       avatar: https://i.zapic.moe/static/192.png
       descr: 一般路过啥也不会Zapic的博客
+    - name: Sxyazi’s blog
+      link: https://sxyz.blog/
+      avatar: https://gravatar.com/avatar/a70754fc27a340bf9a46746264bb1549?s=120
+      descr: 是雅的窝
 
 {% endflink %}
 
