@@ -89,7 +89,7 @@ layout: "link"
       descr: 是雅的窝
     - name: 幽若工房
       link: http://blog.aquaia.xyz/
-      avatar: http://res.aquaia.xyz/pics/head.png
+      avatar: https://pic.imgdb.cn/item/64804c221ddac507cce1cb94.png
       descr: 一个写代码有些菜的小水母
 
 {% endflink %}
