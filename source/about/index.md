@@ -12,6 +12,8 @@ layout: "about"
 ## · 听音乐🎵
 
 # Reach me
-| Telegram | [@FikaNeko](https://t.me/FikaNeko) |
-| Twitter | [@FikaNeko](https://twitter.com/FikaNeko) |
-| Instagram | [fika.photograph](https://www.instagram.com/fika.photograph/ |)
+| Telegram  | @FikaNeko       |   |   |   |
+|-----------|-----------------|---|---|---|
+| Twitter   | @FikaNeko       |   |   |   |
+| Instagram | fika.photograph |   |   |   |
+|           |                 |   |   |   |
