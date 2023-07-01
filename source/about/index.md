@@ -12,8 +12,8 @@ layout: "about"
 ## · 听音乐🎵
 
 # Reach me
-| Social Software | Account         |   |   |   |
-|-----------------|-----------------|---|---|---|
-| Twitter         | @FikaNeko       |   |   |   |
-| Telegram        | @FikaNeko       |   |   |   |
-| Instagram       | fika.photograph |   |   |   |
+| Social Software | Account         |
+|-----------------|-----------------|
+| Twitter         | @FikaNeko       |
+| Telegram        | @FikaNeko       |
+| Instagram       | fika.photograph |
