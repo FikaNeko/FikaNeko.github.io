@@ -1,6 +1,7 @@
 ---
 title: 小米Mix3刷入SparkOS安装Magisk和LSPosed
 tags: 记录
+categories: 实用
 abbrlink: 58235
 date: 2023-02-18 19:12:34
 cover: https://pic.imgdb.cn/item/6415cbd3a682492fccffe83d.png

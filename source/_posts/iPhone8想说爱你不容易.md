@@ -1,6 +1,7 @@
 ---
 title: iPhone8 | 想说爱你不容易
 tags: 评测
+categories: 数码
 cover: 'https://pic.imgdb.cn/item/6415c905a682492fccfa28a0.jpg'
 abbrlink: 1350552417
 date: 2022-12-07 09:54:32

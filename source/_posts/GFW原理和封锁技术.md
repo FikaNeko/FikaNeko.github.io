@@ -1,6 +1,7 @@
 ---
 title: GFW原理和封锁技术
 tags: 转载
+categories: 转载
 abbrlink: 28093
 date: 2022-12-06 21:28:11
 cover: https://pic.imgdb.cn/item/647b369cf024cca1732a8f65.jpg

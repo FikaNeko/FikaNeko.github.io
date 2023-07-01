@@ -1,6 +1,7 @@
 ---
 title: iPhone SE | 小屏的情怀
 tags: 评测
+categories: 数码
 cover: 'https://pic.imgdb.cn/item/637d7cba16f2c2beb1700315.png'
 abbrlink: 3738668067
 date: 2022-08-30 11:14:33

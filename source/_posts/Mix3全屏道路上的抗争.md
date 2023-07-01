@@ -1,6 +1,7 @@
 ---
 title: Mix 3 | 全屏道路上的抗争
 tags: 评测
+categories: 数码
 cover: 'https://pic2.imgdb.cn/item/644c99c80d2dde577739aa33.jpg'
 abbrlink: 2683319681
 date: 2023-04-29 11:46:47
