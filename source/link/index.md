@@ -100,7 +100,7 @@ layout: "link"
 头像URL: https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg
 描述: 遇到困难睡大觉
 
-您也可以在我的[博客仓库](https://github.com/FikaNeko/FikaNeko.github.io/issues)中提Issues并写上您的友链信息，格式如下:
+您也可以在我的[博客仓库](https://github.com/FikaNeko/FikaNeko.github.io/issues)中提Issues并写上您的友链信息，或者在下方评论区直接发布，格式如下:
 name: Fika
 link: https://fika.ink/
 avatar: https://pic.imgdb.cn/item/637c14ee16f2c2beb161a26e.jpg
