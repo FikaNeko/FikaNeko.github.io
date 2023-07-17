@@ -91,6 +91,10 @@ layout: "link"
       link: http://blog.aquaia.xyz/
       avatar: https://pic.imgdb.cn/item/64804c221ddac507cce1cb94.png
       descr: 一个写代码有些菜的小水母
+    - name: 浅雨阁
+      link: https://qianyuchan.com/
+      avatar: https://pic.imgdb.cn/item/64b512a11ddac507ccb364dc.jpg
+      descr: 人间离别易多时，湿红恨墨浅封题
 
 {% endflink %}
 
