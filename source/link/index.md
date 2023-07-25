@@ -16,11 +16,11 @@ layout: "link"
       avatar: https://pic.imgdb.cn/item/6380525316f2c2beb1577ca7.jpg
       descr: 个人博客作者
     - name: 高科技的指挥中心
-      link: https://www.hightechbrain.ml/
+      link: https://blog.hightechbrain.net/
       avatar: https://pic.imgdb.cn/item/638052ec16f2c2beb15874b8.jpg
       descr: 个人博客作者
     - name: 湛蓝的调色板
-      link: https:////nekoq.eu.org/
+      link: https://nekoq.eu.org/
       avatar: https://pic.imgdb.cn/item/6380539516f2c2beb159da89.jpg
       descr: 个人博客作者
     - name: 老陈の咸鱼日常
