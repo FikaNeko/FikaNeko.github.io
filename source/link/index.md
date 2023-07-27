@@ -95,6 +95,10 @@ layout: "link"
       link: https://qianyuchan.com/
       avatar: https://pic.imgdb.cn/item/64b512a11ddac507ccb364dc.jpg
       descr: 人间离别易多时，湿红恨墨浅封题
+    - name: 冰柠配绿茶的秘密后花园
+      link: https://frozenlemontee.top/
+      avatar: https://cravatar.cn/avatar/daa9065cbb0c460bed9cc34276a2ff1b?s=1024
+      descr: 让美好的时光常驻
 
 {% endflink %}
 
