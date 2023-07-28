@@ -99,6 +99,10 @@ layout: "link"
       link: https://frozenlemontee.top/
       avatar: https://cravatar.cn/avatar/daa9065cbb0c460bed9cc34276a2ff1b?s=1024
       descr: 让美好的时光常驻
+    - name: Seimo's Homepage
+      link: https://seimo.cn/dev
+      avatar: https://s1.ax1x.com/2023/07/28/pCzo9vF.jpg
+      descr: 不负热爱，奔赴山河
 
 {% endflink %}
 
