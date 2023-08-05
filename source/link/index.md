@@ -103,6 +103,10 @@ layout: "link"
       link: https://seimo.cn/dev
       avatar: https://s1.ax1x.com/2023/07/28/pCzo9vF.jpg
       descr: 不负热爱，奔赴山河
+    - name: dpkg123
+      link: https://dpkg123.site
+      avatar: https://dpkg123.site/favicon.jpg
+      descr: 书山有路勤为径，学海无涯苦作舟
 
 {% endflink %}
 
