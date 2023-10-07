@@ -107,6 +107,10 @@ layout: "link"
       link: https://dpkg123.site
       avatar: https://dpkg123.site/favicon.jpg
       descr: 书山有路勤为径，学海无涯苦作舟
+    - name: Snow' s Blog
+      link: https://ivansnow02.github.io/about/
+      avatar: https://ivansnow02.github.io/img/avatar.png
+      descr: Code Blog
 
 {% endflink %}
 
