@@ -111,6 +111,11 @@ layout: "link"
       link: https://ivansnow02.github.io/about/
       avatar: https://ivansnow02.github.io/img/avatar.png
       descr: Code Blog
+    - name: 红色森林
+      link: https://redforest.org.cn/
+      avatar: https://redforest.org.cn/media/avata/avata.jpg
+      descr: RedForest的旧梦呓语
+
 
 {% endflink %}
 
