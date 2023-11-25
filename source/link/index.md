@@ -28,7 +28,7 @@ layout: "link"
       avatar: https://pic.imgdb.cn/item/638053e016f2c2beb15a44f1.jpg
       descr: 个人博客作者
     - name: Moeri 落落格
-      link: https://blog.bakalu.cyou/
+      link: https://blog.bakalu.site/
       avatar: https://pic.imgdb.cn/item/6380558816f2c2beb15cccb1.png
       descr: 个人博客作者
     - name: 狐の小屋
