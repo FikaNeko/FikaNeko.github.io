@@ -1,9 +1,10 @@
 ---
 title: iPhone Xs | 3D Touch的绝唱
-date: 2023-07-01 10:42:52
 tags: 评测
 categories: 数码
-cover: https://pic.imgdb.cn/item/649fc83d1ddac507cc75557d.jpg
+cover: 'https://pic.imgdb.cn/item/649fc83d1ddac507cc75557d.jpg'
+abbrlink: 589427431
+date: 2023-07-01 10:42:52
 ---
 # 前言
 iPhone 8上的Home键已经用腻了，想试试苹果的全面屏导航方式，一来比iPhone 8上的原始的导航方式要更快捷，二来屏幕也变大了。于是在过年时把iPhone 8挂在海鲜市场上卖掉，740入手了一台iPhone Xs，别看这价格便宜，便宜的背后是牺牲了很多东西的，这台手机的后盖玻璃是碎的，还好并不是那种摔到掉渣的碎，并且这台iPhone是苹果与T-Mobile的合约有锁机，用不了其他运营商的SIM卡。除了这两个debuff之外，最令我气愤的是CMOS被激光射坏了，2x镜头拍照会有紫色的点，而这都是我在确认收货前没有认真检查造成的，大家不要学我。还好机子的功能都正常，原装屏幕没有任何烧屏，面容也完好，这纵观整个海鲜市场上都是非常炸裂的存在，如今真的很难找到这个价位下屏幕完美和面容可用的iPhone Xs了。至于为什么选择iPhone Xs，只是因为它是最后一代搭载3D Touch的机型罢了。
