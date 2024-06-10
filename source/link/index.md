@@ -115,6 +115,10 @@ layout: "link"
       link: https://redforest.org.cn/
       avatar: https://redforest.org.cn/media/avata/avata.jpg
       descr: RedForest的旧梦呓语
+    - name: 御坂秋生
+      link: https://www.akio.top
+      avatar: https://server.akio.top/icon
+      descr: 不努力就只能听到别人的好消息
 
 
 {% endflink %}
