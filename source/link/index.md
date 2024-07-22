@@ -121,7 +121,7 @@ layout: "link"
       descr: 不努力就只能听到别人的好消息
     - name: SkyHigh
       link: https://skyhigh.moe
-      avatar: https://mypic.skyhigh.moe/pic/logo/avatar-0.jpg
+      avatar: https://mypic.skyhigh.moe/hotlink-ok/avatar-0.jpg
       descr: SkyHigh'Site
 
 
