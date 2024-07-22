@@ -119,6 +119,10 @@ layout: "link"
       link: https://www.akio.top
       avatar: https://server.akio.top/icon
       descr: 不努力就只能听到别人的好消息
+    - name: SkyHigh
+      link: https://skyhigh.moe
+      avatar: https://mypic.skyhigh.moe/pic/logo/avatar-0.jpg
+      descr: SkyHigh'Site
 
 
 {% endflink %}
