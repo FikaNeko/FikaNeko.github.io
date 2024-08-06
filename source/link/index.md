@@ -101,7 +101,7 @@ layout: "link"
       descr: 让美好的时光常驻
     - name: Seimo's Homepage
       link: https://seimo.cn/dev
-      avatar: https://s1.ax1x.com/2023/07/28/pCzo9vF.jpg
+      avatar: https://cdn.seimo.cn/avatar.jpg
       descr: 不负热爱，奔赴山河
     - name: dpkg123
       link: https://dpkg123.site
