@@ -123,6 +123,10 @@ layout: "link"
       link: https://skyhigh.moe
       avatar: https://mypic.skyhigh.moe/hotlink-ok/avatar-0.jpg
       descr: SkyHigh'Site
+    - name: 王鑫
+      link: https://wxweb.xyz/
+      avatar: https://pic.wxweb.xyz/pic/main.jpg
+      descr: 活着就是为了折腾！
 
 
 {% endflink %}
