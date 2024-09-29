@@ -143,3 +143,8 @@ live2d:
     show: true
   react:
     opacity: 0.7
+
+markdown:
+  anchors:
+    level: 1
+    permalink: true
