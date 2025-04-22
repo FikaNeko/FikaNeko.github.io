@@ -104,8 +104,8 @@ layout: "link"
       avatar: https://cdn.seimo.cn/avatar.jpg
       descr: 不负热爱，奔赴山河
     - name: dpkg123
-      link: https://dpkg123.site
-      avatar: https://dpkg123.site/favicon.jpg
+      link: https://dpkg123.top
+      avatar: https://dpkg123.top/favicon.jpg
       descr: 书山有路勤为径，学海无涯苦作舟
     - name: Snow' s Blog
       link: https://ivansnow02.github.io/about/
