@@ -129,3 +129,16 @@ markdown:
   anchors:
     level: 1
     permalink: true
+
+# 主题配置覆盖：Hexo 会把它深度合并进 butterfly 主题配置，
+# 因此自定义内容不必写进 themes/butterfly/_config.yml，升级主题不会丢失。
+theme_config:
+  inject:
+    head:
+      - '<link rel="stylesheet" href="/css/nav-glass.css">'
+      - '<link rel="preconnect" href="https://events.vercount.one">'
+  # 统计服务改用 Vercount：不蒜子后端已挂（https://busuanzi.ibruce.info 返回 502）。
+  # 该服务兼容不蒜子的 busuanzi_value_* 标签，HTML 无需改动。
+  CDN:
+    option:
+      busuanzi: 'https://events.vercount.one/js'

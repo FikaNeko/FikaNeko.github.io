@@ -1,0 +1,54 @@
+/*!
+ * 顶部导航栏毛玻璃效果（frosted glass navbar）
+ * 由 _config.yml 中的 theme_config.inject.head 注入，升级主题不会丢失。
+ */
+
+/* ── 1. 横幅图上的状态 ──────────────────────────────
+   导航文字是近白色（主题变量 $light-grey = #EEEEEE），
+   所以这一层用「深色玻璃」：既磨砂，又保证文字清晰可读。 */
+#page-header #nav {
+  background: rgba(0, 0, 0, .22);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+
+/* ── 2. 无横幅图 / 固定导航状态 ───────────────────────
+   主题原本是白底深字，这里换成浅色玻璃。 */
+#page-header.not-top-img #nav,
+#page-header.nav-fixed #nav {
+  background: rgba(255, 255, 255, .62);
+  border-bottom: 1px solid rgba(255, 255, 255, .35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .06);
+}
+
+/* ── 3. 暗色模式 ─────────────────────────────────── */
+[data-theme='dark'] #page-header #nav {
+  background: rgba(18, 18, 18, .48);
+  border-bottom-color: rgba(255, 255, 255, .1);
+}
+
+[data-theme='dark'] #page-header.not-top-img #nav,
+[data-theme='dark'] #page-header.nav-fixed #nav {
+  background: rgba(18, 18, 18, .58);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+}
+
+/* ── 4. 不支持 backdrop-filter 的浏览器 ───────────────
+   回退成较实的背景，避免文字压在图片上看不清。 */
+@supports not ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  #page-header #nav {
+    background: rgba(0, 0, 0, .68);
+  }
+
+  #page-header.not-top-img #nav,
+  #page-header.nav-fixed #nav {
+    background: rgba(255, 255, 255, .95);
+  }
+
+  [data-theme='dark'] #page-header #nav,
+  [data-theme='dark'] #page-header.not-top-img #nav,
+  [data-theme='dark'] #page-header.nav-fixed #nav {
+    background: rgba(18, 18, 18, .9);
+  }
+}
