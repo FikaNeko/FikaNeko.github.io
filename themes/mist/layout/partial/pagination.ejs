@@ -1,0 +1,44 @@
+<%#
+  Mist · 分页（数字页码胶囊 + 前后箭头）
+  当前页为 BEM 修饰符 pagination__item--current（accent 底白字胶囊）；
+  不可用方向渲染为 span.is-disabled（不可聚焦）。
+  链接推导：由当前分页路径剥离末尾 page/N/ 段得到基准路径，
+  兼容首页 / 归档（含年份归档）/ 标签 / 分类的分页。
+%>
+<% if (page.total > 1) {
+  const base = page.path
+    .replace(/index\.html$/, '')
+    .replace(/(^|\/)page\/\d+\/?$/, '')
+    .replace(/\/$/, '');
+%>
+<nav class="pagination" aria-label="<%= __('pagination') %>">
+
+  <%/* 上一页 */%>
+  <% if (page.prev) { %>
+  <a class="pagination__item pagination__item--nav" href="<%- url_for(page.prev_link) %>" aria-label="<%= __('home.prev_page') %>">
+    <%- partial('partial/icon', { name: 'arrow-left' }) %>
+  </a>
+  <% } else { %>
+  <span class="pagination__item pagination__item--nav is-disabled" aria-hidden="true">
+    <%- partial('partial/icon', { name: 'arrow-left' }) %>
+  </span>
+  <% } %>
+
+  <%/* 数字页码 */%>
+  <% for (let i = 1; i <= page.total; i++) { %>
+  <a class="pagination__item <%= i === page.current ? 'pagination__item--current' : '' %>"
+     href="<%- i === 1 ? url_for(base || '/') : url_for((base ? base + '/' : '') + 'page/' + i + '/') %>"<%- i === page.current ? ' aria-current="page"' : '' %>><%= i %></a>
+  <% } %>
+
+  <%/* 下一页 */%>
+  <% if (page.next) { %>
+  <a class="pagination__item pagination__item--nav" href="<%- url_for(page.next_link) %>" aria-label="<%= __('home.next_page') %>">
+    <%- partial('partial/icon', { name: 'arrow-right' }) %>
+  </a>
+  <% } else { %>
+  <span class="pagination__item pagination__item--nav is-disabled" aria-hidden="true">
+    <%- partial('partial/icon', { name: 'arrow-right' }) %>
+  </span>
+  <% } %>
+</nav>
+<% } %>

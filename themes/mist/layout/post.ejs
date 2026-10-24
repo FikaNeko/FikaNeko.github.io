@@ -1,0 +1,107 @@
+<%#
+  Mist · 文章详情页
+  ─────────────────────────────────────────────────
+  文头（标题 + meta：日期/字数/阅读时长/标签）
+  → 双栏布局（正文 prose 720px + TOC 侧栏 260px，≤1200px 收为单栏）
+  → 版权行 → 上一篇/下一篇（并排玻璃卡）→ 评论区
+  →（toc_position: drawer 时）右下 TOC 浮钮 + 全屏抽屉
+  说明：
+  - 字数/阅读时长按中文 400 字/分钟估算；helpers.js（后续轮次）就位后
+    可替换为 wordCount() / readingTime() 助手，模板结构不变
+  - 代码块由 Hexo 输出 figure.highlight / .hljs，容器样式与复制按钮
+    由 components.css / code.js 负责，模板不额外包裹节点
+%>
+<%
+  const words = (page.content || '')
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, '')
+    .length;
+  const minutes = Math.max(1, Math.ceil(words / 400));
+  const showToc = theme.post.toc && page.toc !== false && theme.post.toc_position !== 'hidden';
+%>
+<div class="page page--post">
+  <article class="post-full" itemscope itemtype="https://schema.org/BlogPosting">
+
+    <%/* ── 文头 ── */%>
+    <header class="post-full__header">
+      <h1 class="post-full__title" itemprop="headline"><%= page.title %></h1>
+      <div class="post-full__meta">
+        <time class="post-full__meta-item" datetime="<%= page.date.toISOString() %>" itemprop="datePublished"><%= date(page.date, 'YYYY-MM-DD') %></time>
+        <% if (theme.post.word_count) { %>
+        <span class="post-full__meta-item"><%= words %> <%= __('post.words') %></span>
+        <% } %>
+        <% if (theme.post.reading_time) { %>
+        <span class="post-full__meta-item"><%= minutes %> <%= __('post.minutes') %></span>
+        <% } %>
+        <% if (page.tags && page.tags.length) { %>
+        <span class="post-full__meta-item post-full__meta-tags">
+          <% page.tags.forEach(function (tag) { %>
+          <a class="chip" href="<%- url_for(tag.path) %>"><%= tag.name %></a>
+          <% }) %>
+        </span>
+        <% } %>
+      </div>
+    </header>
+
+    <%/* ── 双栏：正文 + TOC 侧栏（side 模式）── */%>
+    <div class="post-full__layout">
+      <div class="post-full__content prose" itemprop="articleBody">
+        <%- page.content %>
+      </div>
+      <% if (showToc && theme.post.toc_position === 'side') { %>
+      <%- partial('partial/toc', { modifier: 'side' }) %>
+      <% } %>
+    </div>
+
+    <%/* ── 版权声明（post.license 配置，留空不渲染）── */%>
+    <% if (theme.post.license) { %>
+    <p class="post-full__license">
+      <%- partial('partial/icon', { name: 'link', cls: 'post-full__license-icon' }) %>
+      <span><%= theme.post.license %></span>
+    </p>
+    <% } %>
+
+    <%/* ── 上一篇 / 下一篇（并排玻璃卡，缺位时以占位元素保持两栏平衡）── */%>
+    <nav class="post-adjacent" aria-label="<%= __('post.prev') %> / <%= __('post.next') %>">
+      <% if (page.prev) { %>
+      <a class="post-adjacent__item post-adjacent__item--prev" href="<%- url_for(page.prev.path) %>">
+        <span class="post-adjacent__label">
+          <%- partial('partial/icon', { name: 'arrow-left', cls: 'post-adjacent__icon' }) %><%= __('post.prev') %>
+        </span>
+        <span class="post-adjacent__title"><%= page.prev.title %></span>
+      </a>
+      <% } else { %>
+      <div class="post-adjacent__item post-adjacent__item--placeholder" aria-hidden="true"></div>
+      <% } %>
+
+      <% if (page.next) { %>
+      <a class="post-adjacent__item post-adjacent__item--next" href="<%- url_for(page.next.path) %>">
+        <span class="post-adjacent__label">
+          <%= __('post.next') %><%- partial('partial/icon', { name: 'arrow-right', cls: 'post-adjacent__icon' }) %>
+        </span>
+        <span class="post-adjacent__title"><%= page.next.title %></span>
+      </a>
+      <% } else { %>
+      <div class="post-adjacent__item post-adjacent__item--placeholder" aria-hidden="true"></div>
+      <% } %>
+    </nav>
+
+    <%- partial('partial/comments') %>
+  </article>
+
+  <%#
+    ── TOC 抽屉模式（toc_position: drawer）──
+    浮钮常驻右下（在 back-to-top 之上），js-toc-toggle / js-toc-close
+    控制 is-open；面板复用 partial/toc（modifier: drawer）
+  %>
+  <% if (showToc && theme.post.toc_position === 'drawer') { %>
+  <button class="toc-fab glass-panel js-toc-toggle" type="button"
+          aria-label="<%= __('toc.open') %>" aria-controls="toc-drawer" aria-expanded="false">
+    <%- partial('partial/icon', { name: 'list' }) %>
+  </button>
+  <div class="toc-drawer js-toc-drawer" id="toc-drawer" aria-hidden="true">
+    <div class="toc-drawer__backdrop js-toc-close"></div>
+    <%- partial('partial/toc', { modifier: 'drawer' }) %>
+  </div>
+  <% } %>
+</div>

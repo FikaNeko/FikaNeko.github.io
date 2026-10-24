@@ -1,0 +1,43 @@
+<%#
+  Mist · 独立页（关于页等，source/about/index.md 默认走本模板）
+  ─────────────────────────────────────────────────
+  页头（可选头像 → 标题 → 社交行）→ prose 正文（720px，与文章页同排版）
+  → 评论区（可选）
+  front-matter 开关：
+  - social: false    关闭社交图标行
+  - show_avatar: false 关闭头像（avatar 取 theme.brand.avatar）
+  - comments: false  关闭评论区
+%>
+<div class="page page--page">
+  <header class="page-header page-header--stack">
+
+    <% if (theme.brand.avatar && page.show_avatar !== false) { %>
+    <img class="page-header__avatar" src="<%- url_for(theme.brand.avatar) %>" alt="<%= config.author || config.title %>">
+    <% } %>
+
+    <h1 class="page-header__title"><%= page.title || config.title %></h1>
+
+    <%/* 同首页：社交图标以 source/icons/ 为唯一来源，无文件不显示 */%>
+    <% const socials = Object.entries(theme.social || {}).filter(function (entry) {
+         return typeof custom_icon === 'function' && custom_icon(entry[0]);
+       }); %>
+    <% if (socials.length && page.social !== false) { %>
+    <div class="page-header__social">
+      <% socials.forEach(function (entry) {
+           const key = entry[0];
+           const url = entry[1];
+           const external = /^https?:/.test(url); %>
+      <a class="page-header__social-link" href="<%- url %>"<%- external ? ' target="_blank" rel="noopener"' : '' %> aria-label="<%= key %>">
+        <%- partial('partial/icon', { name: key }) %>
+      </a>
+      <% }) %>
+    </div>
+    <% } %>
+  </header>
+
+  <div class="page__content prose">
+    <%- page.content %>
+  </div>
+
+  <%- partial('partial/comments') %>
+</div>

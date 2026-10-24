@@ -1,0 +1,13 @@
+<%#
+  Mist · 评论区挂载点
+  仅输出容器：provider（giscus / waline / twikoo）的第三方脚本
+  由 main.js 读取 window.Mist.comments（layout.ejs 注入）后动态加载，
+  模板与第三方脚本完全解耦。
+  单篇关闭：文章 front-matter 写 comments: false
+%>
+<% if (theme.comments && theme.comments.enable && page.comments !== false) { %>
+<section class="comments glass-panel js-comments" data-provider="<%= theme.comments.provider %>">
+  <h2 class="comments__title"><%= __('comments') %></h2>
+  <div class="comments__mount js-comments-mount" id="comments-mount"></div>
+</section>
+<% } %>

@@ -1,0 +1,135 @@
+# ════════════════════════════════════════════════════════════════
+#  Mist 主题配置
+#  站点级覆盖：在 Hexo 根目录新建 _config.mist.yml，同名字段自动覆盖本文件
+#  （推荐用覆盖文件改配置，便于主题升级；详见 THEME_DESIGN.md §2）
+# ════════════════════════════════════════════════════════════════
+
+# ── 品牌与文案 ────────────────────────────────────────────────
+brand:
+  logo_text: ""              # 导航左侧文字 logo；留空则使用 site.title
+  avatar: ""                 # 头像路径（首页 hero / 关于页）；留空不显示
+  bio: "Less, but better."   # 首页 hero 一句话简介
+
+# ── 外观（明暗模式）──────────────────────────────────────────
+appearance:
+  default: auto              # light | dark | auto（跟随系统）
+  toggle: true               # 导航栏是否显示明暗切换按钮
+  remember: true             # 是否用 localStorage 记忆用户手动选择
+
+# ── 色彩（覆盖 tokens.css 中同名令牌，head.ejs 注入内联 :root 覆盖层）──
+# 物理色板只在这里出现一次；组件代码只允许引用语义变量
+colors:
+  light:
+    bg: "#FAFAF8"                  # 米白页面底
+    surface: "#FFFFFF"             # 卡片 / 玻璃面板基色
+    text: "#1D1D1F"                # 深墨正文
+    text_secondary: "#6E6E73"      # 次级文本
+    text_tertiary: "#A1A1A6"       # 弱化文本（日期、计数）
+    border: "rgba(0, 0, 0, 0.06)"  # 发丝分割线
+    accent: "#5E7A99"              # 雾蓝
+  dark:
+    bg: "#141518"                  # 深墨（非纯黑）
+    surface: "#1C1E22"
+    text: "#ECEDEF"
+    text_secondary: "#9B9DA3"
+    text_tertiary: "#6F7178"
+    border: "rgba(255, 255, 255, 0.08)"
+    accent: "#8FA9C4"              # 雾蓝提亮，保证暗底对比
+
+# ── 背景图（可选）────────────────────────────────────────────
+background:
+  image: "/img/background.jpeg"                  # 图片路径（建议放站点 source/img/，如 /img/bg.jpg）；留空 = 纯色底 + 光斑
+  overlay: 0.6               # 遮罩强度 0–1：亮色模式铺米白、暗色铺深墨，保证正文可读性
+
+# ── 形状与阴影 ───────────────────────────────────────────────
+shape:
+  radius_sm: 8px             # chips、按钮
+  radius_md: 14px            # 代码块
+  radius_lg: 20px            # 卡片、玻璃面板
+  shadow: true               # 阴影总开关；false 时全站扁平
+
+# ── 毛玻璃 ───────────────────────────────────────────────────
+glass:
+  enabled: true              # false 时玻璃面板回退实色 surface
+  blur: 20px                 # 模糊强度 → --glass-blur
+  saturate: 1.8              # 饱和度增益，玻璃更"润"
+  opacity: 0.72              # 面板底色不透明度
+
+# ── 动效 ─────────────────────────────────────────────────────
+motion:
+  enabled: true              # 总开关；false 时输出零动画版本
+  reveal: true               # 滚动渐入（卡片 fade + up）
+  theme_transition: true     # 明暗切换时的 0.3s 颜色过渡
+  duration:
+    fast: 0.3s               # hover、链接、按钮
+    base: 0.4s               # 卡片、面板、抽屉
+    slow: 0.6s               # 页面首次进场
+  easing: "cubic-bezier(0.22, 1, 0.36, 1)"   # easeOutQuint —— 减速收尾、无回弹
+  # 注意：无论上述如何配置，prefers-reduced-motion: reduce 时全部动画强制关闭
+
+# ── 导航 ─────────────────────────────────────────────────────
+menu:                        # key: 标题，value: 链接；顺序即展示顺序
+  首页: /
+  归档: /archives
+  标签: /tags
+  关于: /about
+nav:
+  sticky: true               # 吸顶
+  glass_on_scroll: true      # 滚动 > 8px 后由透明变毛玻璃 + 发丝下边线
+
+# ── 社交链接（key = 图标名，value = 链接；顺序即展示顺序）────────
+# 社交图标唯一来源：<站点>/source/icons/<key>.svg（无对应文件的社交项不显示图标；
+# social 段为空或全部无文件时整个社交栏不渲染）
+#（单色图标、自动随主题变色；文件存在即优先生效，无需改主题代码）
+social:
+  github: "https://github.com/fikaneko"
+  rss: "/atom.xml"           # 需站点安装 hexo-generator-feed
+  x: "https://x.com/MacchiatoFika"
+  steam: "https://steamcommunity.com/id/FikaNeko/"
+  telegram: "https://t.me/fikaneko"
+  instagram: "https://www.instagram.com/fik.photograph/"
+
+# ── 首页 ─────────────────────────────────────────────────────
+home:
+  hero: true                 # 顶部站名 + bio 区；false 则直接进入卡片流
+  hero_full: true            # 全屏封面模式：hero 占满首屏（文章下滑可见）+ 底部下滑箭头
+  hitokoto_api: "https://v1.hitokoto.cn/"   # 一言接口，hero 打字机效果；留空关闭
+  hitokoto_fallback: "纵有疾风起，人生不言弃。"   # 接口失败兜底句（也可写为句子列表随机取一）
+  font_size:                 # 首页字号自定义（留空 = 主题默认；单位 px/rem 均可）
+    title: ""                # 站名，默认 clamp(28px, 5vw, 36px) 随视口缩放
+    bio: ""                  # 简介，默认 17px
+    hitokoto: ""             # 一言句子，默认 15px（出处自动小一档，无需单独设）
+  cover: true                # 卡片是否显示封面图（无封面自动退化为纯文本卡）
+  excerpt_lines: 2           # 摘要截断行数（CSS 兜底为 2；helpers 可注入变量）
+  # 每页篇数属站点级行为，请在站点 _config.yml 配置 per_page（配合分页插件）
+
+# ── 文章页 ───────────────────────────────────────────────────
+post:
+  toc: true                  # 是否渲染目录
+  toc_position: side         # side（>1200px 右侧吸顶栏）| drawer（浮钮抽屉）| hidden
+  reading_time: true         # 预计阅读时长（中文按 400 字/分钟）
+  word_count: true           # 字数统计
+  copy_button: true          # 代码块复制按钮
+  license: ""                # 版权声明文案；留空不显示
+  image_zoom: false          # 图片点击放大（预留，二期实现）
+
+# ── 评论 ─────────────────────────────────────────────────────
+comments:
+  enable: false
+  provider: giscus           # giscus | waline | twikoo
+  # giscus:
+  #   repo: "yourname/yourrepo"
+  #   repo_id: ""
+  #   category: "Announcements"
+  #   category_id: ""
+  # waline:
+  #   server_url: ""
+  # twikoo:
+  #   env_id: ""
+
+# ── 页脚 ─────────────────────────────────────────────────────
+footer:
+  since: 2020                # 建站起始年份，自动拼接当前年份
+  copyright_holder: ""       # 留空使用 site.author
+  icp: "萌ICP备20236622号"                    # 备案号，如 "京ICP备xxxx号"；留空不渲染
+  powered_by: true           # 显示 "Powered by Hexo · Theme Mist"

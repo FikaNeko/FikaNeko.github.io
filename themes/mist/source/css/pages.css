@@ -1,0 +1,541 @@
+/* ════════════════════════════════════════════════════════════════
+   Mist · pages.css — 页面级布局
+   首页 hero / 卡片流 · 文章页栅格 / 归档时间线 / 标签云 /
+   独立页页头 · 响应式断点（sm 640 / md 768 / lg 1024 / xl 1200）
+   ════════════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════════════
+   01 · 页面容器：各页版心（.page 根节点由各页模板输出）
+   ════════════════════════════════════════════════════════════════ */
+.page {
+  margin-inline: auto;
+  max-width: var(--layout-page);
+}
+
+/* 首页 / 标签 / 分类卡片列：760px */
+.page--index,
+.page--tag,
+.page--category {
+  max-width: var(--layout-list);
+}
+
+/* 文章页：正文 720 + 间距 64 + TOC 260 */
+.page--post {
+  max-width: calc(var(--layout-page) + var(--space-16) + var(--layout-toc));
+}
+
+/* ════════════════════════════════════════════════════════════════
+   02 · 首页 hero：左对齐（文档感），子元素错峰淡入上浮
+   ════════════════════════════════════════════════════════════════ */
+.hero {
+  padding: var(--space-16) 0 var(--space-12);
+}
+
+.hero__avatar {
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--space-5);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  object-fit: cover;
+}
+
+.hero__title {
+  /* 可由 home.font_size.title 配置覆盖（head.ejs 注入 --hero-title-size） */
+  font-size: var(--hero-title-size, clamp(28px, 5vw, var(--text-3xl)));
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.hero__bio {
+  margin-top: var(--space-4);
+  max-width: 44em;
+  /* 可由 home.font_size.bio 配置覆盖 */
+  font-size: var(--hero-bio-size, var(--text-lg));
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* 社交图标行：胶囊磨砂容器（样式参考用户指定）；
+   图标规格与交互移植自 Butterfly aside.styl ——
+   margin 0 10px / 主题文本色 / 悬停 360° 旋转 */
+.hero__social {
+  margin-top: var(--space-6);
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  box-shadow: var(--shadow-sm);
+}
+
+.hero__social-link {
+  margin: 0 10px;
+  color: var(--color-text);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.hero__social-link .icon {
+  width: 21px;
+  height: 21px;
+}
+
+.hero__social-link:hover {
+  color: var(--color-accent);
+}
+
+/* 子元素错峰进场（70ms 步进，覆盖 cover 模式下
+   avatar/title/bio/hitokoto/social/scroll-down 的组合） */
+.hero > * {
+  animation: fade-up var(--dur-slow) var(--ease-out) backwards;
+}
+
+.hero > :nth-child(2) { animation-delay: 70ms; }
+.hero > :nth-child(3) { animation-delay: 140ms; }
+.hero > :nth-child(4) { animation-delay: 210ms; }
+.hero > :nth-child(5) { animation-delay: 280ms; }
+.hero > :nth-child(6) { animation-delay: 350ms; }
+
+/* ═══════════════════════════════════════════════════════════════
+   02.5 · 全屏封面模式（home.hero_full）：
+   hero 占满首屏（文章下滑可见），居中排版 + 一言打字机 + 下滑箭头
+   ═══════════════════════════════════════════════════════════════ */
+.hero--full {
+  min-height: calc(100dvh - var(--nav-height));
+  /* 抵消 .site-main 顶部内边距，让封面与导航精确闭合首屏 */
+  margin-top: calc(-1 * var(--space-6));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding-block: var(--space-12) var(--space-20);
+}
+
+.hero--full .hero__avatar {
+  margin-inline: auto;
+}
+
+.hero--full .hero__bio {
+  margin-inline: auto;
+}
+
+.hero--full .hero__social {
+  justify-content: center;
+}
+
+/* 一言打字机：预留一行高度，打字过程零布局跳动 */
+.hero__hitokoto {
+  margin-top: var(--space-4);
+  min-height: 1.9em;
+  /* 可由 home.font_size.hitokoto 配置覆盖 */
+  font-size: var(--hitokoto-size, var(--text-base));
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+/* ── 暗色模式下封面可读性增强 ───────────────────────────────
+   背景图叠深色遮罩后仍有亮度起伏，secondary/tertiary 灰阶对比不足：
+   bio 与一言句提到主文本色，一言出处提到次级色
+   （社交图标已由胶囊磨砂容器承托，直接用主文本色） */
+html[data-theme="dark"] .hero__bio,
+html[data-theme="dark"] .hero__hitokoto,
+html[data-theme="dark"] .hero__hitokoto-cursor {
+  color: var(--color-text);
+}
+
+html[data-theme="dark"] .hero__hitokoto-cursor {
+  background: var(--color-text);
+}
+
+html[data-theme="dark"] .hero__hitokoto-from {
+  color: var(--color-text-secondary);
+}
+
+.hero__hitokoto-text {
+  letter-spacing: 0.02em;
+}
+
+.hero__hitokoto-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.12em;
+  background: var(--color-text-secondary);
+  animation: cursor-blink calc(var(--dur-fast) * 3) steps(1, end) infinite;
+}
+
+.hero__hitokoto-from {
+  display: inline-block;
+  white-space: nowrap;
+  margin-left: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  /* 初始隐藏：打字完成后由 hitokoto.js 加 is-in 触发进场 */
+  opacity: 0;
+  /* 占位宽度由 JS 从 0 平滑撑到目标宽——居中的正文随之连续左移，
+     避免出处出现瞬间的布局跳变；时长与 from-reveal 动画一致 */
+  transition: width calc(var(--dur-base) + var(--dur-fast)) var(--ease-out);
+}
+
+/* 出处进场：从右往左滑入 + 模糊渐清 + 淡入（一次性，
+   时长/缓动走动效令牌，motion 关闭或减少动效时瞬时显示） */
+.hero__hitokoto-from.is-in {
+  animation: from-reveal calc(var(--dur-base) + var(--dur-fast)) var(--ease-out) both;
+}
+
+/* 下滑箭头：动效与布局原样移植自 Butterfly（scroll-down-effect，
+   1.5s ease infinite，上浮 16px + 透明度脉动；贴底 10px 全宽居中）；
+   图标为纯 V 形 chevron（对齐 fa-angle-down 字形，无竖柄）。
+   可读性：颜色用 --color-text（暗色=近白同原版，亮色=深墨），
+   并保留原版 2px 2px 4px 柔和投影 */
+.hero__scroll-down {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.hero__scroll-down-icon {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.15));
+  animation: scroll-down-effect 1.5s infinite;
+}
+
+/* 封面之后的文章区：留出呼吸间距 */
+.hero--full + .post-list {
+  padding-top: var(--space-10);
+}
+
+/* ── 卡片流 ── */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.post-list__empty {
+  padding: var(--space-16) 0;
+  text-align: center;
+  color: var(--color-text-tertiary);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   03 · 文章页
+   ════════════════════════════════════════════════════════════════ */
+.post-full__header {
+  margin-bottom: var(--space-8);
+}
+
+.post-full__title {
+  font-size: clamp(26px, 4vw, 32px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.post-full__meta {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  /* 文章页头直接叠背景图（无卡片面），用次级色保可读 */
+  color: var(--color-text-secondary);
+}
+
+.post-full__meta-item time {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.post-full__meta-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+/* 双栏栅格：正文 + TOC 侧栏（>1200px；侧栏隐藏见 §07 断点） */
+.post-full__layout {
+  display: grid;
+  grid-template-columns: minmax(0, var(--layout-page)) var(--layout-toc);
+  gap: var(--space-16);
+  justify-content: center;
+  align-items: start;
+}
+
+/* 文末元素对齐正文列（720px） */
+.post-full__license,
+.post-adjacent,
+.post-full .comments {
+  max-width: var(--layout-page);
+}
+
+/* 版权行：发丝线上方的弱化小字 */
+.post-full__license {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--color-text-tertiary);
+}
+
+.post-full__license-icon {
+  margin-top: 0.22em;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   04 · 通用页头（归档 / 标签 / 分类 / 独立页）
+   ════════════════════════════════════════════════════════════════ */
+.page-header {
+  padding: var(--space-8) 0;
+}
+
+.page-header__eyebrow {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  color: var(--color-text-tertiary);
+}
+
+.page-header__title {
+  font-size: clamp(26px, 4vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.page-header__count {
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* 独立页（关于）堆叠式页头：居中，头像 + 标题 + 社交行 */
+.page-header--stack {
+  padding: var(--space-12) 0;
+  text-align: center;
+}
+
+/* 头像：accent 细环 + 4px 背景间隙（双层 box-shadow 实现） */
+.page-header__avatar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto var(--space-5);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-accent-medium);
+  box-shadow: 0 0 0 4px var(--color-bg);
+  object-fit: cover;
+}
+
+.page-header--stack .page-header__title {
+  font-size: var(--text-2xl);
+}
+
+.page-header__social {
+  margin-top: var(--space-5);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.page-header__social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-tertiary);
+  transition: color var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out);
+}
+
+.page-header__social-link:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+/* 独立页正文（与文章页同排版，prose.css 负责） */
+.page__content {
+  max-width: var(--layout-page);
+  margin-inline: auto;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   05 · 归档：年份 sticky 时间线（全页唯一装饰性结构）
+   ════════════════════════════════════════════════════════════════ */
+.archive-group + .archive-group {
+  margin-top: var(--space-10);
+}
+
+/* 年份标题：吸附于导航下方的胶囊磨砂浮签——与首页社交胶囊同款
+   立体配方（glass 底 + 发丝边 + 悬浮阴影），年份与篇数收入胶囊内 */
+.archive-group__year {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-2));
+  z-index: calc(var(--z-nav) - 1);   /* 置于导航之下 */
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: var(--color-text-secondary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+.archive-group__count {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* 文章行：mono 日期定宽 + 标题；行 hover 铺雾蓝浅底、零位移 */
+.archive-list {
+  list-style: none;
+}
+
+.archive-list__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  margin-inline: calc(-1 * var(--space-4));   /* 浅底出血对齐 */
+  border-radius: var(--radius-sm);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.archive-list__item:hover {
+  background: var(--color-accent-soft);
+}
+
+/* 归档页直接叠在背景图上（无卡片面），日期用次级色保可读 */
+.archive-list__date {
+  flex: 0 0 3.5em;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.archive-list__link {
+  font-weight: 500;
+  line-height: 1.6;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.archive-list__link:hover {
+  color: var(--color-accent);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   06 · 标签 / 分类总览：流式 chips
+   ════════════════════════════════════════════════════════════════ */
+.tag-cloud,
+.category-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-4) 0;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   07 · 响应式（断点为第 1 轮 §4.4 常量；移动端保留模糊与动效，
+       仅收紧间距与字号）
+   ════════════════════════════════════════════════════════════════ */
+
+/* xl 1200px：文章双栏 → 单栏，TOC 侧栏隐藏（drawer 模式不受影响） */
+@media (max-width: 1200px) {
+  .page--post {
+    max-width: var(--layout-page);
+  }
+
+  .post-full__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .toc-panel--side {
+    display: none;
+  }
+}
+
+/* md 768px：紧凑间距（导航切换见 layout.css §07） */
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--space-10) 0 var(--space-8);
+  }
+
+  .site-main {
+    padding-bottom: var(--space-12);
+  }
+
+  .archive-group__year {
+    font-size: var(--text-xl);
+  }
+}
+
+/* sm 640px：手机字号与热区 */
+@media (max-width: 640px) {
+  .post-card__body {
+    padding: var(--space-5);
+  }
+
+  .post-card__title {
+    font-size: var(--text-lg);
+    line-height: 1.45;
+  }
+
+  /* 上下篇改单列 */
+  .post-adjacent {
+    grid-template-columns: 1fr;
+  }
+
+  .post-adjacent__item--next {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .pagination__item {
+    min-width: 32px;
+    height: 32px;
+  }
+
+  .chip--lg {
+    font-size: var(--text-sm);
+    padding: 4px 12px;
+  }
+
+  .chip--hot {
+    font-size: var(--text-base);
+  }
+
+  .page-header__avatar {
+    width: 80px;
+    height: 80px;
+  }
+}

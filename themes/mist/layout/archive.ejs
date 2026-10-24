@@ -1,0 +1,44 @@
+<%#
+  Mist · 归档页：按年分组的时间线
+  ─────────────────────────────────────────────────
+  年份大标题（32px / 字重 300 / tertiary 色 / 右侧篇数）sticky 于
+  导航下方（毛玻璃底）；文章行为 日期（mono 定宽）+ 标题，
+  行 hover 铺 accent-soft 圆角底、零位移。
+  分组逻辑：posts 已按时间倒序，顺序归并即可；
+  helpers.js（后续轮次）就位后可替换为 groupByYear() 助手。
+%>
+<%
+  const groups = [];
+  page.posts.forEach(function (p) {
+    const y = p.date.format('YYYY');
+    const last = groups[groups.length - 1];
+    if (last && last.year === y) { last.posts.push(p); }
+    else { groups.push({ year: y, posts: [p] }); }
+  });
+%>
+<div class="page page--archive">
+
+  <header class="page-header">
+    <h1 class="page-header__title"><%= __('archive.title') %></h1>
+    <p class="page-header__count"><%= site.posts.length %> <%= __('archive.count') %></p>
+  </header>
+
+  <% groups.forEach(function (group) { %>
+  <section class="archive-group">
+    <h2 class="archive-group__year">
+      <%= group.year %>
+      <span class="archive-group__count"><%= group.posts.length %> <%= __('archive.count') %></span>
+    </h2>
+    <ul class="archive-list">
+      <% group.posts.forEach(function (post) { %>
+      <li class="archive-list__item">
+        <time class="archive-list__date"><%= date(post.date, 'MM-DD') %></time>
+        <a class="archive-list__link" href="<%- url_for(post.path) %>"><%= post.title %></a>
+      </li>
+      <% }) %>
+    </ul>
+  </section>
+  <% }) %>
+
+  <%- partial('partial/pagination') %>
+</div>

@@ -1,0 +1,38 @@
+<%#
+  Mist · 分类页（结构与 tag.ejs 对称）
+  ─────────────────────────────────────────────────
+  1. 单分类（/categories/:name/）：页头 → 复用首页卡片流与分页
+  2. 分类总览：需 source/categories/index.md 且 front-matter 写
+     layout: category；page.category 为空 → 渲染全站分类 chips
+%>
+<div class="page page--category">
+
+  <% if (page.category) { %>
+  <header class="page-header">
+    <p class="page-header__eyebrow"><%= __('category.title') %></p>
+    <h1 class="page-header__title"><%= page.category %></h1>
+    <p class="page-header__count"><%= page.posts.length %> <%= __('category.count') %></p>
+  </header>
+
+  <div class="post-list">
+    <% page.posts.forEach(function (post) { %>
+      <%- partial('partial/post-card', { post: post }) %>
+    <% }) %>
+  </div>
+
+  <%- partial('partial/pagination') %>
+
+  <% } else { %>
+  <header class="page-header">
+    <h1 class="page-header__title"><%= __('category.all') %></h1>
+  </header>
+
+  <div class="category-cloud">
+    <% site.categories.forEach(function (cat) { %>
+    <a class="chip chip--lg <%= cat.length >= 5 ? 'chip--hot' : '' %>" href="<%- url_for(cat.path) %>">
+      <%= cat.name %><sup class="chip__count"><%= cat.length %></sup>
+    </a>
+    <% }) %>
+  </div>
+  <% } %>
+</div>

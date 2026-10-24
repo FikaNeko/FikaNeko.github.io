@@ -1,0 +1,178 @@
+/* ════════════════════════════════════════════════════════════════
+   Mist · tokens.css — 设计令牌（全站唯一取值入口）
+   ════════════════════════════════════════════════════════════════
+   - 用户可配置项（colors / shape / glass / motion）的默认值与
+     _config.yml 保持一致；head.ejs 的内联覆盖层会按配置覆写同名
+     变量，因此换肤无需改动本文件
+   - 派生令牌（accent-soft / glass-bg / card-bg 等）先给 rgba 兜底
+     值，再在 @supports (color-mix) 中升级为「随基色自动推导」——
+     基色被配置覆盖时派生色自动跟随（含暗色）
+   - 组件代码只允许引用令牌，禁止出现物理色值（第 1 轮 §4.1）
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── 01 · 字体族（系统栈，零请求） ─────────────────────────── */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               "PingFang SC", "Hiragino Sans GB", "Noto Sans SC",
+               "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono",
+               Consolas, Menlo, monospace;
+
+  /* ── 02 · 字号阶梯（14/15/17/22/28/36）与行高 ──────────────── */
+  --text-sm:   14px;   /* 辅助信息：日期、meta、chips */
+  --text-base: 15px;   /* UI 默认 */
+  --text-lg:   17px;   /* 正文（中文阅读优化） */
+  --text-xl:   22px;   /* 卡片标题 */
+  --text-2xl:  28px;   /* 页面标题 / 归档年份 */
+  --text-3xl:  36px;   /* hero 站名 */
+  --leading-ui:    1.5;
+  --leading-prose: 1.8;
+
+  /* ── 03 · 间距（4px 基，1 = 4px；未列出的档位按同规则推算） ── */
+  --space-1:  4px;   --space-2:  8px;   --space-3:  12px;
+  --space-4:  16px;  --space-5:  20px;  --space-6:  24px;
+  --space-8:  32px;  --space-10: 40px;  --space-12: 48px;
+  --space-16: 64px;  --space-20: 80px;  --space-24: 96px;
+
+  /* ── 04 · 中性色（浅色默认值 = _config.yml colors.light） ──── */
+  --color-bg:             #FAFAF8;              /* 米白页面底 */
+  --color-surface:        #FFFFFF;              /* 卡片 / 玻璃面板基色 */
+  --color-text:           #1D1D1F;              /* 深墨正文 */
+  --color-text-secondary: #6E6E73;              /* 次级文本 */
+  --color-text-tertiary:  #A1A1A6;              /* 弱化文本：日期、计数 */
+  --color-border:         rgba(0, 0, 0, 0.06);  /* 发丝分割线 */
+
+  /* ── 05 · 强调色（雾蓝）与派生层 ──────────────────────────── */
+  --color-accent:          #5E7A99;                 /* 交互主色 */
+  --color-accent-soft:     rgba(94, 122, 153, 0.12); /* hover 底、标签底 */
+  --color-accent-medium:   rgba(94, 122, 153, 0.45); /* 引用竖条、标题下划线 */
+  --color-accent-selection: rgba(94, 122, 153, 0.28); /* 文本选区 */
+
+  /* ── 06 · 形状（与 shape.* 配置一致） ─────────────────────── */
+  --radius-sm:   8px;    /* chips、按钮、归档行 */
+  --radius-md:   14px;   /* 代码块、输入框、正文图片 */
+  --radius-lg:   20px;   /* 卡片、玻璃面板 */
+  --radius-full: 999px;  /* 头像、胶囊 */
+
+  /* ── 07 · 阴影（shadow: false 时被 head.ejs 覆盖层置空） ──── */
+  --shadow-sm: 0 1px 2px rgba(15, 17, 21, 0.04), 0 0 1px rgba(15, 17, 21, 0.05);
+  --shadow-md: 0 2px 8px rgba(15, 17, 21, 0.06), 0 12px 32px rgba(15, 17, 21, 0.10);
+
+  /* ── 08 · 毛玻璃参数（glass.* 配置；enabled=false 时
+       head.ejs 会将 blur 置 0、opacity 置 1，等效关闭） ─────── */
+  --glass-blur:     20px;
+  --glass-saturate: 1.8;
+  --glass-opacity:  0.72;
+  /* 成品面板底 / 边：rgba 兜底，color-mix 升级后随 surface 自动推导 */
+  --glass-bg:     rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  /* 卡片专用底（比面板更实，保证长文可读性），hover 提升不透明度 */
+  --card-bg:        rgba(255, 255, 255, 0.86);
+  --card-bg-hover:  rgba(255, 255, 255, 0.93);
+
+  /* ── 08.5 · 背景图（background.* 配置）
+       未配置 image 时 --bg-layers 保持 none，整个图层零渲染、零影响；
+       配置后由 head.ejs 注入：--bg-layers = 遮罩层 + 图片层。
+       遮罩色随明暗主题切换（亮色铺米白 / 暗色铺深墨），α 由配置控制 */
+  --bg-layers: none;
+  --bg-overlay-alpha: 0.55;
+  --bg-overlay-color: rgba(250, 250, 248, var(--bg-overlay-alpha));
+
+  /* ── 09 · 代码高亮（低饱和双主题，令牌色） ────────────────── */
+  --code-bg:         #F4F4F1;                    /* 代码块底 */
+  --code-inline-bg:  rgba(0, 0, 0, 0.05);        /* 行内代码底 */
+  --code-comment:    #98989D;   /* 注释：灰 */
+  --code-keyword:    #7A6F9C;   /* 关键字：灰紫 */
+  --code-string:     #647E6B;   /* 字符串：灰绿 */
+  --code-number:     #9A7B76;   /* 数字：灰赤 */
+  --code-fn:         #56748F;   /* 函数/标题：深雾蓝 */
+  --code-attr:       #8A7357;   /* 属性/变量：灰金 */
+
+  /* ── 10 · 背景氛围（模糊光斑颜色，明暗各一套） ────────────── */
+  --atmo-a: rgba(94, 122, 153, 0.10);   /* 左上：雾蓝光晕 */
+  --atmo-b: rgba(201, 185, 158, 0.12);  /* 右下：暖沙光晕 */
+
+  /* ── 11 · 动效（motion.* 配置；enabled=false 时时长归 0，
+       所有动画与氛围漂移随之静止） ──────────────────────────── */
+  --dur-fast: 0.3s;   /* hover、链接、按钮 */
+  --dur-base: 0.4s;   /* 卡片、面板、抽屉 */
+  --dur-slow: 0.6s;   /* 页面进场、hero */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);   /* easeOutQuint，无回弹 */
+
+  /* ── 12 · 布局尺寸与层级 ─────────────────────────────────── */
+  --layout-page: 720px;   /* 正文版心 */
+  --layout-list: 760px;   /* 首页卡片列 */
+  --layout-wide: 1080px;  /* 导航/页脚内宽 */
+  --layout-toc:  260px;   /* TOC 侧栏宽 */
+  --nav-height:  64px;    /* 导航高（is-scrolled 时局部覆写为 52px） */
+  --z-nav:     100;       /* 吸顶导航 */
+  --z-drawer:  90;        /* 全屏抽屉 / 目录抽屉（导航之下，保留关闭入口） */
+  --z-float:   80;        /* 回顶 / TOC 浮钮 */
+  --z-tooltip: 70;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   暗色模式：只覆盖「会变化的令牌」，派生色重新给出 rgba 兜底
+   ════════════════════════════════════════════════════════════════ */
+html[data-theme="dark"] {
+  /* 中性色 */
+  --color-bg:             #141518;
+  --color-surface:        #1C1E22;
+  --color-text:           #ECEDEF;
+  --color-text-secondary: #9B9DA3;
+  --color-text-tertiary:  #6F7178;
+  --color-border:         rgba(255, 255, 255, 0.08);
+
+  /* 强调色（雾蓝提亮，保证暗底对比）与派生 */
+  --color-accent:          #8FA9C4;
+  --color-accent-soft:     rgba(143, 169, 196, 0.14);
+  --color-accent-medium:   rgba(143, 169, 196, 0.45);
+  --color-accent-selection: rgba(143, 169, 196, 0.30);
+
+  /* 阴影加深 */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.45);
+
+  /* 玻璃与卡片兜底 */
+  --glass-bg:     rgba(28, 30, 34, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --card-bg:        rgba(28, 30, 34, 0.86);
+  --card-bg-hover:  rgba(28, 30, 34, 0.93);
+
+  /* 背景图遮罩：暗色下铺深墨（α 同 --bg-overlay-alpha） */
+  --bg-overlay-color: rgba(20, 21, 24, var(--bg-overlay-alpha));
+
+  /* 代码高亮 */
+  --code-bg:        #191B1F;
+  --code-inline-bg: rgba(255, 255, 255, 0.07);
+  --code-comment:   #6E7076;
+  --code-keyword:   #A599C8;
+  --code-string:    #8FAF9B;
+  --code-number:    #C9A19B;
+  --code-fn:        #93AECB;
+  --code-attr:      #C0A488;
+
+  /* 氛围光斑（更收敛，灰紫替代暖沙） */
+  --atmo-a: rgba(143, 169, 196, 0.07);
+  --atmo-b: rgba(139, 127, 180, 0.06);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   派生令牌升级：支持 color-mix 时改为「引用基色」的动态推导。
+   变量在 :root（= html）上求值，而暗色覆盖也在同一元素上，
+   因此基色切换后派生色自动跟随，无需重复声明暗色版本。
+   ════════════════════════════════════════════════════════════════ */
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  :root {
+    --color-accent-soft:      color-mix(in srgb, var(--color-accent) 12%, transparent);
+    --color-accent-medium:    color-mix(in srgb, var(--color-accent) 45%, transparent);
+    --color-accent-selection: color-mix(in srgb, var(--color-accent) 28%, transparent);
+    /* --glass-opacity 由 head.ejs 注入（0.72 / 关闭时 1） */
+    --glass-bg:     color-mix(in srgb, var(--color-surface) calc(var(--glass-opacity) * 100%), transparent);
+    --glass-border: color-mix(in srgb, var(--color-text) 8%, transparent);
+    --card-bg:        color-mix(in srgb, var(--color-surface) 86%, transparent);
+    --card-bg-hover:  color-mix(in srgb, var(--color-surface) 93%, transparent);
+    --code-inline-bg: color-mix(in srgb, var(--color-text) 6%, transparent);
+  }
+}

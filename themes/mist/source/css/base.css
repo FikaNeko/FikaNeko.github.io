@@ -1,0 +1,294 @@
+/* ════════════════════════════════════════════════════════════════
+   Mist · base.css — reset / 元素默认 / 关键帧库 / 无障碍
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── 01 · 现代化 reset ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* 锚点跳转不被吸顶导航遮挡；平滑滚动（reduced-motion 下禁用） */
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + var(--space-4));
+}
+
+body {
+  overflow-x: clip;   /* 氛围光斑超出视口时不出现横向滚动条 */
+}
+
+/* ── 02 · 正文与排版基调（标题/正文对比：600 字重 + 层级色） ── */
+body.site {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-ui);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text);
+  overflow-wrap: break-word;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+strong {
+  font-weight: 600;
+}
+
+small {
+  font-size: var(--text-sm);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── 03 · 媒体 ────────────────────────────────────────────────── */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── 04 · 表单元素继承字体 ───────────────────────────────────── */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ── 05 · 选区与焦点（无障碍底线，第 1 轮 §4.5） ─────────────── */
+::selection {
+  background: var(--color-accent-selection);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ── 06 · 滚动条（克制细化，跟随主题） ───────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-text) 22%, transparent);
+  border-radius: var(--radius-full);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-text) 22%, transparent) transparent;
+}
+
+/* ── 07 · 图标基类（icon.ejs 输出 .icon，随字号缩放） ────────── */
+.icon {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.18em;
+  flex-shrink: 0;
+}
+
+/* ── 08 · 跳转链接（键盘可达性，聚焦前离屏隐藏） ─────────────── */
+.skip-link {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 200;   /* 必须高于一切，含导航 */
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  box-shadow: var(--shadow-md);
+  transform: translateY(calc(-100% - var(--space-8)));
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   09 · 动画关键帧库（全站唯一出处，便于二次调整）
+   全部使用 --dur-* / --ease-out 令牌：
+   motion.enabled = false 时时长归 0，动画等效禁用
+   ════════════════════════════════════════════════════════════════ */
+
+/* 淡入 */
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+/* 淡入上浮（滚动渐入 / 错峰进场的基础帧，8px 上移） */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* 轻微缩放进场（0.97 → 1） */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+/* 模糊渐显（blur 8px → 0） */
+@keyframes blur-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+}
+
+/* 页面进入：淡入 + 模糊渐显 + 轻微上移（.page-transition 用） */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(10px);
+  }
+}
+
+/* 页面离开：淡出 + 模糊渐隐（.page-transition.is-leaving 用） */
+@keyframes page-out {
+  to {
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+/* 背景图快速聚焦进场：半透明 + 模糊 → 清晰。
+   MPA 每次导航背景图都要重新解码，此动画把"就绪后突兀弹出"
+   变为"柔和聚焦"，与 .page-transition 的内容进场连成整体
+   （配合 head.ejs 的 preload 使用；has-bg-image 类由 layout.ejs
+   在配置了 background.image 时输出） */
+@keyframes bg-blur-in {
+  from {
+    opacity: 0;
+    filter: blur(14px);
+  }
+}
+
+/* 氛围光斑漂移（极慢，24–42s，由 --dur-slow 派生） */
+@keyframes glow-drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(4%, 3%, 0) scale(1.08); }
+}
+
+@keyframes glow-drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.05); }
+  to   { transform: translate3d(-3%, -4%, 0) scale(1); }
+}
+
+/* 下滑箭头动效：原样移植自 Butterfly（source/css/_global/function.styl
+   的 scroll-down-effect）——1.5s 无限循环（默认 ease），
+   上浮 16px + 透明度 0.4↔1 脉动 */
+@keyframes scroll-down-effect {
+  0% {
+    opacity: 0.4;
+    transform: translate(0, 0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(0, -16px);
+  }
+
+  100% {
+    opacity: 0.4;
+    transform: translate(0, 0);
+  }
+}
+
+/* 打字机光标闪烁（硬切换，模拟终端光标） */
+@keyframes cursor-blink {
+  0%, 50%    { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* 一言出处进场：从右往左滑入 + 模糊渐清 + 淡入
+   （hitokoto.js 打字完成后触发，配合 .is-in 使用；
+   to 必须显式写 opacity:1——元素基础态是隐藏的，
+   隐式 to 会取基础态导致动画"从 0 到 0"） */
+@keyframes from-reveal {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+}
+
+/* ── 错峰工具类：子元素依次 fade-up（60ms 步进，前 8 个） ──── */
+.stagger > * {
+  animation: fade-up var(--dur-slow) var(--ease-out) backwards;
+}
+
+.stagger > :nth-child(2) { animation-delay: 60ms; }
+.stagger > :nth-child(3) { animation-delay: 120ms; }
+.stagger > :nth-child(4) { animation-delay: 180ms; }
+.stagger > :nth-child(5) { animation-delay: 240ms; }
+.stagger > :nth-child(6) { animation-delay: 300ms; }
+.stagger > :nth-child(7) { animation-delay: 360ms; }
+.stagger > :nth-child(8) { animation-delay: 420ms; }
+
+/* ── 10 · 动效降级：用户偏好减少动效时全部静止 ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}

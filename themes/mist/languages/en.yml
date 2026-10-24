@@ -1,0 +1,51 @@
+# Mist theme i18n (English)
+nav: Site navigation
+menu: Menu
+close: Close
+back_to_top: Back to top
+pagination: Pagination
+comments: Comments
+
+theme:
+  toggle: Toggle color theme
+
+a11y:
+  skip_to_content: Skip to main content
+
+home:
+  read_more: Read more
+  empty: No posts yet
+  prev_page: Previous page
+  next_page: Next page
+  scroll_down: Scroll to posts
+
+toc:
+  title: Table of contents
+  open: Open table of contents
+
+code:
+  copy: Copy
+  copied: Copied!
+
+post:
+  prev: Newer post
+  next: Older post
+  words: words
+  minutes: min read
+
+archive:
+  title: Archive
+  count: posts
+
+tag:
+  title: Tag
+  all: All tags
+  count: posts
+
+category:
+  title: Category
+  all: All categories
+  count: posts
+
+footer:
+  powered_by: Powered by Hexo · Theme Mist

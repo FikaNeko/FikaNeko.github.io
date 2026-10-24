@@ -1,0 +1,50 @@
+<%#
+  Mist · 文章卡片（index / tag / category 共用）
+  ─────────────────────────────────────────────────
+  结构：可选封面（front-matter cover 字段）→ meta（日期 + 标签 chips）→
+        标题 → 摘要（excerpt_lines 行 CSS 截断）→ 阅读全文
+  交互：
+  - 悬停：translateY(-2px) 上浮 + 阴影 sm→md + 背景模糊度微变
+    （纯 CSS :hover，0.4s ease-out，无位移弹跳）
+  - js-reveal：reveal.js 滚动渐入挂载点；motion.reveal 关闭时自动忽略
+  说明：摘要优先取 <!-- more --> 手动摘要，否则正文去标签截断 120 字
+%>
+<%
+  const showCover = theme.home.cover && post.cover;
+  const plain = strip_html(post.excerpt || post.content || '').replace(/\s+/g, ' ').trim();
+  const excerpt = plain.length > 120 ? plain.slice(0, 120) + '…' : plain;
+%>
+<article class="post-card js-reveal <%= showCover ? 'post-card--cover' : 'post-card--text' %>">
+
+  <% if (showCover) { %>
+  <a class="post-card__cover" href="<%- url_for(post.path) %>" tabindex="-1" aria-hidden="true">
+    <img src="<%- url_for(post.cover) %>" alt="" loading="lazy">
+  </a>
+  <% } %>
+
+  <div class="post-card__body">
+    <div class="post-card__meta">
+      <time class="post-card__date" datetime="<%= date(post.date, 'YYYY-MM-DD') %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+      <% if (post.tags && post.tags.length) { %>
+      <div class="post-card__tags">
+        <% post.tags.forEach(function (tag) { %>
+        <a class="chip" href="<%- url_for(tag.path) %>"><%= tag.name %></a>
+        <% }) %>
+      </div>
+      <% } %>
+    </div>
+
+    <h2 class="post-card__title">
+      <a href="<%- url_for(post.path) %>"><%= post.title || 'Untitled' %></a>
+    </h2>
+
+    <% if (excerpt) { %>
+    <p class="post-card__excerpt"><%= excerpt %></p>
+    <% } %>
+
+    <a class="post-card__more" href="<%- url_for(post.path) %>">
+      <%= __('home.read_more') %>
+      <%- partial('partial/icon', { name: 'arrow-right', cls: 'post-card__more-icon' }) %>
+    </a>
+  </div>
+</article>

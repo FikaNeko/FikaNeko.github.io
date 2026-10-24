@@ -1,0 +1,67 @@
+<%#
+  Mist · 首页：hero（仅第 1 页）+ 文章卡片流 + 分页
+  ─────────────────────────────────────────────────
+  hero 两种形态（home.hero_full 控制）：
+  - 全屏封面：hero 占满首屏（文章下滑可见），居中排版，
+    含一言打字机（js-hitokoto，hitokoto.js 驱动）与底部下滑箭头
+  - 常规左对齐：文档感排版（默认旧行为）
+  卡片流为单列（版心 760px），滚动渐入由 reveal.js / CSS 协作完成。
+%>
+<div class="page page--index">
+
+  <% if (theme.home.hero && page.current === 1) { %>
+  <section class="hero <%= theme.home.hero_full ? 'hero--full' : '' %>">
+    <% if (theme.brand.avatar) { %>
+    <img class="hero__avatar" src="<%- url_for(theme.brand.avatar) %>" alt="<%= config.author || config.title %>">
+    <% } %>
+    <h1 class="hero__title"><%= config.title %></h1>
+    <% if (theme.brand.bio) { %>
+    <p class="hero__bio"><%= theme.brand.bio %></p>
+    <% } %>
+
+    <%/* 一言打字机：文本与光标分离，出处打字完成后淡入追加 */%>
+    <% if (theme.home.hitokoto_api) { %>
+    <p class="hero__hitokoto">
+      <span class="hero__hitokoto-text js-hitokoto"></span><span class="hero__hitokoto-cursor" aria-hidden="true"></span><span class="hero__hitokoto-from js-hitokoto-from"></span>
+    </p>
+    <% } %>
+
+    <%/* 社交图标以 source/icons/ 文件夹为唯一来源：
+           无对应 <key>.svg 的社交项不显示（custom_icon 助手探测），
+           全部缺失时整个胶囊栏不渲染 */%>
+    <% const socials = Object.entries(theme.social || {}).filter(function (entry) {
+         return typeof custom_icon === 'function' && custom_icon(entry[0]);
+       }); %>
+    <% if (socials.length) { %>
+    <div class="hero__social">
+      <% socials.forEach(function (entry) {
+           const key = entry[0];
+           const url = entry[1];
+           const external = /^https?:/.test(url); %>
+      <a class="hero__social-link" href="<%- url %>"<%- external ? ' target="_blank" rel="noopener"' : '' %> aria-label="<%= key %>">
+        <%- partial('partial/icon', { name: key }) %>
+      </a>
+      <% }) %>
+    </div>
+    <% } %>
+
+    <%/* 全屏封面模式：底部下滑箭头，锚点跳到文章区（smooth scroll 由 CSS 承担） */%>
+    <% if (theme.home.hero_full) { %>
+    <a class="hero__scroll-down" href="#posts" aria-label="<%= __('home.scroll_down') %>">
+      <%- partial('partial/icon', { name: 'angle-down', cls: 'hero__scroll-down-icon' }) %>
+    </a>
+    <% } %>
+  </section>
+  <% } %>
+
+  <div class="post-list" id="posts">
+    <% page.posts.forEach(function (post) { %>
+      <%- partial('partial/post-card', { post: post }) %>
+    <% }) %>
+    <% if (!page.posts.length) { %>
+    <p class="post-list__empty"><%= __('home.empty') %></p>
+    <% } %>
+  </div>
+
+  <%- partial('partial/pagination') %>
+</div>

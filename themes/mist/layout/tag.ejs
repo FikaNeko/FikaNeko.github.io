@@ -1,0 +1,40 @@
+<%#
+  Mist · 标签页（双形态）
+  ─────────────────────────────────────────────────
+  1. 单标签（/tags/:tag/，hexo-generator-tag 传入 page.tag + page.posts）：
+     页头「标签 · 名（n 篇）」→ 复用首页卡片流与分页
+  2. 标签总览（/tags/）：需 source/tags/index.md 且 front-matter 写
+     layout: tag；此时 page.tag 为空 → 渲染全站标签 chips
+     （篇数 mono 上标；≥5 篇加 chip--hot 略放大）
+%>
+<div class="page page--tag">
+
+  <% if (page.tag) { %>
+  <header class="page-header">
+    <p class="page-header__eyebrow"><%= __('tag.title') %></p>
+    <h1 class="page-header__title"><%= page.tag %></h1>
+    <p class="page-header__count"><%= page.posts.length %> <%= __('tag.count') %></p>
+  </header>
+
+  <div class="post-list">
+    <% page.posts.forEach(function (post) { %>
+      <%- partial('partial/post-card', { post: post }) %>
+    <% }) %>
+  </div>
+
+  <%- partial('partial/pagination') %>
+
+  <% } else { %>
+  <header class="page-header">
+    <h1 class="page-header__title"><%= __('tag.all') %></h1>
+  </header>
+
+  <div class="tag-cloud">
+    <% site.tags.forEach(function (tag) { %>
+    <a class="chip chip--lg <%= tag.length >= 5 ? 'chip--hot' : '' %>" href="<%- url_for(tag.path) %>">
+      <%= tag.name %><sup class="chip__count"><%= tag.length %></sup>
+    </a>
+    <% }) %>
+  </div>
+  <% } %>
+</div>

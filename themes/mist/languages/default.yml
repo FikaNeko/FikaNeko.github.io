@@ -1,0 +1,51 @@
+# Mist 主题 i18n 兜底文案（config.language 未命中时使用；键名约定见第 1 轮 §4.3）
+nav: 站点导航
+menu: 菜单
+close: 关闭
+back_to_top: 返回顶部
+pagination: 分页
+comments: 评论
+
+theme:
+  toggle: 切换明暗模式
+
+a11y:
+  skip_to_content: 跳到主要内容
+
+home:
+  read_more: 阅读全文
+  empty: 还没有文章
+  prev_page: 上一页
+  next_page: 下一页
+  scroll_down: 下滑浏览文章
+
+toc:
+  title: 目录
+  open: 打开目录
+
+code:
+  copy: 复制
+  copied: 已复制！
+
+post:
+  prev: 上一篇
+  next: 下一篇
+  words: 字
+  minutes: 分钟阅读
+
+archive:
+  title: 归档
+  count: 篇
+
+tag:
+  title: 标签
+  all: 全部标签
+  count: 篇
+
+category:
+  title: 分类
+  all: 全部分类
+  count: 篇
+
+footer:
+  powered_by: Powered by Hexo · Theme Mist

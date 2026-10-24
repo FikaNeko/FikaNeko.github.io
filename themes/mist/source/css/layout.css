@@ -1,0 +1,352 @@
+/* ════════════════════════════════════════════════════════════════
+   Mist · layout.css — 背景氛围 / 版心 / 吸顶导航 / 页脚 / 页面过渡
+   ════════════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════════════
+   01 · 背景层：底层背景图（可选） + 上层氛围光斑
+   - ::before 背景图：--bg-layers 未配置（none）时零渲染；
+     配置后 = 「遮罩色 linear-gradient + 图片」两层叠加。
+     用固定定位元素而非 background-attachment: fixed
+     （iOS Safari 不支持 fixed attachment 且会引发重绘）
+   - ::after 氛围光斑：两团径向渐变（雾蓝 + 暖沙）合并于同一
+     全屏层，极慢漂移；时长由 --dur-slow 派生，motion 关闭即静止
+   - 两层均在内容之下（z: -2 / -1），光斑叠于背景图之上
+   ════════════════════════════════════════════════════════════════ */
+body.site::before,
+body.site::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* 底层：背景图 + 主题化遮罩（未配置时 background-image: none） */
+body.site::before {
+  z-index: -2;
+  background-image: var(--bg-layers, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 配置背景图时：页面切换的快速聚焦进场（0.4s），
+   掩盖背景图重新解码期间的底色闪现；motion 关闭自动失效 */
+body.site.has-bg-image::before {
+  animation: bg-blur-in var(--dur-base) var(--ease-out);
+}
+
+/* 上层：氛围光斑（径向渐变自身实现"模糊观感"，不用 filter: blur()） */
+body.site::after {
+  z-index: -1;
+  background-image:
+    radial-gradient(circle 30vmax at 15% 8%, var(--atmo-a) 0%, transparent 68%),
+    radial-gradient(circle 26vmax at 88% 92%, var(--atmo-b) 0%, transparent 68%);
+  animation: glow-drift-a calc(var(--dur-slow) * 80) ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   02 · 主内容区与页面过渡容器
+   - .site-main 撑满剩余高度（页脚沉底），内宽 --layout-wide
+   - .page-transition：路由切换淡入淡出 + 模糊
+     进入 = page-in（本页加载即播）；离开 = JS 加 is-leaving 后
+     播 page-out 再跳转（契约见 main.js）
+   ════════════════════════════════════════════════════════════════ */
+.site-main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: var(--layout-wide);
+  margin-inline: auto;
+  padding: var(--space-6) clamp(var(--space-4), 4vw, var(--space-8)) var(--space-16);
+}
+
+.page-transition {
+  animation: page-in var(--dur-slow) var(--ease-out) both;
+}
+
+.page-transition.is-leaving {
+  animation: page-out var(--dur-fast) var(--ease-out) both;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   03 · 吸顶毛玻璃导航
+   - 默认透明融入背景；.is-scrolled（滚动 >8px，nav.js 添加）后：
+       高度收缩   --nav-height 64px → 52px（局部变量覆写）
+       模糊度增强 --glass-blur × 1.6（calc 派生，无需额外配置）
+   - data-glass-on-scroll="false"：跳过透明阶段，始终毛玻璃
+   ════════════════════════════════════════════════════════════════ */
+.site-nav {
+  position: relative;
+  z-index: var(--z-nav);
+  height: var(--nav-height);
+  border-bottom: 1px solid transparent;
+  /* margin-bottom 与 height 同步过渡：收缩期间两者互补，
+     流内占位（height + margin）任意瞬间恒定，内容零位移 */
+  transition:
+    height var(--dur-fast) var(--ease-out),
+    margin-bottom var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    backdrop-filter var(--dur-fast) var(--ease-out),
+    -webkit-backdrop-filter var(--dur-fast) var(--ease-out);
+}
+
+.site-nav--sticky {
+  position: sticky;
+  top: 0;
+}
+
+.site-nav__inner {
+  width: 100%;
+  max-width: var(--layout-wide);
+  height: 100%;
+  margin-inline: auto;
+  padding-inline: clamp(var(--space-4), 4vw, var(--space-6));
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* 品牌 */
+.site-nav__brand-text {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.site-nav__brand:hover .site-nav__brand-text {
+  opacity: 0.72;
+}
+
+/* 菜单：hover / 当前项渐变至雾蓝（无下划线动画，保持克制） */
+.site-nav__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-left: auto;
+}
+
+.site-nav__link {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.site-nav__link:hover,
+.site-nav__link.is-active {
+  color: var(--color-accent);
+}
+
+.site-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* 汉堡按钮仅移动端显示（§06 断点切换）。
+   加元素选择器提高优先级：否则被后加载的 .icon-btn 的
+   display:inline-flex（components.css）同优先级覆盖 */
+button.site-nav__burger {
+  display: none;
+}
+
+/* ── 玻璃化状态：滚动后 / 配置为常玻璃 ─────────────────────── */
+.site-nav.is-scrolled,
+.site-nav[data-glass-on-scroll="false"] {
+  background: var(--glass-bg);
+  border-bottom-color: var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+/* 滚动态：高度收缩 + 模糊增强（置于上一条之后，优先级更高）。
+   margin-bottom 补偿收缩量（64px = 根部导航高度），流内占位
+   恒为 64px——消除"收缩 → 内容位移 12px → 滚动锚定补偿 scrollY
+   → 跨回阈值 → 状态翻转"的自持振荡（导航临界抖动的根因） */
+.site-nav.is-scrolled {
+  --nav-height: 52px;
+  margin-bottom: calc(64px - var(--nav-height));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturate));
+}
+
+/* ── 明暗切换图标：显示"将切换到"的模式图标 ───────────────── */
+html:not([data-theme="dark"]) .icon-btn__icon--sun {
+  display: none;
+}
+
+html[data-theme="dark"] .icon-btn__icon--moon {
+  display: none;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   04 · 移动端全屏玻璃抽屉（<768px；桌面整个移除）
+   - .is-open 由 nav.js 切换；菜单项按 nth-of-type 错峰淡入上移
+     （60ms 步进；关闭时同样错峰退出）
+   - visibility 延迟切换，保证淡出动画播完后再隐藏
+   ════════════════════════════════════════════════════════════════ */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear var(--dur-base);
+}
+
+.mobile-menu.is-open {
+  visibility: visible;
+  pointer-events: auto;
+  transition: visibility 0s;
+}
+
+.mobile-menu__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 21, 24, 0.35);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.mobile-menu__panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--nav-height) + var(--space-8)) clamp(var(--space-5), 8vw, var(--space-12)) var(--space-10);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 1.2)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(calc(var(--glass-blur) * 1.2)) saturate(var(--glass-saturate));
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out);
+}
+
+.mobile-menu__close {
+  position: absolute;
+  top: calc(var(--nav-height) + var(--space-2));
+  right: var(--space-4);
+}
+
+.mobile-menu__link {
+  padding: var(--space-3) 0;
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--color-text);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+
+.mobile-menu__link:hover {
+  color: var(--color-accent);
+}
+
+/* 开启时：面板与遮罩进场 */
+.mobile-menu.is-open .mobile-menu__backdrop,
+.mobile-menu.is-open .mobile-menu__panel {
+  opacity: 1;
+  transform: none;
+}
+
+/* 开启时：菜单项淡入上浮（错峰延迟见下方 nth-of-type 规则；
+   此规则不可缺——否则链接停留在初始 opacity:0，抽屉只剩模糊层） */
+.mobile-menu.is-open .mobile-menu__link {
+  opacity: 1;
+  transform: none;
+}
+
+/* 菜单项错峰淡入（nth-of-type：不受关闭按钮 <button> 影响） */
+.mobile-menu.is-open .mobile-menu__link:nth-of-type(2) { transition-delay: 60ms; }
+.mobile-menu.is-open .mobile-menu__link:nth-of-type(3) { transition-delay: 120ms; }
+.mobile-menu.is-open .mobile-menu__link:nth-of-type(4) { transition-delay: 180ms; }
+.mobile-menu.is-open .mobile-menu__link:nth-of-type(5) { transition-delay: 240ms; }
+.mobile-menu.is-open .mobile-menu__link:nth-of-type(6) { transition-delay: 300ms; }
+.mobile-menu.is-open .mobile-menu__link:nth-of-type(7) { transition-delay: 360ms; }
+.mobile-menu.is-open .mobile-menu__link:nth-of-type(8) { transition-delay: 420ms; }
+
+/* ════════════════════════════════════════════════════════════════
+   05 · 页脚：发丝线上方分隔，小字居中（≥1024px 单行）
+   ════════════════════════════════════════════════════════════════ */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-6) 0 var(--space-8);
+}
+
+.site-footer__inner {
+  max-width: var(--layout-wide);
+  margin-inline: auto;
+  padding-inline: clamp(var(--space-4), 4vw, var(--space-6));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* 页脚直接叠背景图（无卡片面），文字用次级色保可读 */
+.site-footer__copyright,
+.site-footer__powered {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.site-footer__icp {
+  margin-left: var(--space-2);
+  color: var(--color-text-secondary);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.site-footer__icp:hover {
+  color: var(--color-text);
+}
+
+@media (min-width: 1024px) {
+  .site-footer__inner {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   06 · 明暗切换平滑过渡
+   契约（theme.js）：切换前 documentElement 设置 data-theme-anim，
+   400ms 后移除。仅在属性存在期间为全站开启颜色类过渡，
+   避免常驻 transition 影响其他交互性能。
+   ════════════════════════════════════════════════════════════════ */
+html[data-theme-anim] *,
+html[data-theme-anim] *::before,
+html[data-theme-anim] *::after {
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    fill var(--dur-fast) var(--ease-out),
+    stroke var(--dur-fast) var(--ease-out) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   07 · 断点：md 768px 桌面菜单 ↔ 移动抽屉切换
+   ════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .site-nav__menu {
+    display: none;
+  }
+
+  button.site-nav__burger {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none;
+  }
+}

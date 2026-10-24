@@ -1,0 +1,61 @@
+<%#
+  Mist · 全局骨架
+  ─────────────────────────────────────────────────
+  结构：skip-link（无障碍）→ 吸顶导航（partial/header）→
+        页面过渡容器（淡入淡出 + 模糊）→ 页脚（partial/footer）→
+        回到顶部按钮 → window.Mist 配置注入 → main.js 模块入口
+  约定：
+  - <html> 初始携带 no-js，head.ejs 的内联脚本会移除它并设置 data-theme
+  - 各页模板（index/post/...）渲染结果经 body 变量注入，根节点为 .page.page--*
+%>
+<!DOCTYPE html>
+<% const lang = (Array.isArray(config.language) ? config.language[0] : config.language) || 'zh-CN'; %>
+<html lang="<%= lang %>" class="no-js">
+<%- partial('partial/head') %>
+<body class="site<%= theme.background && theme.background.image ? ' has-bg-image' : '' %>">
+
+  <%/* 无障碍：键盘用户跳过导航直达内容（聚焦前视觉隐藏，样式见 base.css） */%>
+  <a class="skip-link" href="#main"><%= __('a11y.skip_to_content') %></a>
+
+  <%- partial('partial/header') %>
+
+  <%#
+    页面过渡容器（路由切换：淡入淡出 + 轻微模糊）
+    - 进入：CSS 对 .page-transition 播放入场动画（opacity 0→1，blur 8px→0）
+    - 离开：main.js 拦截站内链接，为其添加 is-leaving 后再跳转
+    - prefers-reduced-motion 下动画自动禁用（CSS 侧负责）
+  %>
+  <main class="site-main" id="main">
+    <div class="page-transition js-page-transition">
+      <%- body %>
+    </div>
+  </main>
+
+  <%- partial('partial/footer') %>
+
+  <%/* 回到顶部：滚动 >600px 时由 js-back-to-top 切换 is-visible（毛玻璃浮钮） */%>
+  <button class="back-to-top glass-panel js-back-to-top" type="button" aria-label="<%= __('back_to_top') %>">
+    <%- partial('partial/icon', { name: 'arrow-up' }) %>
+  </button>
+
+  <%#
+    主题配置注入：供 main.js 各模块（明暗切换/导航/动效/评论/目录）读取；
+    无 JS 环境下页面仍完整可用（渐进增强）
+  %>
+  <script>
+    window.Mist = <%- JSON.stringify({
+      appearance: theme.appearance,
+      glass: theme.glass,
+      motion: theme.motion,
+      nav: theme.nav,
+      home: theme.home,
+      post: theme.post,
+      code: { copy: __('code.copy'), copied: __('code.copied') },
+      comments: theme.comments
+    }) %>;
+  </script>
+
+  <%/* 唯一脚本入口（ES Module 自带 defer），内部再按模块拆分，见 source/js/ */%>
+  <script type="module" src="<%- url_for('js/main.js') %>"></script>
+</body>
+</html>

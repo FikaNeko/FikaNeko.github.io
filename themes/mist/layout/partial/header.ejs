@@ -1,0 +1,62 @@
+<%#
+  Mist · 吸顶毛玻璃导航 + 移动端全屏抽屉
+  ─────────────────────────────────────────────────
+  交互（由 nav.js 驱动，模板只提供结构与状态钩子）：
+  - 初始透明融入背景；滚动 >8px 后 js-nav 添加 is-scrolled：
+      · 高度收缩：--nav-height 64px → 52px（CSS 变量局部覆盖实现）
+      · 模糊度增强：--glass-blur ×1.6（calc 派生，无需额外配置）
+  - data-glass-on-scroll="false" 时跳过透明阶段，始终为毛玻璃
+  - <768px：菜单收进 js-mobile-menu 全屏玻璃抽屉，is-open 时逐项淡入
+  状态类：is-scrolled / is-active / is-open（约定见第 1 轮 §4.2）
+%>
+<header class="site-nav <%= theme.nav.sticky ? 'site-nav--sticky' : '' %> js-nav"
+        data-glass-on-scroll="<%= theme.nav.glass_on_scroll ? 'true' : 'false' %>">
+  <div class="site-nav__inner">
+
+    <%/* 品牌：优先 brand.logo_text，留空回退站点标题 */%>
+    <a class="site-nav__brand" href="<%- url_for('/') %>">
+      <span class="site-nav__brand-text"><%= theme.brand.logo_text || config.title %></span>
+    </a>
+
+    <%/* 桌面菜单（key=标题，value=链接，顺序即展示顺序） */%>
+    <nav class="site-nav__menu" aria-label="<%= __('nav') %>">
+      <% Object.entries(theme.menu || {}).forEach(function (entry) {
+           const name = entry[0];
+           const link = entry[1];
+           const active = link === '/' ? is_current('/', true) : is_current(link); %>
+      <a class="site-nav__link <%= active ? 'is-active' : '' %>"
+         href="<%- url_for(link) %>"<%- active ? ' aria-current="page"' : '' %>><%= name %></a>
+      <% }) %>
+    </nav>
+
+    <div class="site-nav__actions">
+      <%/* 明暗切换：两枚图标常驻，由 [data-theme] 控制显隐（无 JS 翻转） */%>
+      <% if (theme.appearance.toggle) { %>
+      <button class="icon-btn js-theme-toggle" type="button"
+              aria-label="<%= __('theme.toggle') %>" title="<%= __('theme.toggle') %>">
+        <%- partial('partial/icon', { name: 'moon', cls: 'icon-btn__icon icon-btn__icon--moon' }) %>
+        <%- partial('partial/icon', { name: 'sun',  cls: 'icon-btn__icon icon-btn__icon--sun' }) %>
+      </button>
+      <% } %>
+
+      <%/* 移动端汉堡（桌面隐藏），aria-expanded 由 nav.js 维护 */%>
+      <button class="icon-btn site-nav__burger js-menu-toggle" type="button"
+              aria-label="<%= __('menu') %>" aria-expanded="false" aria-controls="mobile-menu">
+        <%- partial('partial/icon', { name: 'menu', cls: 'site-nav__burger-icon' }) %>
+      </button>
+    </div>
+  </div>
+</header>
+
+<%# 移动端全屏抽屉：backdrop 与面板，菜单项与桌面共用 theme.menu %>
+<div class="mobile-menu js-mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__backdrop js-menu-close"></div>
+  <nav class="mobile-menu__panel glass-panel" aria-label="<%= __('menu') %>">
+    <button class="icon-btn mobile-menu__close js-menu-close" type="button" aria-label="<%= __('close') %>">
+      <%- partial('partial/icon', { name: 'close' }) %>
+    </button>
+    <% Object.entries(theme.menu || {}).forEach(function (entry) { %>
+    <a class="mobile-menu__link" href="<%- url_for(entry[1]) %>"><%= entry[0] %></a>
+    <% }) %>
+  </nav>
+</div>

@@ -1,0 +1,17 @@
+<%#
+  Mist · 文章目录（TOC）面板
+  ─────────────────────────────────────────────────
+  modifier 局部变量决定形态（post.ejs 传入）：
+  - side  ：桌面端右侧吸顶毛玻璃面板（>1200px；CSS sticky，
+            top = --nav-height + 32px）
+  - drawer：移动端抽屉内容（配合 post.ejs 的 toc-fab / toc-drawer 使用）
+  列表由 Hexo 内置 toc() 生成（输出 ol.toc / .toc-child / a.toc-link，
+  最多三级）；当前节高亮与指示条由 toc.js（后续轮次）驱动。
+%>
+<% const m = typeof modifier !== 'undefined' ? modifier : 'side'; %>
+<aside class="toc-panel toc-panel--<%= m %> glass-panel js-toc" aria-label="<%= __('toc.title') %>">
+  <p class="toc-panel__title"><%= __('toc.title') %></p>
+  <nav class="toc-panel__list">
+    <%- toc(page.content, { list_number: false, max_depth: 3 }) %>
+  </nav>
+</aside>

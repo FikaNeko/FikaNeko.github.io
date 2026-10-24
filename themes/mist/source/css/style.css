@@ -1,0 +1,19 @@
+/* ════════════════════════════════════════════════════════════════
+   Mist · style.css — 样式唯一入口
+   ════════════════════════════════════════════════════════════════
+   引入顺序即优先级（第 1 轮 §4.3 固定，禁止乱序插入）：
+     tokens     设计令牌（全部 CSS 变量 + 暗色覆盖）
+     base       reset / 元素默认 / 关键帧库 / 无障碍
+     layout     背景氛围 / 版心 / 导航 / 页脚 / 页面过渡
+     components 玻璃面板 / 卡片 / 分页 / chips / 代码块 / 目录
+     prose      Markdown 正文排版
+     pages      页面级布局（hero / 归档 / 标签 / 文章栅格）
+   新增样式请归入对应分区的文件与章节，勿在此文件追加规则。
+   ════════════════════════════════════════════════════════════════ */
+
+@import url("tokens.css");
+@import url("base.css");
+@import url("layout.css");
+@import url("components.css");
+@import url("prose.css");
+@import url("pages.css");

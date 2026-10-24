@@ -1,0 +1,192 @@
+/* ════════════════════════════════════════════════════════════════
+   Mist · prose.css — Markdown 正文排版（文章页 / 独立页共用）
+   正文 17px / 1.8 行高（中文阅读优化）；h2 上 48px 下 16px 的
+   呼吸节奏；链接细下划线、悬停雾蓝；引用竖条；表格发丝线。
+   ════════════════════════════════════════════════════════════════ */
+
+.prose {
+  font-size: var(--text-lg);
+  line-height: var(--leading-prose);
+  color: var(--color-text);
+}
+
+/* ── 01 · 标题层级（正文中小于文章大标题，形成明显对比） ──── */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  margin: var(--space-12) 0 var(--space-4);
+  line-height: 1.4;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose h1 { font-size: var(--text-2xl); }
+.prose h2 { font-size: var(--text-xl); }
+.prose h3 { font-size: var(--text-lg); }
+.prose h4,
+.prose h5,
+.prose h6 { font-size: var(--text-base); }
+
+/* 标题锚点链接（由插件或 code.js 注入 a.headerlink）：悬停浮现 */
+.prose :is(h1, h2, h3, h4, h5, h6) a {
+  margin-left: var(--space-1);
+  font-weight: 400;
+  color: var(--color-text-tertiary);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6):hover a {
+  opacity: 1;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) a:hover {
+  color: var(--color-accent);
+}
+
+/* ── 02 · 段落与文本 ─────────────────────────────────────────── */
+.prose p {
+  margin: var(--space-4) 0;
+}
+
+/* 链接：正文色 + 雾蓝细下划线，悬停整体转雾蓝 */
+.prose a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-medium);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast) var(--ease-out),
+              text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+.prose a:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+}
+
+/* 行内代码（pre > code 见 components.css §09） */
+.prose code:not(pre code) {
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  background: var(--code-inline-bg);
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+.prose kbd {
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-bottom-width: 2px;
+  background: var(--color-surface);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+/* 删除线：文字用次级色保证可读，线用更淡的 tertiary 且固定
+   1px 连续细线——避免"浅灰字 + 同色线"把 CJK 字形糊成一团 */
+.prose del {
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-text-tertiary);
+  text-decoration-thickness: 1px;
+  text-decoration-skip-ink: none;
+}
+
+/* ── 03 · 列表 ───────────────────────────────────────────────── */
+.prose ul,
+.prose ol {
+  margin: var(--space-4) 0;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin: var(--space-2) 0;
+}
+
+.prose li::marker {
+  color: var(--color-text-tertiary);
+}
+
+/* 任务列表（- [ ] checkbox） */
+.prose .task-list-item {
+  list-style: none;
+}
+
+.prose .task-list-item input {
+  margin-right: var(--space-2);
+  accent-color: var(--color-accent);
+}
+
+/* ── 04 · 引用：雾蓝竖条 + 次级文本 ─────────────────────────── */
+.prose blockquote {
+  margin: var(--space-5) 0;
+  padding: var(--space-1) 0 var(--space-1) var(--space-5);
+  border-left: 2px solid var(--color-accent-medium);
+  color: var(--color-text-secondary);
+}
+
+.prose blockquote p {
+  margin: var(--space-2) 0;
+}
+
+/* ── 05 · 图片与图注 ─────────────────────────────────────────── */
+.prose img {
+  margin: var(--space-5) auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.prose figure {
+  margin: var(--space-5) 0;
+}
+
+.prose figcaption {
+  margin-top: var(--space-2);
+  text-align: center;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-tertiary);
+}
+
+/* ── 06 · 表格：发丝线，无斑马纹 ────────────────────────────── */
+.prose table {
+  width: 100%;
+  margin: var(--space-5) 0;
+  font-size: var(--text-base);
+  line-height: 1.6;
+  border-top: 1px solid var(--color-border);
+}
+
+.prose th,
+.prose td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.prose th {
+  font-weight: 600;
+}
+
+/* ── 07 · 分隔线 / 脚注 ─────────────────────────────────────── */
+.prose hr {
+  margin: var(--space-8) 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.prose .footnotes {
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}

@@ -1,0 +1,23 @@
+<%#
+  Mist · 页脚
+  单行克制排版：© 起始年份–当前年份 · 持有人 · 备案号 · Powered by
+  与内容区以发丝线分隔（样式见 layout.css）
+%>
+<%
+  const year = new Date().getFullYear();
+  const since = theme.footer.since || year;
+  const holder = theme.footer.copyright_holder || config.author || config.title;
+%>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__copyright">
+      © <%= since === year ? since : since + '–' + year %> <%= holder %>
+      <% if (theme.footer.icp) { %>
+      <a class="site-footer__icp" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener"><%= theme.footer.icp %></a>
+      <% } %>
+    </p>
+    <% if (theme.footer.powered_by) { %>
+    <p class="site-footer__powered"><%= __('footer.powered_by') %></p>
+    <% } %>
+  </div>
+</footer>

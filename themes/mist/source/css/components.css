@@ -1,0 +1,743 @@
+/* ════════════════════════════════════════════════════════════════
+   Mist · components.css — 玻璃面板 / 图标按钮 / chips / 文章卡片 /
+   分页 / 目录 / 上一篇下一篇 / 评论 / 代码块 / 回顶 / 滚动渐入
+   ════════════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════════════
+   01 · 毛玻璃面板（统一实现）
+   .glass-panel 用于：导航玻璃态以外的玻璃容器——目录面板、
+   移动端菜单面板、回顶 / TOC 浮钮、评论区。
+   底色 = --glass-bg（surface × --glass-opacity，随配置变化）。
+   ════════════════════════════════════════════════════════════════ */
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+/* ── 降级：不支持 backdrop-filter 时改用高不透明度纯色 ───────
+   （rgba 字面量为兜底：此环境通常也不支持 color-mix，
+   无法从令牌基色实时混合；明暗两套各自给出） */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  html[data-theme="dark"] .glass-panel {
+    background: rgba(28, 30, 34, 0.92);
+  }
+
+  /* 导航与全屏面板承担可读性职责，降级时更实 */
+  .site-nav.is-scrolled,
+  .site-nav[data-glass-on-scroll="false"],
+  .mobile-menu__panel {
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  html[data-theme="dark"] .site-nav.is-scrolled,
+  html[data-theme="dark"] .site-nav[data-glass-on-scroll="false"],
+  html[data-theme="dark"] .mobile-menu__panel {
+    background: rgba(28, 30, 34, 0.96);
+  }
+
+  .post-card,
+  .post-adjacent__item,
+  .hero__social,
+  .archive-group__year {
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  html[data-theme="dark"] .post-card,
+  html[data-theme="dark"] .post-adjacent__item,
+  html[data-theme="dark"] .hero__social,
+  html[data-theme="dark"] .archive-group__year {
+    background: rgba(28, 30, 34, 0.94);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   02 · 图标按钮（36px 圆形热区）
+   ════════════════════════════════════════════════════════════════ */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: color var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out);
+}
+
+.icon-btn:hover {
+  color: var(--color-text);
+  background: var(--color-accent-soft);
+}
+
+.icon-btn .icon {
+  display: block;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   03 · 标签 chips（文章 meta / 卡片 / 标签云共用）
+   ════════════════════════════════════════════════════════════════ */
+.chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  background: color-mix(in srgb, var(--color-surface) 60%, transparent);
+  border: 1px solid var(--color-border);
+  transition: color var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+.chip:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+/* 标签云大号档 */
+.chip--lg {
+  padding: 5px 14px;
+  font-size: var(--text-base);
+}
+
+/* 热门标签（≥5 篇）：略放大 */
+.chip--hot {
+  font-size: var(--text-lg);
+  font-weight: 500;
+}
+
+.chip__count {
+  font-family: var(--font-mono);
+  font-size: 0.72em;
+  color: var(--color-text-tertiary);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   04 · 文章卡片（index / tag / category 共用）
+   悬停（仅 hover:hover 设备）：上浮 2px + 阴影加深 + 模糊度增强
+   —— 卡片底为半透明，backdrop-filter 由 6px 增至 14px，
+   玻璃质感随悬停"变实"，全程 0.4s ease-out 无弹跳。
+   ════════════════════════════════════════════════════════════════ */
+.post-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(6px) saturate(1.4);
+  backdrop-filter: blur(6px) saturate(1.4);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    backdrop-filter var(--dur-base) var(--ease-out),
+    -webkit-backdrop-filter var(--dur-base) var(--ease-out);
+}
+
+/* 封面（可选）：16:9，悬停轻微放大 1.02 */
+.post-card__cover {
+  display: block;
+  overflow: hidden;
+}
+
+.post-card__cover img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.post-card__body {
+  padding: var(--space-6);
+}
+
+/* 无封面纯文本卡：内边收拢一档，视觉更紧凑 */
+.post-card--text .post-card__body {
+  padding: var(--space-5) var(--space-6);
+}
+
+/* meta 行：mono 日期 + 右侧标签 */
+.post-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.post-card__date {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.02em;
+  color: var(--color-text-tertiary);
+}
+
+.post-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  justify-content: flex-end;
+}
+
+.post-card__title {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--space-2);
+}
+
+.post-card__title a {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.post-card__title a:hover {
+  color: var(--color-accent);
+}
+
+/* 摘要：行数截断（--excerpt-lines 可由 helpers 注入，默认 2 行） */
+.post-card__excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--excerpt-lines, 2);
+  overflow: hidden;
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+/* 阅读全文：箭头悬停右移 4px */
+.post-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+.post-card__more-icon {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.post-card__more:hover .post-card__more-icon {
+  transform: translateX(4px);
+}
+
+/* 悬停复合态（触屏设备跳过，避免粘滞 hover） */
+@media (hover: hover) {
+  .post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: var(--card-bg-hover);
+    -webkit-backdrop-filter: blur(14px) saturate(1.6);
+    backdrop-filter: blur(14px) saturate(1.6);
+  }
+
+  .post-card:hover .post-card__cover img {
+    transform: scale(1.02);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   05 · 分页：数字胶囊 + 前后箭头
+   ════════════════════════════════════════════════════════════════ */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-10);
+}
+
+.pagination__item {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
+  transition: color var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out);
+}
+
+a.pagination__item:hover {
+  color: var(--color-text);
+  background: var(--color-accent-soft);
+}
+
+/* 当前页：雾蓝底，文字用 --color-bg（明暗自动反色保对比） */
+.pagination__item--current {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.pagination__item--nav {
+  padding: 0;
+}
+
+.pagination__item.is-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   06 · 目录（TOC）：侧栏面板 / 抽屉面板 / 浮钮
+   列表为 Hexo toc() 输出（ol.toc > li.toc-item > a.toc-link，
+   子级嵌套 ol.toc-child）；当前节由 toc.js 加 is-active。
+   ════════════════════════════════════════════════════════════════ */
+.toc-panel {
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-lg);
+}
+
+.toc-panel__title {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+}
+
+/* 侧栏形态：桌面 sticky 吸附于导航下方 */
+.toc-panel--side {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-8));
+  max-height: calc(100dvh - var(--nav-height) - var(--space-16));
+  display: flex;
+  flex-direction: column;
+}
+
+.toc-panel--side .toc-panel__list {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* 抽屉形态：贴右缘全高，开启时滑入（容器见 .toc-drawer） */
+.toc-panel--drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 86vw);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.toc-panel__list ol {
+  list-style: none;
+}
+
+.toc-panel__list .toc {
+  padding-left: 0;
+}
+
+.toc-panel__list .toc-child {
+  padding-left: var(--space-4);
+}
+
+.toc-link {
+  display: block;
+  padding: var(--space-1) 0 var(--space-1) var(--space-3);
+  border-left: 2px solid transparent;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+.toc-link:hover {
+  color: var(--color-text);
+}
+
+/* 当前节：雾蓝 + 左侧指示条 */
+.toc-link.is-active {
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+}
+
+/* TOC 抽屉容器 + 遮罩（is-open 由 toc.js 切换） */
+.toc-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear var(--dur-base);
+}
+
+.toc-drawer.is-open {
+  visibility: visible;
+  pointer-events: auto;
+  transition: visibility 0s;
+}
+
+.toc-drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 21, 24, 0.32);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.toc-drawer .toc-panel--drawer {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out);
+}
+
+.toc-drawer.is-open .toc-drawer__backdrop {
+  opacity: 1;
+}
+
+.toc-drawer.is-open .toc-panel--drawer {
+  opacity: 1;
+  transform: none;
+}
+
+/* TOC 浮钮（drawer 模式）：叠在回顶按钮上方 */
+.toc-fab {
+  position: fixed;
+  right: var(--space-5);
+  bottom: calc(var(--space-5) + 52px);
+  z-index: var(--z-float);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-sm);
+  transition: color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+.toc-fab:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   07 · 上一篇 / 下一篇（并排玻璃卡）
+   ════════════════════════════════════════════════════════════════ */
+.post-adjacent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-10);
+}
+
+.post-adjacent__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border: 1px solid var(--color-border);
+  -webkit-backdrop-filter: blur(6px) saturate(1.4);
+  backdrop-filter: blur(6px) saturate(1.4);
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              background-color var(--dur-base) var(--ease-out);
+}
+
+.post-adjacent__item--next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.post-adjacent__item--placeholder {
+  visibility: hidden;
+}
+
+@media (hover: hover) {
+  .post-adjacent__item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: var(--card-bg-hover);
+  }
+}
+
+.post-adjacent__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+.post-adjacent__title {
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   08 · 评论区（容器样式；内容区由 provider 脚本填充）
+   ════════════════════════════════════════════════════════════════ */
+.comments {
+  margin-top: var(--space-10);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+}
+
+.comments__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   09 · 代码块：容器 + 高亮令牌色 + 复制按钮 / 语言标签
+   同时适配三种输出：
+   - Hexo highlight.js：figure.highlight > table（gutter 行号 + code）
+   - Prism：.prose pre > code（token.* 类）
+   - highlight.js 前缀类：.hljs-*
+   高亮颜色统一取 --code-* 令牌（tokens.css 明暗双主题）。
+   ════════════════════════════════════════════════════════════════ */
+figure.highlight {
+  position: relative;
+  margin: var(--space-5) 0;
+  border-radius: var(--radius-md);
+  background: var(--code-bg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+figure.highlight table {
+  width: 100%;
+  border-collapse: collapse;
+  /* 清除 .prose table 渗透的正文表格样式（外边距/上边框
+     曾造成头部下方"第二条分割线 + 20px 空隙"） */
+  margin: 0;
+  border-top: 0;
+}
+
+figure.highlight td {
+  padding: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+/* 行号列（hexo 配置 line_number: true 时存在）：
+   数字右对齐；左侧内边距收窄（8px）使行号贴近块左缘，
+   与代码之间不设竖线，仅靠间距分隔（右 4px + 代码左 8px） */
+figure.highlight .gutter {
+  user-select: none;
+}
+
+/* 关键：代码列吸收表格全部剩余宽度——否则 auto 表格布局会把
+   富余宽度按比例分给行号列，把行号列撑出大片空白 */
+figure.highlight .code {
+  width: 100%;
+}
+
+figure.highlight .gutter pre {
+  /* 顶部 10px：分割线到首行代码约 10px（用户指定） */
+  padding: 6px var(--space-1) 11px var(--space-4);
+  color: var(--color-text-tertiary);
+  opacity: 0.75;
+  text-align: right;
+}
+
+figure.highlight pre,
+.prose pre {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  background: transparent;
+  border: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.75;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+figure.highlight .code pre {
+  padding: 6px var(--space-5) 11px var(--space-2);
+}
+
+/* Prism / 裸 pre 的容器样式（figure.highlight 自带容器） */
+.prose pre {
+  border-radius: var(--radius-md);
+  background: var(--code-bg);
+  border: 1px solid var(--color-border);
+}
+
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* ── 高亮令牌色（低饱和，明暗由令牌切换） ─────────────────── */
+.hljs-comment, .hljs-quote,
+.token.comment, .token.prolog, .token.doctype, .token.cdata,
+figure.highlight .comment, figure.highlight .quote {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+.hljs-keyword, .hljs-selector-tag, .hljs-doctag, .hljs-meta,
+.token.keyword, .token.important, .token.atrule, .token.tag,
+figure.highlight .keyword, figure.highlight .selector-tag,
+figure.highlight .meta, figure.highlight .tag {
+  color: var(--code-keyword);
+}
+
+.hljs-string, .hljs-regexp, .hljs-addition,
+.token.string, .token.char, .token.attr-value,
+figure.highlight .string, figure.highlight .regexp,
+figure.highlight .addition, figure.highlight .value {
+  color: var(--code-string);
+}
+
+.hljs-number, .hljs-literal, .hljs-symbol,
+.token.number, .token.boolean,
+figure.highlight .number, figure.highlight .literal,
+figure.highlight .symbol {
+  color: var(--code-number);
+}
+
+.hljs-title, .hljs-title.function_, .hljs-name,
+.token.function, .token.class-name,
+figure.highlight .title, figure.highlight .function .title,
+figure.highlight .name, figure.highlight .built_in {
+  color: var(--code-fn);
+}
+
+.hljs-attr, .hljs-attribute, .hljs-variable, .hljs-template-variable,
+.token.attr-name, .token.property,
+figure.highlight .attr, figure.highlight .attribute,
+figure.highlight .variable, figure.highlight .template-variable {
+  color: var(--code-attr);
+}
+
+/* ── 代码块头：语言标签（最左）+ 复制按钮（最右），常显 ──
+   底缘发丝线即"分割线"，两者均在分割线上方；
+   由 code.js 注入 .code-header 容器（位于代码区上方） */
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  /* 左内边距与行号列一致（8px）：BASH 与行号数字左对齐 */
+  padding: var(--space-1) var(--space-3) var(--space-1) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.code-lang {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* 复制按钮：缩小版（24px 高），常驻代码块头右侧；
+   复制成功加 .is-copied（雾蓝），2s 后由 code.js 复原 */
+.code-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: 24px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  background: var(--code-inline-bg);
+  border: 1px solid var(--color-border);
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+.code-copy-btn:hover {
+  color: var(--color-text);
+}
+
+.code-copy-btn.is-copied {
+  color: var(--color-accent);
+  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   10 · 回到顶部（滚动 >600px 出现，JS 切 is-visible）
+   ════════════════════════════════════════════════════════════════ */
+.back-to-top {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: var(--z-float);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   11 · 滚动渐入系统（reveal.js 契约）
+   - 隐藏态仅在 JS 可用（html 非 .no-js）时生效，无 JS 全员可见
+   - reveal.js 进入视口时为 .js-reveal 添加 .is-visible，
+     触发 fade-up（backwards：延迟期间保持隐藏，结束后不锁定
+     样式，不影响卡片 hover 的 transform）
+   - motion.reveal 关闭时 reveal.js 应立即为所有元素加 .is-visible
+     （或跳过初始化），避免内容停留隐藏态
+   ════════════════════════════════════════════════════════════════ */
+html:not(.no-js) .js-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+html:not(.no-js) .js-reveal.is-visible {
+  animation: fade-up var(--dur-base) var(--ease-out) backwards;
+}
+
+/* 首屏卡片错峰：前 6 张按 60ms 步进（下方卡片由 reveal.js 处理） */
+html:not(.no-js) .post-list > .js-reveal.is-visible:nth-child(2) { animation-delay: 60ms; }
+html:not(.no-js) .post-list > .js-reveal.is-visible:nth-child(3) { animation-delay: 120ms; }
+html:not(.no-js) .post-list > .js-reveal.is-visible:nth-child(4) { animation-delay: 180ms; }
+html:not(.no-js) .post-list > .js-reveal.is-visible:nth-child(5) { animation-delay: 240ms; }
+html:not(.no-js) .post-list > .js-reveal.is-visible:nth-child(6) { animation-delay: 300ms; }
