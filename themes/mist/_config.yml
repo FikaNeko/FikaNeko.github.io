@@ -38,7 +38,7 @@ colors:
 
 # ── 背景图（可选）────────────────────────────────────────────
 background:
-  image: ""                  # 图片路径（建议放站点 source/img/，如 /img/bg.jpg）；留空 = 纯色底 + 光斑
+  image: "/img/background.jpeg"   # 图片路径（建议放站点 source/img/）
   overlay: 0.6               # 遮罩强度 0–1：亮色模式铺米白、暗色铺深墨，保证正文可读性
 
 # ── 形状与阴影 ───────────────────────────────────────────────
@@ -82,12 +82,12 @@ nav:
 # social 段为空或全部无文件时整个社交栏不渲染）
 #（单色图标、自动随主题变色；文件存在即优先生效，无需改主题代码）
 social:
-  github: "https://github.com/yourname"
-  # email: "mailto:you@example.com"   # 需要邮箱图标时取消注释
+  github: "https://github.com/fikaneko"
   rss: "/atom.xml"           # 需站点安装 hexo-generator-feed
-  # bilibili: ""
-  # twitter: ""
-  # zhihu: ""
+  x: "https://x.com/MacchiatoFika"
+  steam: "https://steamcommunity.com/id/FikaNeko/"
+  instagram: "https://www.instagram.com/fika.photograph/"
+  telegram: "https://t.me/fikaneko"
 
 # ── 首页 ─────────────────────────────────────────────────────
 home:
@@ -131,6 +131,6 @@ comments:
 footer:
   since: 2024                # 建站起始年份，自动拼接当前年份
   copyright_holder: ""       # 留空使用 site.author
-  icp: ""                    # 备案号，如 "京ICP备xxxx号"；留空不渲染
-  icp_url: "https://icp.gov.moe/?keyword=20236622/"   # 备案号跳转网址（公安备案改 https://www.beian.gov.cn/）
+  icp: "萌ICP备20236622号"                    # 备案号，如 "京ICP备xxxx号"；留空不渲染
+  icp_url: "https://icp.gov.moe/?keyword=20236622"   # 备案号跳转网址（公安备案改 https://www.beian.gov.cn/）
   powered_by: true           # 显示 "Powered by Hexo · Theme Mist"
