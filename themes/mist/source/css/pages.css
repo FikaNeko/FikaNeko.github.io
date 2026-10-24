@@ -501,6 +501,16 @@ html[data-theme="dark"] .hero__hitokoto-from {
 
 /* sm 640px：手机字号与热区 */
 @media (max-width: 640px) {
+
+  /* 一言出处独立成行并预占一行高度：避免与句子同行在中途换行
+     （曾致段落高度瞬跳、整屏居中内容上下跳动——"背景抖动"） */
+  .hero__hitokoto-from {
+    display: block;
+    min-height: 1.7em;
+    margin: var(--space-1) auto 0;
+    text-align: center;
+  }
+
   .post-card__body {
     padding: var(--space-5);
   }
