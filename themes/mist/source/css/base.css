@@ -39,6 +39,13 @@ body.site {
   text-rendering: optimizeLegibility;
   transition: background-color var(--dur-fast) var(--ease-out),
               color var(--dur-fast) var(--ease-out);
+  /* Chrome Android 的 Text Autosizing（字体自动放大）对
+     text-size-adjust:100% 并不总是生效，会对页脚等文本块单独
+     放大（观感为字号突兀变大、颜色发白）。Blink 的放大器会跳过
+     带 max-height 约束的块，此为社区通行的彻底禁用手段；
+     999999px 远大于任何真实内容，不影响正常布局。站点响应式
+     完善且已有 viewport meta，该"特性"只有干扰价值 */
+  max-height: 999999px;
 }
 
 h1, h2, h3, h4, h5, h6 {
