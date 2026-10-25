@@ -18,14 +18,17 @@
       <span class="site-nav__brand-text"><%= theme.brand.logo_text || config.title %></span>
     </a>
 
-    <%/* 桌面菜单（key=标题，value=链接，顺序即展示顺序） */%>
+    <%/* 桌面菜单（key=标题，value=链接，顺序即展示顺序）。
+       菜单图标按用户要求写死在此映射（链接 → nav-* 内置图标），
+       不走 source/icons 自定义机制；换菜单项时同步改这张表 */%>
+    <% const navIcons = { '/': 'nav-home', '/archives': 'nav-archive', '/tags': 'nav-tags', '/about': 'nav-about' }; %>
     <nav class="site-nav__menu" aria-label="<%= __('nav') %>">
       <% Object.entries(theme.menu || {}).forEach(function (entry) {
            const name = entry[0];
            const link = entry[1];
            const active = link === '/' ? is_current('/', true) : is_current(link); %>
       <a class="site-nav__link <%= active ? 'is-active' : '' %>"
-         href="<%- url_for(link) %>"<%- active ? ' aria-current="page"' : '' %>><%= name %></a>
+         href="<%- url_for(link) %>"<%- active ? ' aria-current="page"' : '' %>><% if (navIcons[link]) { %><%- partial('partial/icon', { name: navIcons[link], cls: 'site-nav__link-icon' }) %><% } %><%= name %></a>
       <% }) %>
     </nav>
 

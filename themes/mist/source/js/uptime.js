@@ -1,16 +1,15 @@
 /* ════════════════════════════════════════════════════════════════
    Mist · uptime.js — 页脚网站运行时间
    ════════════════════════════════════════════════════════════════
-   - 读取 .js-uptime 的 data-start（footer.uptime.start，精确到秒），
-     渲染"前缀 + 天/时/分/秒 四段"，每秒刷新
-   - 动画契约（CSS 见 layout.css / base.css）：
-     · 整体进场 .is-live：从下到上 + 模糊渐清 + 淡入（参考一言出处，
-       方向改为纵向）
-     · 数字变动：加 .is-out（模糊淡出↑）→ 换字 → 加 .is-in（从下
-       模糊淡入变清晰），秒位每秒循环"如此往复"
-   - 数字用 tabular 等宽 + 两位补零（天数自然增长），避免跳动
+   结构由 footer.ejs 服务端渲染（前缀 + 天/时/分/秒四段，数字留空、
+   min-width 预占宽），首屏排版完整、零布局位移；本模块只负责：
+   - 首帧把数字填入（不做动画，current 由 DOM 现状播种）
+   - 每秒计算并更新，数字变动播放 .is-out（模糊淡出↑）→ .is-in
+     （从下模糊淡入变清晰），关键帧见 base.css
+   - 数字 tabular 等宽 + 两位补零（天数自然增长），避免跳动
    - 日期解析做 iOS 兼容（- 分隔替换为 /）
    ════════════════════════════════════════════════════════════════ */
+
 const SEGMENTS = ['d', 'h', 'm', 's'];
 const SWAP_MS = 300;   // 与 CSS 动画时长（--dur-fast）一致
 
@@ -18,37 +17,22 @@ export function initUptime() {
   const el = document.querySelector('.js-uptime');
   if (!el) return;
 
-  const labels = (window.Mist && window.Mist.uptime) || {};
-  const prefix = labels.prefix || '本站已运行';
-  const units = labels.units || ['天', '时', '分', '秒'];
+  /* 服务端已渲染结构；缺段（旧缓存等）则放弃，避免半初始化状态 */
+  const nums = {};
+  let ok = true;
+  SEGMENTS.forEach((key, i) => {
+    const seg = el.querySelectorAll('.uptime-seg-num')[i];
+    if (!seg) { ok = false; return; }
+    nums[key] = seg;
+  });
+  if (!ok) return;
 
   /* iOS Safari 不认 "-" 分隔的日期串 */
   const start = new Date(String(el.dataset.start || '').replace(/-/g, '/')).getTime();
   if (isNaN(start)) return;
 
-  /* 构建 DOM：前缀 + 四段（等宽数字 + 单位） */
-  el.textContent = '';
-  const prefixNode = document.createElement('span');
-  prefixNode.className = 'site-footer__uptime-prefix';
-  prefixNode.textContent = prefix;
-  el.appendChild(prefixNode);
-
-  const nums = {};
-  SEGMENTS.forEach((key, i) => {
-    const seg = document.createElement('span');
-    seg.className = 'uptime-seg';
-    const num = document.createElement('span');
-    num.className = 'uptime-seg-num';
-    const unit = document.createElement('span');
-    unit.className = 'uptime-seg-unit';
-    unit.textContent = units[i];
-    nums[key] = num;
-    seg.appendChild(num);
-    seg.appendChild(unit);
-    el.appendChild(seg);
-  });
-
   const current = {};
+  let firstTick = true;   // 首帧填数不做动画
 
   const setNum = (numEl, text, animate) => {
     if (!animate) { numEl.textContent = text; return; }
@@ -75,14 +59,12 @@ export function initUptime() {
     };
     for (const key of SEGMENTS) {
       if (current[key] === next[key]) continue;
-      setNum(nums[key], next[key], current[key] !== undefined);
+      setNum(nums[key], next[key], !firstTick);
       current[key] = next[key];
     }
+    firstTick = false;
   };
 
   tick();
   window.setInterval(tick, 1000);
-
-  /* 整体进场：从下到上 + 模糊渐清 */
-  window.requestAnimationFrame(() => el.classList.add('is-live'));
 }

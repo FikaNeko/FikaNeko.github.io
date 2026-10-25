@@ -64,7 +64,9 @@ body.site::after {
 }
 
 .page-transition.is-leaving {
-  animation: page-out var(--dur-fast) var(--ease-out) both;
+  /* 离场比常规 hover 更快（0.3s 的一半）：离开要干脆；
+     main.js 按计算出的时长兜底跳转，自动跟随此值 */
+  animation: page-out calc(var(--dur-fast) * 0.5) var(--ease-out) both;
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -128,9 +130,18 @@ body.site::after {
 }
 
 .site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
   font-size: var(--text-base);
   color: var(--color-text-secondary);
   transition: color var(--dur-fast) var(--ease-out);
+}
+
+/* 菜单图标：随文字颜色联动（悬停/当前页转雾蓝） */
+.site-nav__link-icon {
+  width: 14px;
+  height: 14px;
 }
 
 .site-nav__link:hover,
@@ -318,9 +329,9 @@ html[data-theme="dark"] .icon-btn__icon--moon {
 /* ════════════════════════════════════════════════════════════════
    网站运行时间（footer.uptime 配置；数字由 uptime.js 驱动）
    - 默认与版权同行（宽屏行布局下）；--wrap 修饰符独占一行
+   - 整行静态显示（不做进场动画，页面切换时保持稳定）
    - 数字等宽（tabular + mono）防跳动；秒位每秒播放
      模糊淡出↑ → 从下模糊淡入（is-out / is-in，关键帧在 base.css）
-   - 整体进场 .is-live：从下到上 + 模糊渐清（同动效令牌）
    ════════════════════════════════════════════════════════════════ */
 .site-footer__uptime {
   display: inline-flex;
@@ -337,14 +348,6 @@ html[data-theme="dark"] .icon-btn__icon--moon {
   width: 100%;
   justify-content: center;
   margin-top: var(--space-1);
-}
-
-.site-footer__uptime.is-live {
-  animation: uptime-rise calc(var(--dur-base) + var(--dur-fast)) var(--ease-out) both;
-}
-
-.site-footer__uptime-prefix {
-  margin-right: var(--space-1);
 }
 
 .uptime-seg-num {

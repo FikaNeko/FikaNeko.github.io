@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 · 页面被雾卷走了</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* ── 背景图（与主题 _config.yml background 保持一致；head.ejs
+          在普通页面注入的同名变量，此处静态页手工对齐）── */
+    :root {
+      --bg-overlay-alpha: 0.6;
+      --bg-image: url("/img/background.jpeg");
+      --bg-layers: linear-gradient(var(--bg-overlay-color), var(--bg-overlay-color)), var(--bg-image);
+    }
+
+    /* 404 专属布局（复用主题令牌与 base.css 关键帧） */
+    .nf-wrap {
+      min-height: calc(100dvh - var(--nav-height));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-8) var(--space-5);
+    }
+
+    .nf-code {
+      font-family: var(--font-mono);
+      font-size: clamp(88px, 22vw, 168px);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--color-accent);
+      text-shadow: 0 0 60px var(--color-accent-soft);
+      animation: blur-in var(--dur-slow) var(--ease-out) backwards;
+    }
+
+    .nf-title {
+      margin-top: var(--space-6);
+      font-size: clamp(22px, 5vw, 30px);
+      font-weight: 600;
+      animation: fade-up var(--dur-slow) var(--ease-out) 120ms backwards;
+    }
+
+    .nf-text {
+      margin-top: var(--space-4);
+      max-width: 26em;
+      font-size: var(--text-lg);
+      line-height: 1.9;
+      color: var(--color-text-secondary);
+      animation: fade-up var(--dur-slow) var(--ease-out) 240ms backwards;
+    }
+
+    .nf-hint {
+      margin-top: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-tertiary);
+      animation: fade-up var(--dur-slow) var(--ease-out) 360ms backwards;
+    }
+
+    .nf-actions {
+      margin-top: var(--space-8);
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fade-up var(--dur-slow) var(--ease-out) 480ms backwards;
+    }
+
+    .nf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      font-size: var(--text-base);
+      font-weight: 500;
+      color: var(--color-bg);
+      background: var(--color-accent);
+      transition: transform var(--dur-fast) var(--ease-out),
+                  box-shadow var(--dur-fast) var(--ease-out);
+    }
+
+    .nf-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .nf-btn--ghost {
+      color: var(--color-text-secondary);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+      backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    }
+
+    .nf-btn--ghost:hover {
+      color: var(--color-text);
+    }
+  </style>
+  <script>
+    /* 防闪烁：跟随用户此前的明暗选择（与主题同一 localStorage 键） */
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('mist-theme'); } catch (e) {}
+      var mode = saved || 'auto';
+      if (mode === 'auto') {
+        mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
+      document.documentElement.classList.remove('no-js');
+    })();
+    /* 主题配置（与 _config.yml 当前值保持一致，供 main.js 读取） */
+    window.Mist = {
+      appearance: { default: 'auto', toggle: true, remember: true },
+      glass: { enabled: true, blur: '20px', saturate: 1.8, opacity: 0.72 },
+      motion: { enabled: true, reveal: true, theme_transition: true,
+        duration: { fast: '0.3s', base: '0.4s', slow: '0.6s' },
+        easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+      nav: { sticky: true, glass_on_scroll: true }
+    };
+  </script>
+</head>
+<body class="site has-bg-image">
+
+  <!-- 导航栏（静态复刻 partial/header.ejs 的当前输出；菜单/品牌改动时需手动同步此文件） -->
+  <header class="site-nav site-nav--sticky js-nav" data-glass-on-scroll="true">
+    <div class="site-nav__inner">
+      <a class="site-nav__brand" href="/"><span class="site-nav__brand-text">Fika</span></a>
+      <nav class="site-nav__menu" aria-label="站点导航">
+        <a class="site-nav__link" href="/">首页</a>
+        <a class="site-nav__link" href="/archives/">归档</a>
+        <a class="site-nav__link" href="/tags/">标签</a>
+        <a class="site-nav__link" href="/about/">关于</a>
+      </nav>
+      <div class="site-nav__actions">
+        <button class="icon-btn js-theme-toggle" type="button" aria-label="切换明暗模式" title="切换明暗模式">
+          <svg class="icon icon-btn__icon icon-btn__icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon icon-btn__icon icon-btn__icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="icon-btn site-nav__burger js-menu-toggle" type="button" aria-label="菜单" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="icon site-nav__burger-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu js-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__backdrop js-menu-close"></div>
+    <nav class="mobile-menu__panel glass-panel" aria-label="菜单">
+      <button class="icon-btn mobile-menu__close js-menu-close" type="button" aria-label="关闭">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <a class="mobile-menu__link" href="/">首页</a>
+      <a class="mobile-menu__link" href="/archives/">归档</a>
+      <a class="mobile-menu__link" href="/tags/">标签</a>
+      <a class="mobile-menu__link" href="/about/">关于</a>
+    </nav>
+  </div>
+
+  <main class="nf-wrap">
+    <div class="nf-code">404</div>
+    <h1 class="nf-title">雾太浓了，迷路了</h1>
+    <p class="nf-text">
+      你要找的页面被一团浓雾卷走了——<br>
+      它可能还在某处飘着，也可能从一开始就不存在。
+    </p>
+    <p class="nf-hint">别站在雾里等它，回有光的地方去吧。</p>
+    <div class="nf-actions">
+      <a class="nf-btn" href="/">吹散浓雾 · 回到首页</a>
+      <a class="nf-btn nf-btn--ghost" href="/archives/">去归档翻翻旧物</a>
+    </div>
+  </main>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
