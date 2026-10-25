@@ -341,6 +341,10 @@ html[data-theme="dark"] .icon-btn__icon--moon {
   line-height: 1.8;
   color: var(--color-text-secondary);
   font-variant-numeric: tabular-nums;
+  /* 行级显式禁用字体放大：Chrome Android 曾对该行单独
+     font boosting（字号变大、观感发白，与 Powered by 不一致） */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .site-footer__uptime--wrap {

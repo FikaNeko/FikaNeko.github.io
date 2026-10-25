@@ -12,7 +12,10 @@
 }
 
 html {
+  /* 禁用移动浏览器（尤其 Chrome Android）的字体自动放大；
+     无前缀声明必须保留——仅 -webkit- 前缀在部分版本上不生效 */
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   /* 锚点跳转不被吸顶导航遮挡；平滑滚动（reduced-motion 下禁用） */
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-height) + var(--space-4));
