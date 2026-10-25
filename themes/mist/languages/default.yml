@@ -49,3 +49,8 @@ category:
 
 footer:
   powered_by: Powered by Hexo · Theme Mist
+  uptime_prefix: 本站已运行
+  uptime_d: 天
+  uptime_h: 时
+  uptime_m: 分
+  uptime_s: 秒

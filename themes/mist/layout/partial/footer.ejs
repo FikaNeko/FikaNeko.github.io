@@ -16,6 +16,12 @@
       <a class="site-footer__icp" href="<%= (theme.footer && theme.footer.icp_url) || 'https://beian.miit.gov.cn/' %>" target="_blank" rel="noopener"><%= theme.footer.icp %></a>
       <% } %>
     </p>
+    <%/* 网站运行时间：数字由 uptime.js 每秒驱动，动画参考一言出处
+        （方向改为从下到上，数字变动为模糊淡出→淡入） */%>
+    <% if (theme.footer.uptime && theme.footer.uptime.enable) { %>
+    <span class="site-footer__uptime js-uptime<%= theme.footer.uptime.wrap ? ' site-footer__uptime--wrap' : '' %>"
+          data-start="<%= theme.footer.uptime.start %>"></span>
+    <% } %>
     <% if (theme.footer.powered_by) { %>
     <p class="site-footer__powered"><%= __('footer.powered_by') %></p>
     <% } %>

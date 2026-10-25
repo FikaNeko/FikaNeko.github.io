@@ -7,6 +7,7 @@
      theme   明暗模式切换（data-theme 翻转 + data-theme-anim 过渡）
      hitokoto 首页一言打字机（hero 全屏封面模式）
      code    代码块复制按钮与语言标签（components.css §09 契约）
+     uptime  页脚网站运行时间（每秒刷新 + 数字切换动画）
    后续在此追加 toc 模块的 init 调用。
    无 JS 环境页面仍完整可用（渐进增强）。
    ════════════════════════════════════════════════════════════════ */
@@ -15,6 +16,7 @@ import { initReveal } from './reveal.js';
 import { initTheme } from './theme.js';
 import { initHitokoto } from './hitokoto.js';
 import { initCode } from './code.js';
+import { initUptime } from './uptime.js';
 
 const boot = () => {
   /* 首页强制回到顶部：浏览器滚动恢复在布局稳定前应用会带偏置，
@@ -35,6 +37,7 @@ const boot = () => {
   initTheme();
   initHitokoto();
   initCode();
+  initUptime();
 };
 
 if (document.readyState === 'loading') {

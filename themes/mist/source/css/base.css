@@ -264,6 +264,38 @@ html {
   }
 }
 
+/* 页脚运行时间——整体进场：从下到上 + 模糊渐清（同 from-reveal，
+   方向按用户要求改为纵向） */
+@keyframes uptime-rise {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* 页脚运行时间——数字变动：模糊淡出（向上）→ 新数字从下模糊淡入 */
+@keyframes uptime-num-out {
+  to {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes uptime-num-in {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(8px);
+  }
+}
+
 /* ── 错峰工具类：子元素依次 fade-up（60ms 步进，前 8 个） ──── */
 .stagger > * {
   animation: fade-up var(--dur-slow) var(--ease-out) backwards;

@@ -12,7 +12,7 @@ brand:
 
 # ── 外观（明暗模式）──────────────────────────────────────────
 appearance:
-  default: auto              # light | dark | auto（跟随系统）
+  default: dark              # light | dark | auto（跟随系统）
   toggle: true               # 导航栏是否显示明暗切换按钮
   remember: true             # 是否用 localStorage 记忆用户手动选择
 
@@ -38,7 +38,7 @@ colors:
 
 # ── 背景图（可选）────────────────────────────────────────────
 background:
-  image: "/img/background.jpeg"   # 图片路径（建议放站点 source/img/）
+  image: "/img/background.jpeg"                  # 图片路径（建议放站点 source/img/，如 /img/bg.jpg）；留空 = 纯色底 + 光斑
   overlay: 0.6               # 遮罩强度 0–1：亮色模式铺米白、暗色铺深墨，保证正文可读性
 
 # ── 形状与阴影 ───────────────────────────────────────────────
@@ -83,11 +83,17 @@ nav:
 #（单色图标、自动随主题变色；文件存在即优先生效，无需改主题代码）
 social:
   github: "https://github.com/fikaneko"
-  rss: "/atom.xml"           # 需站点安装 hexo-generator-feed
+  # email: "mailto:you@example.com"   # 需要邮箱图标时取消注释
+  rss: "/atom.xml"
   x: "https://x.com/MacchiatoFika"
-  steam: "https://steamcommunity.com/id/FikaNeko/"
+  telegram: "https://t.me/FikaNeko"
   instagram: "https://www.instagram.com/fika.photograph/"
-  telegram: "https://t.me/fikaneko"
+  steam: "https://steamcommunity.com/id/FikaNeko/"
+  # email: "mailto:fikaneko@outlook.com"
+
+  # bilibili: ""
+  # twitter: ""
+  # zhihu: ""
 
 # ── 首页 ─────────────────────────────────────────────────────
 home:
@@ -96,9 +102,9 @@ home:
   hitokoto_api: "https://v1.hitokoto.cn/"   # 一言接口，hero 打字机效果；留空关闭
   hitokoto_fallback: "纵有疾风起，人生不言弃。"   # 接口失败兜底句（也可写为句子列表随机取一）
   font_size:                 # 首页字号自定义（留空 = 主题默认；单位 px/rem 均可）
-    title: ""                # 站名，默认 clamp(28px, 5vw, 36px) 随视口缩放
-    bio: ""                  # 简介，默认 17px
-    hitokoto: ""             # 一言句子，默认 15px（出处自动小一档，无需单独设）
+    title: "38px"                # 站名，默认 clamp(28px, 5vw, 36px) 随视口缩放
+    bio: "18px"                  # 简介，默认 17px
+    hitokoto: "16px"             # 一言句子，默认 15px（出处自动小一档，无需单独设）
   cover: true                # 卡片是否显示封面图（无封面自动退化为纯文本卡）
   excerpt_lines: 2           # 摘要截断行数（CSS 兜底为 2；helpers 可注入变量）
   # 每页篇数属站点级行为，请在站点 _config.yml 配置 per_page（配合分页插件）
@@ -129,8 +135,12 @@ comments:
 
 # ── 页脚 ─────────────────────────────────────────────────────
 footer:
-  since: 2024                # 建站起始年份，自动拼接当前年份
+  since: 2022                # 建站起始年份，自动拼接当前年份
   copyright_holder: ""       # 留空使用 site.author
   icp: "萌ICP备20236622号"                    # 备案号，如 "京ICP备xxxx号"；留空不渲染
   icp_url: "https://icp.gov.moe/?keyword=20236622"   # 备案号跳转网址（公安备案改 https://www.beian.gov.cn/）
+  uptime:                    # 页脚网站运行时间（"本站已运行xxxx天xx时xx分xx秒"）
+    enable: true             # 是否显示
+    start: "2022-08-09 00:00:00"   # 建站起始时间，精确到秒（格式：YYYY-MM-DD HH:mm:ss）
+    wrap: false              # true = 独立一行显示；false = 与版权信息同行（宽屏下）
   powered_by: true           # 显示 "Powered by Hexo · Theme Mist"

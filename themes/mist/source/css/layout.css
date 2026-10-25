@@ -309,9 +309,57 @@ html[data-theme="dark"] .icon-btn__icon--moon {
 @media (min-width: 1024px) {
   .site-footer__inner {
     flex-direction: row;
+    flex-wrap: wrap;   /* uptime wrap 模式在行布局下也能独占一行 */
     justify-content: center;
     gap: var(--space-4);
   }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   网站运行时间（footer.uptime 配置；数字由 uptime.js 驱动）
+   - 默认与版权同行（宽屏行布局下）；--wrap 修饰符独占一行
+   - 数字等宽（tabular + mono）防跳动；秒位每秒播放
+     模糊淡出↑ → 从下模糊淡入（is-out / is-in，关键帧在 base.css）
+   - 整体进场 .is-live：从下到上 + 模糊渐清（同动效令牌）
+   ════════════════════════════════════════════════════════════════ */
+.site-footer__uptime {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  font-size: var(--text-sm);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.site-footer__uptime--wrap {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: var(--space-1);
+}
+
+.site-footer__uptime.is-live {
+  animation: uptime-rise calc(var(--dur-base) + var(--dur-fast)) var(--ease-out) both;
+}
+
+.site-footer__uptime-prefix {
+  margin-right: var(--space-1);
+}
+
+.uptime-seg-num {
+  display: inline-block;
+  min-width: 2ch;         /* 两位补零下宽度稳定；天数自然增长 */
+  text-align: center;
+  font-family: var(--font-mono);
+}
+
+.uptime-seg-num.is-out {
+  animation: uptime-num-out var(--dur-fast) var(--ease-out) both;
+}
+
+.uptime-seg-num.is-in {
+  animation: uptime-num-in var(--dur-fast) var(--ease-out) both;
 }
 
 /* ════════════════════════════════════════════════════════════════

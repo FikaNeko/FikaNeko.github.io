@@ -49,3 +49,8 @@ category:
 
 footer:
   powered_by: Powered by Hexo · Theme Mist
+  uptime_prefix: Uptime
+  uptime_d: d
+  uptime_h: h
+  uptime_m: m
+  uptime_s: s

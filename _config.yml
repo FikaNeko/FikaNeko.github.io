@@ -47,8 +47,9 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+syntax_highlighter: highlight.js
 highlight:
-  enable: false
+  enable: true
   line_number: true
   auto_detect: false
   tab_replace: ''
