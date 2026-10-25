@@ -59,7 +59,7 @@
       <%- partial('partial/icon', { name: 'close' }) %>
     </button>
     <% Object.entries(theme.menu || {}).forEach(function (entry) { %>
-    <a class="mobile-menu__link" href="<%- url_for(entry[1]) %>"><%= entry[0] %></a>
+    <a class="mobile-menu__link" href="<%- url_for(entry[1]) %>"><% if (navIcons[entry[1]]) { %><%- partial('partial/icon', { name: navIcons[entry[1]], cls: 'mobile-menu__link-icon' }) %><% } %><%= entry[0] %></a>
     <% }) %>
   </nav>
 </div>

@@ -244,6 +244,9 @@ html[data-theme="dark"] .icon-btn__icon--moon {
 }
 
 .mobile-menu__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   padding: var(--space-3) 0;
   font-size: var(--text-xl);
   font-weight: 500;
@@ -253,6 +256,12 @@ html[data-theme="dark"] .icon-btn__icon--moon {
   transition: opacity var(--dur-base) var(--ease-out),
               transform var(--dur-base) var(--ease-out),
               color var(--dur-fast) var(--ease-out);
+}
+
+/* 抽屉菜单图标：与文字基线对齐，随 hover 变色联动 */
+.mobile-menu__link-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .mobile-menu__link:hover {
